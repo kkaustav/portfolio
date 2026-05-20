@@ -1,164 +1,243 @@
-cat > ~/flight_booker/README.md << 'MDEOF'
-# ✈️ Flight Booker — Alexa Skill
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaustubh Kar | AWS Cloud & AI Professional</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-[#0b0f17] text-slate-100 antialiased selection:bg-amber-500 selection:text-slate-950">
 
-> *"From working inside Alexa AI and AWS to building on top of them — same platforms, a whole new lens."*
+    <header class="fixed top-0 left-0 w-full bg-[#0b0f17]/90 backdrop-blur-md z-50 border-b border-slate-800/80">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-sm font-bold tracking-tight text-slate-200 uppercase tracking-widest mono">KAUSTUBH KAR</span>
+                <span class="h-4 w-px bg-slate-800 hidden sm:inline-block"></span>
+                <span class="text-xs text-slate-400 font-medium hidden sm:inline-block bg-slate-900 px-2.5 py-1 rounded border border-slate-800">Ex-Amazon AWS</span>
+            </div>
+            <nav class="flex items-center space-x-6 text-sm font-medium text-slate-400">
+                <a href="#about" class="hover:text-amber-500 transition-colors">About</a>
+                <a href="#experience" class="hover:text-amber-500 transition-colors">Experience</a>
+                <a href="#systems" class="hover:text-amber-500 transition-colors">Systems</a>
+                <a href="#credentials" class="hover:text-amber-500 transition-colors">Credentials</a>
+                <a href="mailto:kaustav.kar2@gmail.com" class="text-slate-200 bg-slate-800 border border-slate-700 px-3.5 py-1.5 rounded-md hover:bg-amber-500 hover:text-slate-950 hover:border-amber-500 transition-all text-xs font-semibold uppercase tracking-wider">Connect</a>
+            </nav>
+        </div>
+    </header>
 
-A serverless, voice-activated **live flight search** skill built with **Amazon Alexa + AWS Lambda (Python 3.12)** + **SerpAPI Google Flights**.
-Just say the word — Alexa finds your flight, live, in real time.
+    <section class="pt-32 pb-20 border-b border-slate-800/50 bg-gradient-to-b from-slate-900/40 to-transparent">
+        <div class="max-w-4xl mx-auto px-6 text-center md:text-left">
+            <div class="mb-6 overflow-hidden flex justify-center md:justify-start">
+                <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=45&pause=1000&color=FF9933&center=true&vCenter=true&width=850&height=120&lines=Hi+%F0%9F%91%8B%F0%9F%8F%BB%2C+I'm+KAUSTUBH%20%20%20KAR;AWS+Cloud+%26+AI+Professional" alt="Kaustubh Kar" class="max-w-full h-auto" />
+            </div>
+            
+            <p class="text-lg text-slate-400 max-w-2xl mb-8 leading-relaxed">
+                Enterprise Cloud Infrastructure & Generative AI Architect. Specialized in building deterministic agentic systems, optimizing enterprise cloud topologies, and translating deep technical operations into measurable business impact.
+            </p>
+            
+            <div class="flex flex-wrap justify-center md:justify-start gap-4 text-xs tracking-wider uppercase font-semibold">
+                <a href="https://www.linkedin.com/in/kaustubhkar" target="_blank" class="bg-[#0077b5] text-white px-4 py-2.5 rounded flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <i class="fa-brands fa-linkedin text-base"></i> <span>LinkedIn Profile</span>
+                </a>
+                <a href="https://github.com/kkaustav" target="_blank" class="bg-slate-900 border border-slate-700 text-slate-200 px-4 py-2.5 rounded flex items-center space-x-2 hover:border-slate-500 transition-colors">
+                    <i class="fa-brands fa-github text-base"></i> <span>GitHub Codebase</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
----
+    <section id="about" class="py-20 max-w-5xl mx-auto px-6 border-b border-slate-800/40">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-1">
+                <h2 class="text-xs uppercase tracking-widest font-bold text-amber-500 mono mb-4">// Executive Summary</h2>
+                <h3 class="text-2xl font-bold text-slate-100 tracking-tight">Core Competencies</h3>
+                <div class="mt-6 flex flex-wrap gap-2">
+                    <span class="bg-slate-900 border border-slate-800 text-slate-400 px-2.5 py-1 rounded text-xs mono">Customer Success Management</span>
+                    <span class="bg-slate-900 border border-slate-800 text-slate-400 px-2.5 py-1 rounded text-xs mono">FinOps & Spend Optimization</span>
+                    <span class="bg-slate-900 border border-slate-800 text-slate-400 px-2.5 py-1 rounded text-xs mono">Agentic AI Workflows</span>
+                    <span class="bg-slate-900 border border-slate-800 text-slate-400 px-2.5 py-1 rounded text-xs mono">SLA & Escalation Control</span>
+                    <span class="bg-slate-900 border border-slate-800 text-slate-400 px-2.5 py-1 rounded text-xs mono">Tableau & Data Visualization</span>
+                </div>
+            </div>
+            <div class="lg:col-span-2 space-y-6 text-slate-400 leading-relaxed text-sm md:text-base">
+                <p>
+                    AWS Cloud and AI Professional with over <strong>9 years of experience at Amazon</strong> spanning across AWS and Alexa AI ecosystems. Proven track record leading global optimization programs, managing critical system escalations, and bridging production AI/ML logic with highly resilient enterprise cloud engineering frameworks.
+                </p>
+                <p>
+                    Specialized in designing robust automation loops—having delivered <strong>1,700+ hours of annual operational savings</strong> across enterprise cloud profiles—while engineering scalable serverless pipelines utilizing tools like Python, BigQuery, MySQL, and modern Model Context Protocols (MCP).
+                </p>
+            </div>
+        </div>
+    </section>
 
-## 🎙️ How It Works
+    <section id="experience" class="py-20 max-w-4xl mx-auto px-6 border-b border-slate-800/40">
+        <h2 class="text-xs uppercase tracking-widest font-bold text-amber-500 mono mb-12">// Professional Timeline</h2>
+        
+        <div class="space-y-12">
+            <div class="border-l-2 border-slate-800 pl-6 relative">
+                <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-amber-500"></div>
+                <div class="flex flex-wrap justify-between items-baseline mb-3">
+                    <h3 class="text-lg font-bold text-slate-100">Technical CS Specialist</h3>
+                    <span class="text-xs font-semibold mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">Jan 2022 – Sep 2025</span>
+                </div>
+                <h4 class="text-sm font-semibold text-amber-500 mb-4">Amazon Web Services (AWS)</h4>
+                <ul class="space-y-2.5 text-xs md:text-sm text-slate-400">
+                    <li><strong class="text-slate-300">Enterprise Guardrails:</strong> Primary trusted advisor for premium global accounts, supervising service quota allocations, security posture mapping, and rapid fraud/abuse mitigation.</li>
+                    <li><strong class="text-slate-300">FinOps Excellence:</strong> Drove structural cost optimization through proactive Savings Plans and Reserved Instances (RI) adoption frameworks.</li>
+                    <li><strong class="text-slate-300">Automation Savings:</strong> Developed 14 automated cloud workflows and 45 structural SOPs, saving 1,768 hours per associate annually.</li>
+                    <li><strong class="text-slate-300">Global Recognition:</strong> Honored with the global IMPACT Guru Award, Global IMPACT Legend Rank, and 3x AWSome Builder Awards.</li>
+                </ul>
+            </div>
 
-    User:  "Alexa, open flight booker"
-    Alexa: "Welcome to Flight Search! Say: find me a flight from Kolkata to London on June twentieth."
+            <div class="border-l-2 border-slate-800 pl-6 relative">
+                <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
+                <div class="flex flex-wrap justify-between items-baseline mb-3">
+                    <h3 class="text-lg font-bold text-slate-100">Machine Learning Data Associate (Alexa AI)</h3>
+                    <span class="text-xs font-semibold mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">Jul 2017 – Dec 2021</span>
+                </div>
+                <h4 class="text-sm font-semibold text-slate-400 mb-4">Amazon Development Centre</h4>
+                <ul class="space-y-2.5 text-xs md:text-sm text-slate-400">
+                    <li><strong class="text-slate-300">Pipeline Engineering:</strong> Administered foundational training data pipelines and evaluated production signal patterns for Alexa's Natural Language Understanding (NLU) logic.</li>
+                    <li><strong class="text-slate-300">Quality Frameworks:</strong> Lifted team operational accuracy metrics from 75.6% to 96.46% while sustaining an individual pipeline calibration floor above 98%.</li>
+                    <li><strong class="text-slate-300">Platform Validation:</strong> Executed regression and behavior mapping for Alexa platform upgrades (GSR 1.0 & 2.0), capturing system blockers and optimizing processing throughput.</li>
+                </ul>
+            </div>
 
-    User:  "Find me a flight from Delhi to Dubai on June twentieth"
-    Alexa: "I found an Emirates flight from Delhi to Dubai on 2026-06-20,
-            taking 3 hours 30 minutes, for 18,450 Indian Rupees."
+            <div class="border-l-2 border-slate-800 pl-6 relative">
+                <div class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
+                <div class="flex flex-wrap justify-between items-baseline mb-3">
+                    <h3 class="text-lg font-bold text-slate-100">Technical Support Associate</h3>
+                    <span class="text-xs font-semibold mono text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">Dec 2014 – Sep 2015</span>
+                </div>
+                <h4 class="text-sm font-semibold text-slate-400 mb-4">Wipro (TalkTalk U.K.)</h4>
+                <ul class="space-y-2.5 text-xs md:text-sm text-slate-400">
+                    <li><strong class="text-slate-300">Incident Control:</strong> Resolved complex telecom infrastructure and network ticket escalations under strict high-priority SLA matrices.</li>
+                    <li><strong class="text-slate-300">Metrics:</strong> Maintained a 95%+ First Call Resolution (FCR) rate across 50-60 technical cases daily.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
----
+    <section id="systems" class="py-20 max-w-5xl mx-auto px-6 border-b border-slate-800/40">
+        <h2 class="text-xs uppercase tracking-widest font-bold text-amber-500 mono mb-4">// System Deployments</h2>
+        <h3 class="text-2xl font-bold text-slate-100 mb-12 tracking-tight">AI & Cloud Engineering Projects</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-slate-900/40 border border-slate-800/80 p-6 rounded-lg flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] tracking-widest font-bold text-amber-500 uppercase mono bg-amber-500/5 px-2 py-0.5 rounded border border-amber-500/10">Production FinOps / LLM</span>
+                        <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" class="text-slate-500 hover:text-slate-200 text-sm"><i class="fa-brands fa-github text-lg"></i></a>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-100 mb-2">AWS Cloud Security Auditor</h4>
+                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-4">
+                        Fine-tuned a 3B parameter LLM (Qwen2.5 via LoRA/Unsloth) to 97.6% misconfiguration detection accuracy. Integrates with AWS Config and Security Hub pipelines to deliver automated JSON remediation patches. Built for Meta PyTorch OpenEnv Hackathon (Grand Finalist, Top 800 of 31k teams).
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-2 text-[10px] mono text-slate-400">
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">PyTorch</span>
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">Unsloth</span>
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">FastAPI</span>
+                </div>
+            </div>
 
-## 🏗️ Architecture
+            <div class="bg-slate-900/40 border border-slate-800/80 p-6 rounded-lg flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] tracking-widest font-bold text-amber-500 uppercase mono bg-amber-500/5 px-2 py-0.5 rounded border border-amber-500/10">Serverless AI Engine</span>
+                        <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 hover:text-slate-200 text-sm"><i class="fa-brands fa-github text-lg"></i></a>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-100 mb-2">NL Query Agent (Amazon Bedrock)</h4>
+                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-4">
+                        Production-grade agentic data parsing system leveraging Bedrock Nova Lite and Strands Agents SDK. Autonomously routes natural language requests across standard local Pandas parsing or large-scale multi-format Amazon Athena SQL runs based on raw file sizing parameters.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-2 text-[10px] mono text-slate-400">
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">AWS Bedrock</span>
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">Athena</span>
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">Amazon S3</span>
+                </div>
+            </div>
 
-```mermaid
-flowchart TD
-    A[Alexa Device\nVoice Input] -->|Spoken Request| B[Alexa Skills Kit\nIntent Router]
-    B -->|Matched Intent| C[AWS Lambda\nlambda_function.py]
+            <div class="bg-slate-900/40 border border-slate-800/80 p-6 rounded-lg flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] tracking-widest font-bold text-amber-500 uppercase mono bg-amber-500/5 px-2 py-0.5 rounded border border-amber-500/10">Spatial Data Optimization</span>
+                        <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 hover:text-slate-200 text-sm"><i class="fa-brands fa-github text-lg"></i></a>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-100 mb-2">Bakery Location Intelligence Agent</h4>
+                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-4">
+                        An advanced multi-modal location agent powered by Google ADK and Gemini 3.1 Pro. Communicates across dedicated Model Context Protocol (MCP) tool bindings to cross-reference private database metrics inside Google BigQuery alongside live, real-world Google Maps API routing.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-2 text-[10px] mono text-slate-400">
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">Google ADK</span>
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">BigQuery MCP</span>
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">Gemini 3.1 Pro</span>
+                </div>
+            </div>
 
-    C --> D[Intent Handlers]
+            <div class="bg-slate-900/40 border border-slate-800/80 p-6 rounded-lg flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] tracking-widest font-bold text-amber-500 uppercase mono bg-amber-500/5 px-2 py-0.5 rounded border border-amber-500/10">Voice UI / Backend Runtime</span>
+                        <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" class="text-slate-500 hover:text-slate-200 text-sm"><i class="fa-brands fa-github text-lg"></i></a>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-100 mb-2">Flight Booker Alexa Skill</h4>
+                    <p class="text-xs md:text-sm text-slate-400 leading-relaxed mb-4">
+                        A voice-activated, live serverless search skill built utilizing the official Alexa Skills Kit framework and custom AWS Lambda backend routines (Python 3.12). Hooks into live scheduling endpoints via SerpAPI to map contextual user spoken paths into real-time airline data.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-2 text-[10px] mono text-slate-400">
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">AWS Lambda</span>
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">Alexa SDK</span>
+                    <span class="bg-[#0b0f17] px-2 py-0.5 rounded border border-slate-800">SerpAPI</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    D --> D1[SearchFlightIntent]
-    D --> D2[YesIntent]
-    D --> D3[NoIntent]
-    D --> D4[HelpIntent]
-    D --> D5[CancelOrStopIntent]
-    D --> D6[SessionEndedRequest]
+    <section id="credentials" class="py-20 max-w-4xl mx-auto px-6">
+        <h2 class="text-xs uppercase tracking-widest font-bold text-amber-500 mono mb-8">// Validated Track</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs font-medium mono">
+            <div class="p-3.5 bg-slate-900/60 border border-slate-800 rounded flex items-center space-x-3">
+                <i class="fa-solid fa-square-poll-vertical text-amber-500 text-sm"></i>
+                <span>AWS Certified AI Practitioner (2026)</span>
+            </div>
+            <div class="p-3.5 bg-slate-900/60 border border-slate-800 rounded flex items-center space-x-3">
+                <i class="fa-solid fa-cloud text-amber-500 text-sm"></i>
+                <span>AWS Certified Cloud Practitioner</span>
+            </div>
+            <div class="p-3.5 bg-slate-900/60 border border-slate-800 rounded flex items-center space-x-3">
+                <i class="fa-solid fa-microchip text-slate-500 text-sm"></i>
+                <span>AWS Generative AI Essentials</span>
+            </div>
+            <div class="p-3.5 bg-slate-900/60 border border-slate-800 rounded flex items-center space-x-3">
+                <i class="fa-solid fa-database text-amber-500 text-sm"></i>
+                <span>AWS Account Management SME</span>
+            </div>
+            <div class="p-3.5 bg-slate-900/60 border border-slate-800 rounded flex items-center space-x-3">
+                <i class="fa-solid fa-graduation-cap text-slate-400 text-sm"></i>
+                <span>MS in AI/ML (Woolf University)</span>
+            </div>
+            <div class="p-3.5 bg-slate-900/60 border border-slate-800 rounded flex items-center space-x-3">
+                <i class="fa-solid fa-terminal text-slate-500 text-sm"></i>
+                <span>B.Tech in ECE (MAKAUT)</span>
+            </div>
+        </div>
+    </section>
 
-    D1 --> E[City to IATA Mapper\n80+ Cities Worldwide]
-    E --> F[SerpAPI Google Flights Engine]
-    F -->|Live Fare + Airline + Duration| D1
+    <footer class="py-12 border-t border-slate-900 bg-slate-950/20 text-center text-xs text-slate-500 mono">
+        <p>&copy; 2026 Kaustubh Kar. Optimized for AWS Amplify pipeline infrastructure.</p>
+    </footer>
 
-    D1 -->|Voice Response| A
-```
-
----
-
-## 🌍 Supported Cities (80+)
-
-| Region | Cities |
-|--------|--------|
-| India | Delhi, Mumbai, Kolkata, Bangalore, Chennai, Hyderabad, Ahmedabad, Pune, Goa, Kochi, Jaipur, Lucknow, Patna, Varanasi, Nagpur, Srinagar, Amritsar, Chandigarh, Visakhapatnam, Trivandrum, Guwahati |
-| Middle East | Dubai, Abu Dhabi, Doha, Riyadh, Muscat, Kuwait, Jeddah, Bahrain |
-| Europe | London, Paris, Frankfurt, Amsterdam, Rome, Madrid, Zurich, Vienna, Istanbul, Milan, Munich, Barcelona |
-| Asia Pacific | Singapore, Bangkok, Hong Kong, Tokyo, Osaka, Seoul, Beijing, Shanghai, Kuala Lumpur, Jakarta, Manila, Colombo, Kathmandu, Dhaka, Sydney, Melbourne |
-| Americas | New York, Los Angeles, Chicago, Toronto, San Francisco, Miami, Vancouver, Dallas, Houston, Seattle |
-| Africa | Nairobi, Johannesburg, Cairo, Lagos, Cape Town |
-
----
-
-## 🧠 Intent Design
-
-| Intent | Utterance Example | Description |
-|--------|------------------|-------------|
-| SearchFlightIntent | "Find a flight from Delhi to Dubai on June twentieth" | Live flight search via SerpAPI |
-| AMAZON.YesIntent | "Yes" | Search another flight |
-| AMAZON.NoIntent | "No" | Graceful exit prompt |
-| AMAZON.HelpIntent | "Help" | Usage instructions |
-| AMAZON.StopIntent | "Stop / Cancel" | Exit the skill |
-| SessionEndedRequest | (auto) | Clean session teardown |
-
----
-
-## ⚙️ Tech Stack
-
-| Layer | Technology |
-|-------|------------|
-| Voice Interface | Amazon Alexa Skills Kit |
-| Backend Runtime | AWS Lambda (Python 3.12) |
-| SDK | ask-sdk-core v1.19.0 |
-| Live Flight Data | SerpAPI - Google Flights Engine |
-| HTTP Client | requests v2.33.1 |
-| Deployment | AWS Console (ZIP upload) |
-| Version Control | Git + GitHub |
-
----
-
-## 🚀 Setup and Deployment
-
-### 1. Clone this repo
-
-    git clone https://github.com/kkaustav/flight-booker-alexa-skill.git
-    cd flight-booker-alexa-skill
-
-### 2. Install dependencies locally
-
-    pip install requests ask-sdk-core ask-sdk-model ask-sdk-runtime python-dateutil -t .
-
-### 3. Package the ZIP
-
-    zip -j flight_booker.zip lambda_function.py
-    zip -r flight_booker.zip requests certifi charset_normalizer urllib3 idna six.py ask_sdk_core ask_sdk_model ask_sdk_runtime dateutil
-
-Note: lambda_function.py must be at the root of the ZIP. Verify with: unzip -l flight_booker.zip | head -3
-
-### 4. Deploy to AWS Lambda
-
-1. Go to AWS Lambda and create a function named FlightBookerSkill with Python 3.12
-2. Upload the ZIP via Code > Upload from > .zip file > Deploy
-3. Set timeout to 15 seconds under Configuration > General configuration
-4. Add environment variable: SERP_API_KEY = your key from serpapi.com
-
-### 5. Configure Alexa Skill
-
-1. Go to Alexa Developer Console and create a custom skill named Flight Booker
-2. Add SearchFlightIntent with slots: origin, destination, date
-3. Add sample utterances like "find me a flight from {origin} to {destination} on {date}"
-4. Set endpoint to your Lambda ARN
-5. Add Alexa Skills Kit trigger in Lambda with your Skill ID
-6. Build and Test
-
----
-
-## 🔑 Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| SERP_API_KEY | Your SerpAPI key from serpapi.com |
-
----
-
-## 🗺️ Roadmap
-
-- [x] Live flight API via SerpAPI Google Flights
-- [x] 80+ cities worldwide
-- [x] Flight duration in response
-- [ ] Multi-city and return trip search
-- [ ] Booking confirmation flow
-- [ ] DynamoDB session persistence
-- [ ] APL visual cards for Echo Show
-- [ ] Price alerts via SNS
-
----
-
-## 🐛 Troubleshooting
-
-| Error | Cause | Fix |
-|-------|-------|-----|
-| No module named ask_sdk_core | SDK not bundled | Re-package ZIP with ask_sdk_core, ask_sdk_model, ask_sdk_runtime |
-| No module named requests | requests not bundled | Re-package ZIP including requests folder |
-| Runtime.ImportModuleError | lambda_function.py in subfolder | Use zip -j to flatten path |
-| No flights found | Missing type=2 param | Ensure type 2 (one-way) in SerpAPI params |
-| Timeout error | Default Lambda timeout too short | Set Lambda timeout to 15-29 seconds |
-
----
-
-## 👤 Author
-
-**Kaustubh Kar** — AWS Certified Cloud and AI Professional
-9+ years at Amazon across Alexa AI and AWS
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-kaustubhkar-blue?logo=linkedin)](https://www.linkedin.com/in/kaustubhkar)
-[![GitHub](https://img.shields.io/badge/GitHub-kkaustav-black?logo=github)](https://github.com/kkaustav)
-MDEOF
-echo "Done: $(wc -l < ~/flight_booker/README.md) lines"
+</body>
+</html>
