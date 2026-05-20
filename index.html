@@ -421,7 +421,6 @@
             <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-3">// SECURE INGEST CHANNEL</h2>
             <h3 class="text-2xl font-bold tracking-tight text-slate-100">Establish Communication</h3>
         </div>
-
         <form id="awsContactForm" class="space-y-5 text-sm">
             <div>
                 <label class="block text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="name">Identifier</label>
@@ -435,11 +434,9 @@
                 <label class="block text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="message">Payload</label>
                 <textarea required id="message" rows="4" class="w-full bg-slate-950 border border-slate-900 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-white/30 font-light resize-none" placeholder="Enter structural transmission details..."></textarea>
             </div>
-            <div class="border-t border-slate-900 pt-4">
-                <button type="submit" id="submitBtn" class="w-full bg-white text-slate-950 font-bold uppercase tracking-widest py-3 rounded shadow-lg hover:bg-slate-200 transition-colors cursor-pointer">
-                    Transmit Parameter
-                </button>
-            </div>
+            <button type="submit" id="submitBtn" class="w-full bg-white text-slate-950 font-bold uppercase tracking-widest py-3 rounded shadow-lg hover:bg-slate-200 transition-colors cursor-pointer">
+                Transmit Parameter
+            </button>
             <div id="formFeedback" class="hidden text-center p-3 rounded text-xs font-semibold block"></div>
         </form>
     </section>
