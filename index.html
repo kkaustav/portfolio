@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Force complete font family unification across every tag in the DOM */
+        /* Unify typography cleanly without overriding FontAwesome's internal icon font layer */
         body, html, nav, p, span, h1, h2, h3, h4, h5, h6, a, button, input, textarea, label { 
             font-family: 'Plus Jakarta Sans', sans-serif !important; 
         }
@@ -69,24 +69,24 @@
     </header>
 
     <section class="relative pt-56 pb-28 glow-effect overflow-hidden z-10">
-        <div class="max-w-7xl mx-auto px-8 md:px-16 flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="max-w-7xl mx-auto px-8 md:px-16 flex flex-col md:flex-row items-center justify-between gap-16">
             
-            <div class="w-full md:w-2/3 text-center md:text-left space-y-6">
-                <div class="mb-4 flex justify-center md:justify-start -ml-4">
+            <div class="w-full md:w-2/3 text-center md:text-left">
+                <div class="mb-6 flex justify-center md:justify-start -ml-4">
                     <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=45&pause=1000&color=FFFFFF&center=true&vCenter=true&width=850&height=120&lines=Hi+%F0%9F%91%8B%F0%9F%8F%BB%2C+I'm+KAUSTUBH%20%20%20KAR;AWS+Cloud+%26+AI+Professional" alt="Kaustubh Kar" class="max-w-full h-auto" />
                 </div>
-                <div class="lg:col-span-2 space-y-8 text-slate-400 leading-relaxed text-lg font-light">
-                    I am a Cloud consultant currently pursuing an advanced Master of Science in Artificial Intelligence and Machine Learning. My core focus centers on targeting high-scale AI and Machine Learning engineering roles—specializing in orchestrating deterministic multi-agent workflows, fine-tuning large language models, and building automated cloud topologies.
+                <p class="text-base text-slate-400 max-w-3xl mb-5 leading-relaxed font-light">
+                    I am an Enterprise Cloud Infrastructure Architect currently pursuing an advanced Master of Science in Artificial Intelligence and Machine Learning. My core focus centers on targeting high-scale AI and Machine Learning engineering roles—specializing in orchestrating deterministic multi-agent workflows, fine-tuning large language models, and building automated cloud topologies.
                 </p>
-                <div class="lg:col-span-2 space-y-8 text-slate-400 leading-relaxed text-lg font-light">
+                <p class="text-base text-slate-400 max-w-2xl font-light leading-relaxed">
                     Leveraging a deep technical baseline established across a 9+ year operational trajectory at Amazon, I bridge cloud scaling economics with next-generation agentic solutions.
                 </p>
             </div>
 
             <div class="w-full md:w-1/3 flex justify-center">
                 <div class="relative group cursor-pointer" onclick="document.getElementById('imageUploader').click();" title="Click directly here to upload any headshot image file instantly from your browser">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
-                    <div class="relative w-52 h-52 md:w-60 md:h-60 rounded-full border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative w-64 h-64 md:w-72 md:h-72 rounded-full border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center">
                         <img id="profileDisplay" src="profile.jpg" alt="Kaustubh Kar" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%23111827\'><circle cx=\'50\' cy=\'42\' r=\'20\' fill=\'%23374151\'/><path d=\'M20,85 C20,65 35,55 50,55 C65,55 80,65 80,85 Z\' fill=\'%23374151\'/></svg>'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-xs font-bold tracking-widest uppercase">
                             <i class="fa-solid fa-camera text-xl mb-2 text-white"></i>
@@ -125,7 +125,7 @@
     </section>
 
     <section id="metrics" class="py-20 bg-[#090d16]/20 border-y border-slate-900 max-w-full">
-        <div class="max-w-7xl mx-auto px-8 md:px-16 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-6">
+        <div class="max-w-6xl mx-auto px-8 md:px-16 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-6">
             <div class="text-center md:text-left border-l border-slate-800/80 pl-6">
                 <div class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">9+ Yrs</div>
                 <div class="text-xs uppercase tracking-widest font-bold text-slate-500">Amazon Experience</div>
@@ -149,6 +149,7 @@
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-16">// COMPREHENSIVE TIMELINE OF IMPACT</h2>
         
         <div class="space-y-20">
+            
             <div class="border-l-2 border-slate-800 pl-10 relative group">
                 <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-white shadow-md shadow-white/40"></div>
                 <div class="flex flex-wrap justify-between items-baseline mb-4">
@@ -201,6 +202,7 @@
                     <p><strong class="text-slate-200 font-medium">✓ Workflow Refinement:</strong> Streamlined incident workflow handoffs between teams and mentored peer networks, ensuring clear quantifiable advancements across group SLA compliance trends.</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -217,6 +219,7 @@
                     <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">AWS Cloud Security Auditor</h4>
+                
                 <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
                     <div class="grid grid-cols-3 gap-2 font-normal text-[10px] uppercase text-white mb-2">
                         <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">Grand Finalist</div>
@@ -236,6 +239,7 @@
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">NL Query Agent — Bedrock Nova</h4>
+                
                 <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
                     <p><strong>Situation:</strong> Non-technical business groups experience heavy query turnaround backlogs when fetching from deep cloud storage repositories.</p>
                     <p><strong>Task:</strong> Build a low-overhead interface to process plain English query text directly against backend data files.</p>
@@ -250,6 +254,7 @@
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">GitHub Dev Card Generator</h4>
+                
                 <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
                     <p><strong>Situation:</strong> Open-source developer profiles maintain scattered contribution vectors that lack clear skill telemetry visualization maps.</p>
                     <p><strong>Task:</strong> Construct a serverless pipeline that extracts profile data and compiles it into high-end asset cards.</p>
@@ -264,6 +269,7 @@
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Bakery Location Intelligence Agent</h4>
+                
                 <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
                     <p><strong>Situation:</strong> Retail business owners encounter complex data barriers when cross-checking internal sales registries against external physically localized vectors.</p>
                     <p><strong>Task:</strong> Engineer an optimization assistant to interpret spatial performance patterns using decoupled multi-agent frameworks.</p>
@@ -278,6 +284,7 @@
                     <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Flight Booker Alexa Skill</h4>
+                
                 <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
                     <p><strong>Situation:</strong> Conversational audio applications hit drop-off errors when processing erratic flight array records from live endpoints.</p>
                     <p><strong>Task:</strong> Stand up a low-latency voice command backend that maps user destination strings under narrow SLA windows.</p>
@@ -292,6 +299,7 @@
                     <a href="https://github.com/kkaustav/target-brazil-ecommerce-analytics" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Target Brazil E-Commerce Analytics</h4>
+                
                 <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
                     <div class="grid grid-cols-2 gap-2 font-normal text-[10px] uppercase text-white mb-2">
                         <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">Google BigQuery</div>
@@ -303,6 +311,7 @@
                     <p><strong>Result:</strong> Captured a 143% YoY revenue surge (R$3.47M to R$8.45M). Pinpointed that while São Paulo contributes 40.5% of demand, remote states experience 2.6–2.8× higher freight boundaries. Discovered 66%+ of orders concentrate between 1 PM and midnight, with 48.9% traveling as single-installments to focus strategic subsidies.</p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -310,6 +319,7 @@
         <div class="max-w-6xl mx-auto px-8 md:px-16">
             <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-4">// HONORS & AWARDS</h2>
             <h3 class="text-3xl font-black text-slate-100 mb-12 tracking-tight">Rewards & Recognition</h3>
+            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
                 <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start">
                     <div class="text-white text-2xl mb-4"><i class="fa-solid fa-trophy"></i></div>
@@ -364,7 +374,7 @@
                 <i class="fa-solid fa-database text-white text-sm"></i>
                 <span>AWS Account Management SME</span>
             </a>
-            <a href="https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lTtxiErQeKHe/view" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
+            <a href="https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lZtxiErQeKHe/view" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
                 <i class="fa-solid fa-chalkboard-user text-white text-sm"></i>
                 <span>AWS Certified Trainer</span>
             </a>
@@ -378,6 +388,7 @@
     <section id="education" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-900 relative z-10">
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-10">// EDUCATIONAL QUALIFICATIONS</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 font-medium text-sm">
+            
             <div onclick="window.open('https://drive.google.com/file/d/1M6mWb9J5Z6z4i9V0Aik-Id-EiylbHLkr/view?usp=sharing', '_blank')" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
                 <div>
                     <div class="text-white text-2xl mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -389,6 +400,7 @@
                     → Launch Academic Record validation file
                 </div>
             </div>
+            
             <div onclick="window.open('https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view', '_blank')" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
                 <div>
                     <div class="text-white text-2xl mb-4"><i class="fa-solid fa-terminal"></i></div>
@@ -400,6 +412,7 @@
                     → Access B.Tech document registry endpoint
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -408,6 +421,7 @@
             <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-3">// SECURE INGEST CHANNEL</h2>
             <h3 class="text-2xl font-bold tracking-tight text-slate-100">Establish Communication</h3>
         </div>
+
         <form id="awsContactForm" class="space-y-5 text-sm">
             <div>
                 <label class="block text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="name">Identifier</label>
@@ -421,9 +435,11 @@
                 <label class="block text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="message">Payload</label>
                 <textarea required id="message" rows="4" class="w-full bg-slate-950 border border-slate-900 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-white/30 font-light resize-none" placeholder="Enter structural transmission details..."></textarea>
             </div>
-            <button type="submit" id="submitBtn" class="w-full bg-white text-slate-950 font-bold uppercase tracking-widest py-3 rounded shadow-lg hover:bg-slate-200 transition-colors cursor-pointer">
-                Transmit Parameter
-            </button>
+            <div class="border-t border-slate-900 pt-4">
+                <button type="submit" id="submitBtn" class="w-full bg-white text-slate-950 font-bold uppercase tracking-widest py-3 rounded shadow-lg hover:bg-slate-200 transition-colors cursor-pointer">
+                    Transmit Parameter
+                </button>
+            </div>
             <div id="formFeedback" class="hidden text-center p-3 rounded text-xs font-semibold block"></div>
         </form>
     </section>
