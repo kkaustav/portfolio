@@ -20,7 +20,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.08), transparent 70%);
+            background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.06), transparent 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -31,14 +31,14 @@
     <div class="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-slate-800/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
     <div class="fixed bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-slate-900/20 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
-    <header class="fixed top-0 left-0 w-full bg-[#030712]/70 backdrop-blur-xl z-50 border-b border-slate-900/80">
+    <header class="fixed top-0 left-0 w-full bg-[#030712]/75 backdrop-blur-xl z-50 border-b border-slate-900/80">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <div>
                 <span class="text-2xl md:text-3xl font-black tracking-tighter text-white uppercase mono">KAUSTUBH KAR</span>
             </div>
             
             <div class="flex items-center space-x-8">
-                <nav class="hidden lg:flex items-center space-x-8 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                <nav class="hidden xl:flex items-center space-x-8 text-xs font-semibold uppercase tracking-widest text-slate-400">
                     <a href="#about" class="hover:text-white transition-colors">Overview</a>
                     <a href="#metrics" class="hover:text-white transition-colors">Impact</a>
                     <a href="#experience" class="hover:text-white transition-colors">Timeline</a>
@@ -51,7 +51,7 @@
                 <div class="flex items-center space-x-5 border-l border-slate-800 pl-6">
                     <a href="https://www.linkedin.com/in/kaustubhkar" target="_blank" class="text-slate-400 hover:text-white text-xl transition-colors" title="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-400 hover:text-white text-xl transition-colors" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
-                    <a href="#contact" class="text-slate-400 hover:text-white text-xl transition-colors" title="Secure Message Stream">
+                    <a href="#contact" class="text-slate-400 hover:text-white text-xl transition-colors" title="Secure Communication Channel">
                         <i class="fa-solid fa-envelope"></i>
                     </a>
                 </div>
@@ -63,21 +63,25 @@
         <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-12">
             
             <div class="w-full md:w-2/3 text-center md:text-left">
-                <div class="mb-6 flex justify-center md:justify-start -ml-4">
+                <div class="mb-4 flex justify-center md:justify-start -ml-4">
                     <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=45&pause=1000&color=FFFFFF&center=true&vCenter=true&width=850&height=120&lines=Hi+%F0%9F%91%8B%F0%9F%8F%BB%2C+I'm+KAUSTUBH%20%20%20KAR;AWS+Cloud+%26+AI+Professional" alt="Kaustubh Kar" class="max-w-full h-auto" />
                 </div>
-                <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-6 leading-relaxed font-light">
-                    Enterprise Cloud Infrastructure & Generative AI Architect. Building deterministic agentic systems, automating cloud topologies at global scale, and optimizing multi-tier platform performance vectors[cite: 4, 40, 44].
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mb-6 leading-relaxed font-normal">
+                    I am an Enterprise Cloud Infrastructure Architect currently pursuing an advanced <span class="text-white font-semibold underline decoration-slate-700 underline-offset-4">Master of Science in Artificial Intelligence and Machine Learning</span>. My core focus centers on targeting high-scale AI and Machine Learning engineering roles—specializing in orchestrating deterministic multi-agent workflows, fine-tuning large language models, and building automated cloud topologies.
+                </p>
+                <p class="text-sm text-slate-400 max-w-xl font-light leading-relaxed">
+                    Leveraging a deep technical baseline established across a 9+ year operational trajectory at Amazon, I bridge cloud scaling economics with next-generation agentic solutions.
                 </p>
             </div>
 
             <div class="w-full md:w-1/3 flex justify-center">
-                <div class="relative group cursor-pointer" onclick="document.getElementById('imageUploader').click();" title="Click to upload custom picture file">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-slate-700 to-slate-500 rounded-full blur opacity-20 group-hover:opacity-50 transition duration-500"></div>
+                <div class="relative group cursor-pointer" onclick="document.getElementById('imageUploader').click();" title="Click to upload/change your image instantly from the web browser">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
                     <div class="relative w-56 h-56 rounded-full border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center">
-                        <img id="profileDisplay" src="profile.jpg" alt="Kaustubh Kar" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%23111827\'><circle cx=\'50\' cy=\'42\' r=\'20\' fill=\'%234b5563\'/><path d=\'M20,85 C20,65 35,55 50,55 C65,55 80,65 80,85 Z\' fill=\'%234b5563\'/></svg>'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-mono tracking-wider uppercase">
-                            <i class="fa-solid fa-camera text-base mb-1 block text-center"></i><span class="block ml-2">Upload Photo</span>
+                        <img id="profileDisplay" src="profile.jpg" alt="Kaustubh Kar" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%23111827\'><circle cx=\'50\' cy=\'42\' r=\'20\' fill=\'%23374151\'/><path d=\'M20,85 C20,65 35,55 50,55 C65,55 80,65 80,85 Z\' fill=\'%23374151\'/></svg>'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-[10px] mono tracking-widest uppercase">
+                            <i class="fa-solid fa-camera text-lg mb-1.5 text-white"></i>
+                            <span>Upload Image</span>
                         </div>
                     </div>
                     <input type="file" id="imageUploader" accept="image/*" class="hidden" onchange="processProfilePicture(this)">
@@ -102,10 +106,10 @@
             </div>
             <div class="lg:col-span-2 space-y-6 text-slate-400 leading-relaxed text-base font-light">
                 <p>
-                    I direct engineering strategies that marry massive enterprise cloud mechanics with precise machine learning automation frameworks[cite: 4, 5]. Over my <strong class="text-slate-200 font-semibold">9+ year tenure at Amazon</strong> executing initiatives inside both AWS and Alexa AI ecosystems, I specialize in turning architectural friction into clean operational infrastructure[cite: 4, 5].
+                    I direct engineering strategies that marry massive enterprise cloud mechanics with precise machine learning automation frameworks. Over my 9+ year tenure at Amazon executing initiatives inside both AWS and Alexa AI ecosystems, I specialize in turning architectural friction into clean operational infrastructure.
                 </p>
                 <p>
-                    My work centers on technical ownership and systemic risk control—ranging from managing cloud escalations for high-value enterprise consumer profiles to optimizing model behaviors via structured Model Context Protocols (MCP) and customized LoRA alignments[cite: 13, 17, 45].
+                    My work centers on technical ownership and systemic risk control—ranging from managing cloud escalations for high-value enterprise consumer profiles to optimizing model behaviors via structured Model Context Protocols (MCP) and customized LoRA alignments.
                 </p>
             </div>
         </div>
@@ -144,9 +148,9 @@
                 </div>
                 <h4 class="text-sm font-bold text-slate-300 tracking-wide mb-5">Amazon Web Services (AWS)</h4>
                 <ul class="space-y-3 text-sm text-slate-400 font-light">
-                    <li><strong class="text-slate-200 font-medium">Enterprise Health:</strong> Acted as primary trusted advisor for premium tier cloud accounts, monitoring operational capacity scaling, network topology health, and fraud prevention protocols[cite: 13].</li>
-                    <li><strong class="text-slate-200 font-medium">Spend Governance:</strong> Managed technical spend reduction matrices through structured algorithmic deployment of Reserved Instances (RIs) and Savings Plans frameworks[cite: 17].</li>
-                    <li><strong class="text-slate-200 font-medium">SOP Deployment:</strong> Authored 14 production integration automation branches and 45 regional SOPs, scaling individual associate delivery parameters by 1,768 annual hours[cite: 15].</li>
+                    <li><strong class="text-slate-200 font-medium">Enterprise Health:</strong> Acted as primary trusted advisor for premium tier cloud accounts, monitoring operational capacity scaling, network topology health, and fraud prevention protocols.</li>
+                    <li><strong class="text-slate-200 font-medium">Spend Governance:</strong> Managed technical spend reduction matrices through structured algorithmic deployment of Reserved Instances (RIs) and Savings Plans frameworks.</li>
+                    <li><strong class="text-slate-200 font-medium">SOP Deployment:</strong> Authored 14 production integration automation branches and 45 regional SOPs, scaling individual associate delivery parameters by 1,768 annual hours.</li>
                 </ul>
             </div>
 
@@ -158,8 +162,8 @@
                 </div>
                 <h4 class="text-sm font-bold text-slate-400 tracking-wide mb-5">Amazon Development Centre</h4>
                 <ul class="space-y-3 text-sm text-slate-400 font-light">
-                    <li><strong class="text-slate-200 font-medium">NLU Alignment:</strong> Regulated optimization pipelines and behavioral data streams across automated speech parsing arrays for Alexa's core Natural Language Understanding engine[cite: 22].</li>
-                    <li><strong class="text-slate-200 font-medium">System Scaling:</strong> Elevated team-wide programmatic accuracy levels from a baseline of 75.6% up to a standardized runtime execution wall of 96.46%[cite: 25].</li>
+                    <li><strong class="text-slate-200 font-medium">NLU Alignment:</strong> Regulated optimization pipelines and behavioral data streams across automated speech parsing arrays for Alexa's core Natural Language Understanding engine.</li>
+                    <li><strong class="text-slate-200 font-medium">System Scaling:</strong> Elevated team-wide programmatic accuracy levels from a baseline of 75.6% up to a standardized runtime execution wall of 96.46%.</li>
                 </ul>
             </div>
         </div>
@@ -167,103 +171,103 @@
 
     <section id="systems" class="py-24 max-w-5xl mx-auto px-6 border-b border-slate-900 relative z-10">
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mono mb-3">// REPOSITORIES & RUNTIMES</h2>
-        <h3 class="text-3xl font-black text-slate-100 mb-6 tracking-tight">System Deployments</h3>
-        <p class="text-slate-500 text-xs mb-10 uppercase font-mono tracking-wider">Hover mouse pointer over any runtime box below to view architecture mappings and STAR vectors.</p>
+        <h3 class="text-3xl font-black text-slate-100 mb-4 tracking-tight">System Deployments</h3>
+        <p class="text-slate-500 text-xs mb-10 uppercase font-mono tracking-widest">Hover mouse over any deployment tier card below to reveal extended architectural maps and operational STAR metrics dynamically.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
-            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-500 ease-in-out group h-auto max-h-[110px] hover:max-h-[800px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[115px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">FinOps Platform / LLM</span>
                     <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" class="text-slate-500 group-hover:text-white transition-colors text-base"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-base font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">AWS Cloud Security Auditor</h4>
                 
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-2 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-4 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
                     <div class="grid grid-cols-3 gap-2 font-normal text-[10px] uppercase mono text-white mb-2">
                         <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">Grand Finalist</div>
                         <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">97.6% Score</div>
                         <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">Unsloth LoRA</div>
                     </div>
-                    <p><strong>Situation:</strong> Enterprise target settings maintain critical misconfigurations across S3 and network topologies[cite: 44].</p>
-                    <p><strong>Task:</strong> Engineer an active infrastructure auditor to analyze environments and output closed JSON fixes instantly[cite: 44, 45].</p>
-                    <p><strong>Action:</strong> Fine-tuned a 3B parameter layout (Qwen2.5) using SFT over custom training audit data traces[cite: 45].</p>
-                    <p><strong>Result:</strong> Realized a validated precision performance floor of **0.9760**, boosting formatting configurations by 533%[cite: 45].</p>
+                    <p><strong>Situation:</strong> Production cloud topologies frequently suffer unpatched public exposure across IAM and Security Groups.</p>
+                    <p><strong>Task:</strong> Standardize an optimization framework to scan multi-tier infrastructures and output closed JSON fixes instantly.</p>
+                    <p><strong>Action:</strong> Fine-tuned a 3B parameter model (Qwen2.5) using Supervised Fine-Tuning (SFT) over curated security audit traces.</p>
+                    <p><strong>Result:</strong> Realized a validated precision performance floor of 0.9760, reducing operational MTTR from hours to seconds.</p>
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-500 ease-in-out group h-auto max-h-[110px] hover:max-h-[800px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[115px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">Serverless AI Ingestion</span>
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 group-hover:text-white transition-colors text-base"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-base font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">NL Query Agent — Bedrock Nova</h4>
                 
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-2 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Non-technical stakeholders face heavy database query block delays across standard data analysis lifecycles[cite: 40].</p>
-                    <p><strong>Task:</strong> Construct a low-overhead interface to process plain English commands directly against storage blocks[cite: 40].</p>
-                    <p><strong>Action:</strong> Implemented Strands SDK execution paths backed by Nova Lite; configured intelligent size evaluation loops routing to local Pandas objects or serverless AWS Athena tables[cite: 40].</p>
-                    <p><strong>Result:</strong> Attained resilient, multi-format queries with input/output validation checks for ~$1/month[cite: 42].</p>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-4 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
+                    <p><strong>Situation:</strong> Non-technical business groups experience heavy query turnaround backlogs when fetching from deep cloud storage repositories.</p>
+                    <p><strong>Task:</strong> Build a low-overhead interface to process plain English query text directly against backend data files.</p>
+                    <p><strong>Action:</strong> Implemented Strands SDK execution paths backed by Nova Lite; configured sizing check boundaries to route tasks to memory Pandas sets or serverless Amazon Athena SQL pipelines.</p>
+                    <p><strong>Result:</strong> Attained isolated, multi-format queries secured via Bedrock Guardrails, maintaining audit logs for under $1/month.</p>
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-500 ease-in-out group h-auto max-h-[110px] hover:max-h-[800px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[115px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">GenAI / Serverless Pipeline</span>
+                    <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">GenAI Pipeline</span>
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 group-hover:text-white transition-colors text-base"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-base font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">GitHub Dev Card Generator</h4>
                 
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-2 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Static portfolio summaries offer weak visibility into developer skill telemetry across remote tracking nodes.</p>
-                    <p><strong>Task:</strong> Build an interactive pipeline tool that parses public repos into real-time metrics layout definitions.</p>
-                    <p><strong>Action:</strong> Deployed a FastAPI app on GCP Cloud Run using Gemini 2.5 Flash models; integrated Vertex AI Memory Bank arrays to enforce consistent cross-session token data tracking.</p>
-                    <p><strong>Result:</strong> Delivered a live, serverless deployment platform generating premium downloadable identity cards with auto-scale capacity.</p>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-4 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
+                    <p><strong>Situation:</strong> Open-source developer profiles maintain scattered contribution vectors that lack clear skill telemetry visualization maps.</p>
+                    <p><strong>Task:</strong> Construct a serverless pipeline that extracts profile data and compiles it into high-end asset cards.</p>
+                    <p><strong>Action:</strong> Deployed a FastAPI service on GCP Cloud Run using Gemini 2.5 Flash; engineered Vertex AI Memory Bank upgrades to guarantee cross-session execution persistence.</p>
+                    <p><strong>Result:</strong> Standardized an automated profile generator capable of scaling down to zero overhead instances when idle.</p>
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-500 ease-in-out group h-auto max-h-[110px] hover:max-h-[800px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[115px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">Spatial Data Analytics</span>
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 group-hover:text-white transition-colors text-base"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-base font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Bakery Location Intelligence Agent</h4>
                 
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-2 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Enterprise operators struggle to evaluate commercial traffic parameters alongside isolated physical sales registries.</p>
-                    <p><strong>Task:</strong> Orchestrate a spatial assistant to interpret neighborhood structures using multi-agent protocol servers.</p>
-                    <p><strong>Action:</strong> Engineered multi-modal bindings via Google ADK and Gemini 3.1 Pro; established Model Context Protocol (MCP) links across BigQuery data instances and active Google Maps geolocation APIs.</p>
-                    <p><strong>Result:</strong> Established automated routing reports, giving operators real-time synthesis of regional competitor metrics.</p>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-4 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
+                    <p><strong>Situation:</strong> Retail business owners encounter complex data barriers when cross-checking internal sales registries against external physically localized vectors.</p>
+                    <p><strong>Task:</strong> Engineer an optimization assistant to interpret spatial performance patterns using decoupled multi-agent frameworks.</p>
+                    <p><strong>Action:</strong> Constructed tool attachments via Google ADK and Gemini 3.1 Pro; established Model Context Protocol (MCP) links across BigQuery datasets and live Google Maps APIs.</p>
+                    <p><strong>Result:</strong> Delivered real-time data reports synthesizing neighborhood demographics, pricing arrays, and local routing vectors.</p>
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-500 ease-in-out group h-auto max-h-[110px] hover:max-h-[800px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[115px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">Voice UI / Lambda Backend</span>
+                    <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">Voice UI / Lambda Integration</span>
                     <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" class="text-slate-500 group-hover:text-white transition-colors text-base"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-base font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Flight Booker Alexa Skill</h4>
                 
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-2 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Voice applications suffer high system failure drops due to unstructured API responses across dynamic travel arrays.</p>
-                    <p><strong>Task:</strong> Stand up a low-latency voice command layer that processes live queries under rigorous SLA thresholds.</p>
-                    <p><strong>Action:</strong> Developed conversational slot matching logic using the Alexa Skills Kit backed by AWS Lambda (Python 3.12); integrated SerpAPI endpoints to resolve multi-format flight scheduling data.</p>
-                    <p><strong>Result:</strong> Sustained an evaluation profile maintaining a 95%+ First Call Resolution (FCR) velocity across 80+ global target hubs.</p>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-4 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
+                    <p><strong>Situation:</strong> Conversational audio applications hit drop-off errors when processing erratic flight array records from live endpoints.</p>
+                    <p><strong>Task:</strong> Stand up a low-latency voice command backend that maps user destination strings under narrow SLA windows.</p>
+                    <p><strong>Action:</strong> Configured intent slot handlers via the Alexa Skills Kit backed by AWS Lambda (Python 3.12); integrated SerpAPI Google Flights parameters to route schedule listings.</p>
+                    <p><strong>Result:</strong> Sustained an execution profile maintaining a 95%+ First Call Resolution velocity across 80+ global target hubs.</p>
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-500 ease-in-out group h-auto max-h-[110px] hover:max-h-[800px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-slate-950/40 border border-slate-900 p-6 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[115px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">Deep Learning Model Core</span>
+                    <span class="text-[10px] font-bold text-white uppercase mono bg-white/5 px-2 py-0.5 rounded border border-white/10">Deep Learning Research</span>
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 group-hover:text-white transition-colors text-base"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-base font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Text-to-SQL Conversion Core</h4>
+                <h4 class="text-base font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Text-to-SQL Conversion Engine</h4>
                 
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-2 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Scaling structural code extraction across cross-compiled enterprise schemas requires intensive model parameter accuracy.</p>
-                    <p><strong>Task:</strong> Formulate an optimized, deep transformer model tuning layer for advanced relational data extraction.</p>
-                    <p><strong>Action:</strong> Configured scalable deep learning text architectures using Google Cloud research credits; evaluated schema behavior maps to enforce multi-tenant separation parameters.</p>
-                    <p><strong>Result:</strong> Successfully validated advanced model pipelines, serving as the core research capstone project for the conferred MS in AI/ML.</p>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-4 border-t border-slate-900 text-xs text-slate-400 font-light leading-relaxed">
+                    <p><strong>Situation:</strong> Translating non-linear natural syntax patterns into robust structural queries requires fine parameter isolation.</p>
+                    <p><strong>Task:</strong> Formulate an optimized deep transformer validation framework to map relational schema attributes cleanly.</p>
+                    <p><strong>Action:</strong> Managed scalable neural execution logic utilizing Google Cloud platform research allocations; evaluated operational behavior graphs to control formatting output parameters.</p>
+                    <p><strong>Result:</strong> Successfully engineered the core model research benchmark serving as the graduation capstone system for the Master of Science degree.</p>
                 </div>
             </div>
 
@@ -279,32 +283,32 @@
                 <div class="p-5 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all">
                     <div class="text-white text-xl mb-3"><i class="fa-solid fa-trophy"></i></div>
                     <h4 class="font-bold text-white text-base mb-1">IMPACT Guru Award</h4>
-                    <p class="text-xs text-slate-400 font-light">Awarded globally at AWS for leading 55 structural process updates and complex risk mitigations[cite: 16].</p>
+                    <p class="text-xs text-slate-400 font-light">Awarded globally at AWS for leading 55 structural process updates and complex risk mitigations.</p>
                 </div>
                 <div class="p-5 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all">
                     <div class="text-white text-xl mb-3"><i class="fa-solid fa-medal"></i></div>
                     <h4 class="font-bold text-white text-base mb-1">Global IMPACT Legend</h4>
-                    <p class="text-xs text-slate-400 font-light">Highest tier tracking designation given for scaling cloud workflow efficiency matrices[cite: 16].</p>
+                    <p class="text-xs text-slate-400 font-light">Highest tier tracking designation given for scaling cloud workflow efficiency matrices.</p>
                 </div>
                 <div class="p-5 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all">
                     <div class="text-white text-xl mb-3"><i class="fa-solid fa-star"></i></div>
                     <h4 class="font-bold text-white text-base mb-1">AWSome Builder (3x)</h4>
-                    <p class="text-xs text-slate-400 font-light">Earned multiple honors for building automated serverless support workflows across cloud pipelines[cite: 16].</p>
+                    <p class="text-xs text-slate-400 font-light">Earned multiple honors for building automated serverless support workflows across cloud pipelines.</p>
                 </div>
                 <div class="p-5 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all">
                     <div class="text-white text-xl mb-3"><i class="fa-solid fa-crown"></i></div>
                     <h4 class="font-bold text-white text-base mb-1">Pinnacle Superstars</h4>
-                    <p class="text-xs text-slate-400 font-light">Sustained premium elite performance parameters consistently through fiscal cycles 2022–2024[cite: 18].</p>
+                    <p class="text-xs text-slate-400 font-light">Sustained premium elite performance parameters consistently through fiscal cycles 2022–2024.</p>
                 </div>
                 <div class="p-5 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all">
                     <div class="text-white text-xl mb-3"><i class="fa-solid fa-award"></i></div>
                     <h4 class="font-bold text-white text-base mb-1">Most Valuable Player (MVP)</h4>
-                    <p class="text-xs text-slate-400 font-light">Recognized across AWS organizational groups for stellar engineering escalations control[cite: 18].</p>
+                    <p class="text-xs text-slate-400 font-light">Recognized across AWS organizational groups for stellar engineering escalations control.</p>
                 </div>
                 <div class="p-5 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all">
                     <div class="text-white text-xl mb-3"><i class="fa-solid fa-circle-check"></i></div>
                     <h4 class="font-bold text-white text-base mb-1">Extra Mile & Quality Awards</h4>
-                    <p class="text-xs text-slate-400 font-light">Conferred inside the Alexa AI speech division for maintaining a 98% data annotation precision floor[cite: 24, 26].</p>
+                    <p class="text-xs text-slate-400 font-light">Conferred inside the Alexa AI speech division for maintaining a 98% data annotation precision floor.</p>
                 </div>
             </div>
         </div>
@@ -319,23 +323,23 @@
             </div>
             <a href="https://www.credly.com/badges/286b49e5-94b5-4f08-b6e8-bc21f44b03a5/public_url" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
                 <i class="fa-solid fa-cloud text-white text-sm"></i>
-                <span>AWS Certified Cloud Practitioner [cite: 49]</span>
+                <span>AWS Certified Cloud Practitioner</span>
             </a>
             <a href="https://www.credly.com/badges/f60cf029-1065-4f0a-8fa1-ff105421a93e" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
                 <i class="fa-solid fa-microchip text-white text-sm"></i>
-                <span>AWS Generative AI Essentials [cite: 50]</span>
+                <span>AWS Generative AI Essentials</span>
             </a>
             <a href="https://www.credly.com/badges/e203c9ba-043e-49cd-99c0-209aab51a34b/linked_in_profile" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
                 <i class="fa-solid fa-database text-white text-sm"></i>
-                <span>AWS Account Management SME [cite: 52]</span>
+                <span>AWS Account Management SME</span>
             </a>
             <a href="https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lZtxiErQeKHe/view" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
                 <i class="fa-solid fa-chalkboard-user text-white text-sm"></i>
-                <span>AWS Certified Trainer [cite: 53]</span>
+                <span>AWS Certified Trainer</span>
             </a>
             <a href="https://drive.google.com/file/d/19dH9NUPy6mxiUI00i7cJynrqQpFQUC2m/view?pli=1" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
                 <i class="fa-solid fa-certificate text-white text-sm"></i>
-                <span>UpGrad-Microsoft GenAI Foundations [cite: 51]</span>
+                <span>UpGrad-Microsoft GenAI Foundations</span>
             </a>
         </div>
     </section>
@@ -343,17 +347,27 @@
     <section id="education" class="py-24 max-w-4xl mx-auto px-6 border-b border-slate-900 relative z-10">
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mono mb-10">// EDUCATIONAL QUALIFICATIONS</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 font-medium text-sm">
-            <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative group">
-                <div class="text-white text-2xl mb-3"><i class="fa-solid fa-graduation-cap"></i></div>
-                <h4 class="font-bold text-white text-base mb-1">Master of Science (MS)</h4>
-                <p class="text-xs text-slate-400 mono uppercase tracking-wider mb-3">Artificial Intelligence & Machine Learning</p>
-                <p class="text-xs text-slate-500 font-light">Woolf University (Scaler Neovarsity Execution Framework).</p>
+            <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="text-white text-2xl mb-3"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h4 class="font-bold text-white text-base mb-1">Master of Science (MS)</h4>
+                    <p class="text-xs text-slate-400 mono uppercase tracking-wider mb-3">Computer Science: Artificial Intelligence and Machine Learning</p>
+                    <p class="text-xs text-slate-500 font-light leading-relaxed mb-6">Woolf University — ECTS Accredited (EQF7 Framework via Scaler Neovarsity).</p>
+                </div>
+                <button onclick="openCertModal('MS AI/ML Transcript', 'Student ID: 4400042191', 'ECTS Credits Verified (EQF7)')" class="text-center w-full bg-slate-900 border border-slate-800 hover:border-slate-600 text-xs text-slate-300 font-semibold py-2.5 rounded transition-colors uppercase tracking-wider cursor-pointer">
+                    View Academic Record Details
+                </button>
             </div>
-            <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative group">
-                <div class="text-white text-2xl mb-3"><i class="fa-solid fa-terminal"></i></div>
-                <h4 class="font-bold text-white text-base mb-1">Bachelor of Technology (B.Tech)</h4>
-                <p class="text-xs text-slate-400 mono uppercase tracking-wider mb-3">Electronics & Communication Engineering [cite: 56]</p>
-                <p class="text-xs text-slate-500 font-light">West Bengal University of Technology (MAKAUT) | 8.24 Cumulative GPA[cite: 56].</p>
+            <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="text-white text-2xl mb-3"><i class="fa-solid fa-terminal"></i></div>
+                    <h4 class="font-bold text-white text-base mb-1">Bachelor of Technology (B.Tech)</h4>
+                    <p class="text-xs text-slate-400 mono uppercase tracking-wider mb-3">Electronics & Communication Engineering</p>
+                    <p class="text-xs text-slate-500 font-light leading-relaxed mb-6">West Bengal University of Technology (MAKAUT) | 8.24 Cumulative Graduation GPA.</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view" target="_blank" class="text-center w-full bg-slate-900 border border-slate-800 hover:border-slate-600 text-xs text-slate-300 font-semibold py-2.5 rounded transition-colors uppercase tracking-wider block">
+                    Access B.Tech Document Registry
+                </a>
             </div>
         </div>
     </section>
@@ -401,12 +415,10 @@
     </div>
 
     <script>
-        // Local Profile Picture Handling Engine
+        // Profile Image Caching Engine
         window.addEventListener('DOMContentLoaded', () => {
             const cachedImage = localStorage.getItem('user_profile_data_uri');
-            if (cachedImage) {
-                document.getElementById('profileDisplay').src = cachedImage;
-            }
+            if (cachedImage) { document.getElementById('profileDisplay').src = cachedImage; }
         });
 
         function processProfilePicture(input) {
@@ -421,24 +433,21 @@
             }
         }
 
-        // Certification Pop-Up Engine
+        // Modals Engine
         function openCertModal(title, regId, expiry) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalId').innerText = regId;
             document.getElementById('modalExpiry').innerText = expiry;
             document.getElementById('certModal').classList.remove('hidden');
         }
-        function closeCertModal() {
-            document.getElementById('certModal').classList.add('hidden');
-        }
+        function closeCertModal() { document.getElementById('certModal').classList.add('hidden'); }
 
-        // Contact Form Processing Layer
+        // Contact Processing Layer
         document.getElementById('awsContactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const feedback = document.getElementById('formFeedback');
-            btn.disabled = true;
-            btn.innerText = 'TRANSMITTING...';
+            btn.disabled = true; btn.innerText = 'TRANSMITTING...';
             
             const payload = {
                 name: document.getElementById('name').value,
@@ -461,8 +470,7 @@
                 feedback.className = "text-slate-400 bg-slate-900 border border-slate-800 p-3 rounded text-xs font-semibold mono block mt-4";
                 feedback.innerText = "⚠ NOTE: Form UI operational. Integrate your AWS API Gateway Invoke URL inside line 348 to route transmissions directly to your inbox.";
             } finally {
-                btn.disabled = false;
-                btn.innerText = 'Transmit Parameter';
+                btn.disabled = false; btn.innerText = 'Transmit Parameter';
             }
         });
     </script>
