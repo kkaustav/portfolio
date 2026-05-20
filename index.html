@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Force complete font family unification across every element tag in the DOM */
+        /* Force complete font family unification across every tag in the DOM */
         body, html, nav, p, span, h1, h2, h3, h4, h5, h6, a, button, input, textarea, label { 
             font-family: 'Plus Jakarta Sans', sans-serif !important; 
         }
@@ -389,29 +389,29 @@
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-10">// EDUCATIONAL QUALIFICATIONS</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 font-medium text-sm">
             
-            <a href="MS_Transcript.pdf" target="_blank" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
+            <div onclick="window.open('Transcript-KAUSTUBH-KAR.pdf', '_blank')" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
                 <div>
                     <div class="text-white text-2xl mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <h4 class="font-bold text-white text-lg mb-2 group-hover:text-white transition-colors">Master of Science (MS)</h4>
+                    <h4 class="font-bold text-white text-lg mb-2">Master of Science (MS)</h4>
                     <p class="text-xs text-slate-400 uppercase tracking-widest mb-4">Computer Science: Artificial Intelligence and Machine Learning</p>
                     <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">Woolf University — ECTS Accredited EQF7 Framework via Scaler Neovarsity.</p>
                 </div>
                 <div class="text-xs text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-300 transition-colors">
                     → Launch Academic Record validation file
                 </div>
-            </a>
+            </div>
             
-            <a href="https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view" target="_blank" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
+            <div onclick="window.open('https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view', '_blank')" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
                 <div>
                     <div class="text-white text-2xl mb-4"><i class="fa-solid fa-terminal"></i></div>
-                    <h4 class="font-bold text-white text-lg mb-2 group-hover:text-white transition-colors">Bachelor of Technology (B.Tech)</h4>
+                    <h4 class="font-bold text-white text-lg mb-2">Bachelor of Technology (B.Tech)</h4>
                     <p class="text-xs text-slate-400 uppercase tracking-widest mb-4">Electronics & Communication Engineering</p>
                     <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">West Bengal University of Technology (MAKAUT) | 8.24 Cumulative Graduation GPA.</p>
                 </div>
                 <div class="text-xs text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-300 transition-colors">
                     → Access B.Tech document registry endpoint
                 </div>
-            </a>
+            </div>
 
         </div>
     </section>
@@ -458,7 +458,7 @@
         </div>
     </div>
 
-    <script>
+    <script {nonce}>
         // Profile Image Caching Engine
         window.addEventListener('DOMContentLoaded', () => {
             const cachedImage = localStorage.getItem('user_profile_data_uri');
