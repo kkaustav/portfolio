@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Force complete font family unification across typographic tags without disrupting icon sets */
         body, html, nav, p, span, h1, h2, h3, h4, h5, h6, a, button, input, textarea, label { 
             font-family: 'Plus Jakarta Sans', sans-serif !important; 
         }
@@ -84,7 +83,7 @@
             </div>
 
             <div class="w-full lg:w-1/3 flex justify-center">
-                <div class="relative group cursor-pointer" onclick="document.getElementById('imageUploader').click();" title="Click directly here to upload any headshot image file instantly from your browser">
+                <div class="relative group cursor-pointer" onclick="document.getElementById('imageUploader').click();" title="Click to upload your photo">
                     <div class="absolute -inset-1.5 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
                     <div class="relative w-52 h-52 md:w-60 md:h-60 rounded-full border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center">
                         <img id="profileDisplay" src="profile.jpg" alt="Kaustubh Kar" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%23111827\'><circle cx=\'50\' cy=\'42\' r=\'20\' fill=\'%23374151\'/><path d=\'M20,85 C20,65 35,55 50,55 C65,55 80,65 80,85 Z\' fill=\'%23374151\'/></svg>'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -163,7 +162,7 @@
                     <p><strong class="text-slate-200 font-medium">✓ Workflow Automation:</strong> Designed and deployed 14 custom automated integration systems and 45 structural regional SOPs, generating an audited savings wall of 1,768 annual operational hours per associate while improving strict SLA compliance via data-driven root cause evaluations.</p>
                     <p><strong class="text-slate-200 font-medium">✓ Spend Optimization:</strong> Monitored cloud economics for premium accounts by aggressively driving structural Reserved Instances (RIs) and Savings Plans adoption loops, optimizing predictability metrics across enterprise budgets.</p>
                     <p><strong class="text-slate-200 font-medium">✓ Friction Reduction:</strong> Mitigated high-priority escalations across TAM, SA, and engineering pipelines, reducing recurring core platform blockers by 27.5% and fortifying stakeholder trust vectors.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Capabilities Ingestion:</strong> Mentored 45 cross-skill associates on production cloud systems best practices, accelerators client enablement parameters and long-term ecosystem value realization.</p>
+                    <p><strong class="text-slate-200 font-medium">✓ Capabilities Ingestion:</strong> Mentored 45 cross-skill associates on production cloud systems best practices, accelerating client enablement parameters and long-term ecosystem value realization.</p>
                 </div>
             </div>
 
@@ -175,7 +174,7 @@
                 </div>
                 <h4 class="text-base font-bold text-slate-400 tracking-wide mb-6 uppercase tracking-widest">Amazon Development Centre</h4>
                 <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">
-                    Administered global algorithm training data pipelines and evaluated active AI machine learning performance signals. Collaborated with core developer and product teams to map raw information telemetry into concrete, measurable enhancements across Alexa’s global Natural Language Understanding (NLU) components and query response metrics.
+                    Administered global algorithm training data pipelines and evaluated active AI machine learning performance signals. Collaborated with core developer and product teams to map raw information telemetry into concrete, measurable enhancements across Alexa's global Natural Language Understanding (NLU) components and query response metrics.
                 </p>
                 <div class="space-y-3 text-sm text-slate-400 font-light">
                     <p><strong class="text-slate-200 font-medium">✓ Pipeline Quality:</strong> Maintained an individual annotation accuracy floor above 98% for Alexa's baseline NLU streaming pipelines, identifying systematic error trends that reshaped engineering prioritize queues.</p>
@@ -378,7 +377,6 @@
     <section id="education" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-900 relative z-10">
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-10">// EDUCATIONAL QUALIFICATIONS</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 font-medium text-sm">
-            
             <div onclick="window.open('https://drive.google.com/file/d/1M6mWb9J5Z6z4i9V0Aik-Id-EiylbHLkr/view?usp=sharing', '_blank')" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
                 <div>
                     <div class="text-white text-2xl mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -390,7 +388,6 @@
                     → Launch Academic Record validation file
                 </div>
             </div>
-            
             <div onclick="window.open('https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view', '_blank')" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
                 <div>
                     <div class="text-white text-2xl mb-4"><i class="fa-solid fa-terminal"></i></div>
@@ -402,7 +399,6 @@
                     → Access B.Tech document registry endpoint
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -447,8 +443,7 @@
         </div>
     </div>
 
-    <script {nonce}>
-        // Profile Image Caching Engine
+    <script>
         window.addEventListener('DOMContentLoaded', () => {
             const cachedImage = localStorage.getItem('user_profile_data_uri');
             if (cachedImage) { document.getElementById('profileDisplay').src = cachedImage; }
@@ -466,7 +461,6 @@
             }
         }
 
-        // Modals Engine
         function openCertModal(title, regId, expiry) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalId').innerText = regId;
@@ -475,14 +469,14 @@
         }
         function closeCertModal() { document.getElementById('certModal').classList.add('hidden'); }
 
-        // Secure Form Processing Asynchronous Loop
         document.getElementById('awsContactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const feedback = document.getElementById('formFeedback');
             btn.disabled = true;
             btn.innerText = 'TRANSMITTING...';
-            
+            feedback.className = 'hidden';
+
             const payload = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
@@ -490,23 +484,24 @@
             };
 
             try {
-                // LINKED DIRECTLY TO YOUR REAL PORTFOLIO ENDPOINT ID
                 const response = await fetch('https://gjnaayruae.execute-api.us-east-1.amazonaws.com/contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
 
-                if (response.ok) {
-                    feedback.className = "text-emerald-400 bg-emerald-500/5 border border-emerald-500/20 p-3 rounded text-xs font-semibold block mt-4";
-                    feedback.innerText = "✓ TRANSMISSION SUCCESSFUL: Payload accepted by Amazon SES.";
+                const data = await response.json();
+
+                if (response.ok && data.status === 'success') {
+                    feedback.className = 'text-emerald-400 bg-emerald-500/5 border border-emerald-500/20 p-3 rounded text-xs font-semibold block mt-4';
+                    feedback.innerText = '✓ TRANSMISSION SUCCESSFUL: Message delivered to inbox.';
                     document.getElementById('awsContactForm').reset();
                 } else {
-                    throw new Error();
+                    throw new Error(data.message || 'Unknown error');
                 }
             } catch (err) {
-                feedback.className = "text-slate-400 bg-slate-900 border border-slate-800 p-3 rounded text-xs font-semibold block mt-4";
-                feedback.innerText = "⚠ ERROR: Server handshake failed. Double-check your API Gateway console stage logs.";
+                feedback.className = 'text-red-400 bg-red-500/5 border border-red-500/20 p-3 rounded text-xs font-semibold block mt-4';
+                feedback.innerText = '⚠ ERROR: ' + (err.message || 'Could not reach server. Try again.');
             } finally {
                 btn.disabled = false;
                 btn.innerText = 'Transmit Parameter';
