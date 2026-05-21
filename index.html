@@ -18,7 +18,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif !important; 
         }
         
-        /* Auto-switching radial accent illumination glow paths */
         .glow-effect::before {
             content: '';
             position: absolute;
@@ -32,6 +31,11 @@
             .glow-effect::before {
                 background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.05), transparent 70%) !important;
             }
+        }
+
+        /* Smooth accordion transition for the hidden matrices */
+        .matrix-content {
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
         }
     </style>
 </head>
@@ -214,17 +218,20 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto min-h-[145px] lg:max-h-[145px] lg:hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl flex flex-col justify-start">
+            <div onclick="toggleSystemCard(this)" class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-500 ease-in-out group cursor-pointer shadow-2xl flex flex-col justify-start">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">FinOps Platform / LLM</span>
-                    <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 shrink-0 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">AWS Cloud Security Auditor</h4>
-                <div class="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <div class="grid grid-cols-3 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2">
+                <div class="flex justify-between items-center shrink-0">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">AWS Cloud Security Auditor</h4>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
+                </div>
+                <div class="matrix-content max-h-0 md:max-h-none opacity-0 md:opacity-100 overflow-hidden md:overflow-visible space-y-4 pt-0 md:pt-5 md:border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    <div class="grid grid-cols-3 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2 mt-4">
                         <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Grand Finalist</div>
-                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-220 dark:border-slate-900">97.6% Score</div>
-                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-220 dark:border-slate-900">Unsloth LoRA</div>
+                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">97.6% Score</div>
+                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Unsloth LoRA</div>
                     </div>
                     <p><strong>Situation:</strong> Production cloud topologies frequently suffer unpatched public exposure across IAM and Security Groups.</p>
                     <p><strong>Task:</strong> Standardize an optimization framework to scan multi-tier infrastructures and output closed JSON fixes instantly.</p>
@@ -233,70 +240,85 @@
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto min-h-[145px] lg:max-h-[145px] lg:hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl flex flex-col justify-start">
+            <div onclick="toggleSystemCard(this)" class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-500 ease-in-out group cursor-pointer shadow-2xl flex flex-col justify-start">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Serverless AI Ingestion</span>
-                    <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 shrink-0 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">NL Query Agent — Bedrock Nova</h4>
-                <div class="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Non-technical business groups experience heavy query turnaround backlogs when fetching from deep cloud storage repositories.</p>
+                <div class="flex justify-between items-center shrink-0">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">NL Query Agent — Bedrock Nova</h4>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
+                </div>
+                <div class="matrix-content max-h-0 md:max-h-none opacity-0 md:opacity-100 overflow-hidden md:overflow-visible space-y-4 pt-0 md:pt-5 md:border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    <p class="mt-4"><strong>Situation:</strong> Non-technical business groups experience heavy query turnaround backlogs when fetching from deep cloud storage repositories.</p>
                     <p><strong>Task:</strong> Build a low-overhead interface to process plain English query text directly against backend data files.</p>
                     <p><strong>Action:</strong> Implemented Strands SDK execution paths backed by Nova Lite; configured sizing check boundaries to route tasks to memory Pandas sets or serverless Amazon Athena SQL pipelines.</p>
                     <p><strong>Result:</strong> Attained isolated, multi-format queries secured via Bedrock Guardrails, maintaining audit logs for under $1/month.</p>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto min-h-[145px] lg:max-h-[145px] lg:hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl flex flex-col justify-start">
+            <div onclick="toggleSystemCard(this)" class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-500 ease-in-out group cursor-pointer shadow-2xl flex flex-col justify-start">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">GenAI Pipeline</span>
-                    <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 shrink-0 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">GitHub Dev Card Generator</h4>
-                <div class="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Open-source developer profiles maintain scattered contribution vectors that lack clear skill telemetry visualization maps.</p>
+                <div class="flex justify-between items-center shrink-0">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">GitHub Dev Card Generator</h4>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
+                </div>
+                <div class="matrix-content max-h-0 md:max-h-none opacity-0 md:opacity-100 overflow-hidden md:overflow-visible space-y-4 pt-0 md:pt-5 md:border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    <p class="mt-4"><strong>Situation:</strong> Open-source developer profiles maintain scattered contribution vectors that lack clear skill telemetry visualization maps.</p>
                     <p><strong>Task:</strong> Construct a serverless pipeline that extracts profile data and compiles it into high-end asset cards.</p>
                     <p><strong>Action:</strong> Deployed a FastAPI service on GCP Cloud Run using Gemini 2.5 Flash; engineered Vertex AI Memory Bank upgrades to guarantee cross-session execution persistence.</p>
                     <p><strong>Result:</strong> Standardized an automated profile generator capable of scaling down to zero overhead instances when idle.</p>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto min-h-[145px] lg:max-h-[145px] lg:hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl flex flex-col justify-start">
+            <div onclick="toggleSystemCard(this)" class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-500 ease-in-out group cursor-pointer shadow-2xl flex flex-col justify-start">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Spatial Data Analytics</span>
-                    <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 shrink-0 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Bakery Location Intelligence Agent</h4>
-                <div class="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Retail business owners encounter complex data barriers when cross-checking internal sales registries against external physically localized vectors.</p>
+                <div class="flex justify-between items-center shrink-0">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">Bakery Location Intelligence Agent</h4>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
+                </div>
+                <div class="matrix-content max-h-0 md:max-h-none opacity-0 md:opacity-100 overflow-hidden md:overflow-visible space-y-4 pt-0 md:pt-5 md:border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    <p class="mt-4"><strong>Situation:</strong> Retail business owners encounter complex data barriers when cross-checking internal sales registries against external physically localized vectors.</p>
                     <p><strong>Task:</strong> Engineer an optimization assistant to interpret spatial performance patterns using decoupled multi-agent frameworks.</p>
                     <p><strong>Action:</strong> Constructed tool attachments via Google ADK and Gemini 3.1 Pro; established Model Context Protocol (MCP) links across BigQuery datasets and live Google Maps APIs.</p>
                     <p><strong>Result:</strong> Delivered real-time data reports synthesizing neighborhood demographics, pricing arrays, and local routing vectors.</p>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto min-h-[145px] lg:max-h-[145px] lg:hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl flex flex-col justify-start">
+            <div onclick="toggleSystemCard(this)" class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-500 ease-in-out group cursor-pointer shadow-2xl flex flex-col justify-start">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-white uppercase bg-white/5 px-2.5 py-1 rounded border border-white/10">Voice UI / Lambda Integration</span>
-                    <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" onclick="event.stopPropagation();" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 shrink-0 group-hover:text-white transition-colors">Flight Booker Alexa Skill</h4>
-                <div class="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Conversational audio applications hit drop-off errors when processing erratic flight array records from live endpoints.</p>
+                <div class="flex justify-between items-center shrink-0">
+                    <h4 class="text-lg font-bold text-slate-100 tracking-tight transition-colors">Flight Booker Alexa Skill</h4>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
+                </div>
+                <div class="matrix-content max-h-0 md:max-h-none opacity-0 md:opacity-100 overflow-hidden md:overflow-visible space-y-4 pt-0 md:pt-5 md:border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    <p class="mt-4"><strong>Situation:</strong> Conversational audio applications hit drop-off errors when processing erratic flight array records from live endpoints.</p>
                     <p><strong>Task:</strong> Stand up a low-latency voice command backend that maps user destination strings under narrow SLA windows.</p>
                     <p><strong>Action:</strong> Configured intent slot handlers via the Alexa Skills Kit backed by AWS Lambda (Python 3.12); integrated SerpAPI Google Flights parameters to route schedule listings.</p>
                     <p><strong>Result:</strong> Sustained an evaluation profile maintaining a 95%+ First Call Resolution velocity across 80+ global target hubs.</p>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto min-h-[145px] lg:max-h-[145px] lg:hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl flex flex-col justify-start">
+            <div onclick="toggleSystemCard(this)" class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-500 ease-in-out group cursor-pointer shadow-2xl flex flex-col justify-start">
                 <div class="flex justify-between items-center mb-4 shrink-0">
-                    <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">SQL / Analytics Framework</span>
-                    <a href="https://github.com/kkaustav/target-brazil-ecommerce-analytics" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <span class="text-[10px] font-bold text-slate-500 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">SQL / Analytics Framework</span>
+                    <a href="https://github.com/kkaustav/target-brazil-ecommerce-analytics" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 shrink-0 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Target Brazil E-Commerce Analytics</h4>
-                <div class="opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <div class="grid grid-cols-2 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2">
+                <div class="flex justify-between items-center shrink-0">
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">Target Brazil E-Commerce Analytics</h4>
+                    <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
+                </div>
+                <div class="matrix-content max-h-0 md:max-h-none opacity-0 md:opacity-100 overflow-hidden md:overflow-visible space-y-4 pt-0 md:pt-5 md:border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    <div class="grid grid-cols-2 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2 mt-4">
                         <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Google BigQuery</div>
                         <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Relational SQL Mapping</div>
                     </div>
@@ -329,7 +351,7 @@
                     <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">AWSome Builder (3x)</h4>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed">Earned multiple honors for building automated serverless support workflows across cloud pipelines.</p>
                 </div>
-                <div class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start shadow-xl">
+                <div class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative hover:border-slate-400/30 dark:hover:border-white/20 transition-all flex flex-col justify-start shadow-xl">
                     <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-crown"></i></div>
                     <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Pinnacle Superstars</h4>
                     <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed">Sustained premium elite performance parameters consistently through fiscal cycles 2022–2024.</p>
@@ -448,6 +470,25 @@
     </div>
 
     <script>
+        // FIXED: Added high-performance mobile gesture controller to toggle accordion layers cleanly
+        function toggleSystemCard(cardElement) {
+            // Apply only on smaller mobile layout frames
+            if (window.innerWidth >= 768) return;
+
+            const matrix = cardElement.querySelector('.matrix-content');
+            const chevron = cardElement.querySelector('.fa-chevron-down');
+            
+            if (matrix.style.maxHeight === 'none' || matrix.style.maxHeight === '500px') {
+                matrix.style.maxHeight = '0px';
+                matrix.style.opacity = '0';
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+            } else {
+                matrix.style.maxHeight = '500px';
+                matrix.style.opacity = '1';
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            }
+        }
+
         function openCertModal(title, regId, expiry) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalId').innerText = regId;
