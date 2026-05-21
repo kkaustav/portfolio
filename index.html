@@ -11,55 +11,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         body, html, nav, p, span, h1, h2, h3, h4, h5, h6, a, button, input, textarea, label { 
             font-family: 'Plus Jakarta Sans', sans-serif !important; 
         }
+        
+        /* Auto-switching radial accent illumination glow paths */
         .glow-effect::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.05), transparent 70%);
+            background: radial-gradient(circle at 50% -20%, rgba(0, 0, 0, 0.03), transparent 70%);
             z-index: -1;
             pointer-events: none;
         }
+        
+        @media (prefers-color-scheme: dark) {
+            .glow-effect::before {
+                background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.05), transparent 70%) !important;
+            }
+        }
     </style>
 </head>
-<body class="bg-[#030712] text-slate-100 antialiased selection:bg-white selection:text-slate-950 min-h-screen">
+<body class="bg-slate-50 text-slate-900 dark:bg-[#030712] dark:text-slate-100 antialiased selection:bg-slate-900 selection:text-white dark:selection:bg-white dark:selection:text-slate-950 min-h-screen transition-colors duration-300">
 
-    <div class="fixed top-[-10%] right-[-5%] w-[600px] h-[600px] bg-slate-800/10 rounded-full blur-[130px] pointer-events-none z-0"></div>
-    <div class="fixed bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-slate-900/20 rounded-full blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed top-[-10%] right-[-5%] w-[600px] h-[600px] bg-slate-300/20 dark:bg-slate-800/10 rounded-full blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-slate-400/10 dark:bg-slate-900/20 rounded-full blur-[130px] pointer-events-none z-0"></div>
 
-    <header class="fixed top-0 left-0 w-full bg-[#030712]/75 backdrop-blur-xl z-50 border-b border-slate-900/80">
+    <header class="fixed top-0 left-0 w-full bg-slate-50/75 dark:bg-[#030712]/75 backdrop-blur-xl z-50 border-b border-slate-200 dark:border-slate-900/80">
         <div class="max-w-7xl mx-auto px-8 md:px-12 h-24 flex items-center justify-between">
             <div>
-                <span class="text-2xl md:text-3xl font-black tracking-tighter text-white uppercase">KAUSTUBH KAR</span>
+                <span class="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 dark:text-white uppercase">KAUSTUBH KAR</span>
             </div>
             
             <div class="flex items-center space-x-10">
-                <nav class="hidden xl:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-slate-400">
-                    <a href="#about" class="hover:text-white transition-colors">Overview</a>
-                    <a href="#metrics" class="hover:text-white transition-colors">Impact</a>
-                    <a href="#experience" class="hover:text-white transition-colors">Timeline</a>
-                    <a href="#systems" class="hover:text-white transition-colors">Systems</a>
-                    <a href="#recognition" class="hover:text-white transition-colors">Awards</a>
-                    <a href="#credentials" class="hover:text-white transition-colors">Credentials</a>
-                    <a href="#education" class="hover:text-white transition-colors">Education</a>
+                <nav class="hidden xl:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-slate-400">
+                    <a href="#about" class="hover:text-slate-900 dark:hover:text-white transition-colors">Overview</a>
+                    <a href="#metrics" class="hover:text-slate-900 dark:hover:text-white transition-colors">Impact</a>
+                    <a href="#experience" class="hover:text-slate-900 dark:hover:text-white transition-colors">Timeline</a>
+                    <a href="#systems" class="hover:text-slate-900 dark:hover:text-white transition-colors">Systems</a>
+                    <a href="#recognition" class="hover:text-slate-900 dark:hover:text-white transition-colors">Awards</a>
+                    <a href="#credentials" class="hover:text-slate-900 dark:hover:text-white transition-colors">Credentials</a>
+                    <a href="#education" class="hover:text-slate-900 dark:hover:text-white transition-colors">Education</a>
                 </nav>
                 
-                <div class="flex items-center space-x-6 border-l border-slate-800 pl-8">
-                    <a href="https://www.linkedin.com/in/kaustubhkar" target="_blank" class="text-slate-400 hover:text-white text-xl transition-colors" title="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/kkaustav" target="_blank" class="text-slate-400 hover:text-white text-xl transition-colors" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
+                <div class="flex items-center space-x-6 border-l border-slate-200 dark:border-slate-800 pl-8">
+                    <a href="https://www.linkedin.com/in/kaustubhkar" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xl transition-colors" title="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/kkaustav" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xl transition-colors" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
                     
-                    <a href="https://public.tableau.com/app/profile/kaustubh.kar8455/vizzes" target="_blank" class="text-slate-400 hover:text-white transition-colors flex items-center" title="Tableau Public Portfolio">
+                    <a href="https://public.tableau.com/app/profile/kaustubh.kar8455/vizzes" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors flex items-center" title="Tableau Public Portfolio">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.875 22h2.25v-3.375h-2.25V22zm-5.625-5.625h1.688v-1.688H5.25v1.688zm5.625 0h2.25V11.5h-2.25v4.875zm5.625 0h1.688v-1.688h-1.688v1.688zM1.5 12.875h1.688v-1.688H1.5v1.688zm3.75 0h1.688V7.625H5.25v5.25zm5.625 4.125V2h-2.25v15h2.25zm5.625-4.125h1.688V7.625h-1.688v5.25zm3.75 0H22.5v-1.688h-1.688v1.688zM10.875 5.375h2.25V2h-2.25v3.375zm5.625 3.375h1.688V7.063h-1.688v1.687zm-11.25 0h1.688V7.063H5.25v1.687z"/>
                         </svg>
                     </a>
                     
-                    <a href="#contact" class="text-slate-400 hover:text-white text-xl transition-colors" title="Secure Communication Channel">
+                    <a href="#contact" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xl transition-colors" title="Secure Communication Channel">
                         <i class="fa-solid fa-envelope"></i>
                     </a>
                 </div>
@@ -72,20 +80,21 @@
             
             <div class="w-full lg:w-2/3 text-center lg:text-left space-y-6">
                 <div class="flex justify-center lg:justify-start -ml-4">
-                    <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=45&pause=1000&color=FFFFFF&center=true&vCenter=true&width=850&height=120&lines=Hi+%F0%9F%91%8B%F0%9F%8F%BB%2C+I'm+KAUSTUBH%20%20%20KAR;AWS+Cloud+%26+AI+Professional" alt="Kaustubh Kar" class="max-w-full h-auto" />
+                    <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=45&pause=1000&color=030712&center=true&vCenter=true&width=850&height=120&lines=Hi%2C+I'm+KAUSTUBH%20%20%20KAR;AWS+Cloud+%26+AI+Professional" alt="Kaustubh Kar" class="block dark:hidden max-w-full h-auto" />
+                    <img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=900&size=45&pause=1000&color=FFFFFF&center=true&vCenter=true&width=850&height=120&lines=Hi%2C+I'm+KAUSTUBH%20%20%20KAR;AWS+Cloud+%26+AI+Professional" alt="Kaustubh Kar" class="hidden dark:block max-w-full h-auto" />
                 </div>
-                <p class="text-lg md:text-xl text-slate-400 leading-relaxed font-light">
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-light">
                     I am a Cloud and AI professional currently pursuing an advanced Master of Science in Artificial Intelligence and Machine Learning. My core focus centers on targeting high-scale AI and Machine Learning engineering roles—specializing in orchestrating deterministic multi-agent workflows, fine-tuning large language models, and building automated cloud topologies.
                 </p>
-                <p class="text-lg md:text-xl text-slate-400 leading-relaxed font-light">
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-light">
                     Leveraging a deep technical baseline established across a 9+ year operational trajectory at Amazon, I bridge cloud scaling economics with next-generation agentic solutions.
                 </p>
             </div>
 
             <div class="w-full lg:w-1/3 flex justify-center">
                 <div class="relative">
-                    <div class="absolute -inset-1.5 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full blur opacity-25 transition duration-500"></div>
-                    <div class="relative w-52 h-52 md:w-60 md:h-60 rounded-full border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-slate-400 to-slate-300 dark:from-slate-800 dark:to-slate-700 rounded-full blur opacity-25 transition duration-500"></div>
+                    <div class="relative w-52 h-52 md:w-60 md:h-60 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 overflow-hidden flex items-center justify-center">
                         <img id="profileDisplay" src="profile.png" alt="Kaustubh Kar" class="w-full h-full object-cover" />
                     </div>
                 </div>
@@ -94,20 +103,20 @@
         </div>
     </section>
 
-    <section id="about" class="py-28 max-w-7xl mx-auto px-8 md:px-16 border-t border-slate-900/60 relative z-10">
+    <section id="about" class="py-28 max-w-7xl mx-auto px-8 md:px-16 border-t border-slate-200 dark:border-slate-900/60 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-20">
             <div class="lg:col-span-1">
                 <div class="sticky top-32">
-                    <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-4">// ARCHITECTURE FOCUS</h2>
-                    <h3 class="text-3xl font-black text-slate-100 tracking-tight mb-8">Profile Core</h3>
-                    <div class="space-y-3 text-sm text-slate-400">
-                        <div class="flex justify-between border-b border-slate-900 pb-3"><span class="text-slate-500">RUNTIME:</span> <span class="font-medium text-slate-300">Python / SQL / AWS SDK</span></div>
-                        <div class="flex justify-between border-b border-slate-900 pb-3"><span class="text-slate-500">AI FOCUS:</span> <span class="font-medium text-slate-300">Agentic Loops / Fine-Tuning</span></div>
-                        <div class="flex justify-between border-b border-slate-900 pb-3"><span class="text-slate-500">INFRA:</span> <span class="font-medium text-slate-300">FinOps / S3 / Athena / Lambda</span></div>
+                    <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-4">// ARCHITECTURE FOCUS</h2>
+                    <h3 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-8">Profile Core</h3>
+                    <div class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                        <div class="flex justify-between border-b border-slate-200 dark:border-slate-900 pb-3"><span class="text-slate-400 dark:text-slate-500">RUNTIME:</span> <span class="font-medium text-slate-800 dark:text-slate-300">Python / SQL / AWS SDK</span></div>
+                        <div class="flex justify-between border-b border-slate-200 dark:border-slate-900 pb-3"><span class="text-slate-400 dark:text-slate-500">AI FOCUS:</span> <span class="font-medium text-slate-800 dark:text-slate-300">Agentic Loops / Fine-Tuning</span></div>
+                        <div class="flex justify-between border-b border-slate-200 dark:border-slate-900 pb-3"><span class="text-slate-400 dark:text-slate-500">INFRA:</span> <span class="font-medium text-slate-800 dark:text-slate-300">FinOps / S3 / Athena / Lambda</span></div>
                     </div>
                 </div>
             </div>
-            <div class="lg:col-span-2 space-y-8 text-slate-400 leading-relaxed text-lg font-light">
+            <div class="lg:col-span-2 space-y-8 text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-light">
                 <p>
                     I direct engineering strategies that marry massive enterprise cloud mechanics with precise machine learning automation frameworks. Over my 9+ year tenure at Amazon executing initiatives inside both AWS and Alexa AI ecosystems, I specialize in turning architectural friction into clean operational infrastructure.
                 </p>
@@ -118,104 +127,104 @@
         </div>
     </section>
 
-    <section id="metrics" class="py-20 bg-[#090d16]/20 border-y border-slate-900 max-w-full">
+    <section id="metrics" class="py-20 bg-slate-100/50 dark:bg-[#090d16]/20 border-y border-slate-200 dark:border-slate-900 max-w-full">
         <div class="max-w-7xl mx-auto px-8 md:px-16 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-6">
-            <div class="text-center md:text-left border-l border-slate-800/80 pl-6">
-                <div class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">9+ Yrs</div>
-                <div class="text-xs uppercase tracking-widest font-bold text-slate-500">Amazon Experience</div>
+            <div class="text-center md:text-left border-l border-slate-300 dark:border-slate-800/80 pl-6">
+                <div class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">9+ Yrs</div>
+                <div class="text-xs uppercase tracking-widest font-bold text-slate-400 dark:text-slate-500">Amazon Experience</div>
             </div>
-            <div class="text-center md:text-left border-l border-slate-800/80 pl-6">
-                <div class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">1,700+</div>
-                <div class="text-xs uppercase tracking-widest font-bold text-slate-500">Hours Automated</div>
+            <div class="text-center md:text-left border-l border-slate-300 dark:border-slate-800/80 pl-6">
+                <div class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">1,700+</div>
+                <div class="text-xs uppercase tracking-widest font-bold text-slate-400 dark:text-slate-500">Hours Automated</div>
             </div>
-            <div class="text-center md:text-left border-l border-slate-800/80 pl-6">
-                <div class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">97.6%</div>
-                <div class="text-xs uppercase tracking-widest font-bold text-slate-500">LLM Precision</div>
+            <div class="text-center md:text-left border-l border-slate-300 dark:border-slate-800/80 pl-6">
+                <div class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">97.6%</div>
+                <div class="text-xs uppercase tracking-widest font-bold text-slate-400 dark:text-slate-500">LLM Precision</div>
             </div>
-            <div class="text-center md:text-left border-l border-slate-800/80 pl-6">
-                <div class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2">Top 800</div>
-                <div class="text-xs uppercase tracking-widest font-bold text-slate-500">Hackathon Rank</div>
+            <div class="text-center md:text-left border-l border-slate-300 dark:border-slate-800/80 pl-6">
+                <div class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">Top 800</div>
+                <div class="text-xs uppercase tracking-widest font-bold text-slate-400 dark:text-slate-500">Hackathon Rank</div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-28 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-900/60 relative z-10">
-        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-16">// COMPREHENSIVE TIMELINE OF IMPACT</h2>
+    <section id="experience" class="py-28 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900/60 relative z-10">
+        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-16">// COMPREHENSIVE TIMELINE OF IMPACT</h2>
         
         <div class="space-y-20">
-            <div class="border-l-2 border-slate-800 pl-10 relative group">
-                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-white shadow-md shadow-white/40"></div>
+            <div class="border-l-2 border-slate-200 dark:border-slate-800 pl-10 relative group">
+                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-900 dark:bg-white shadow-md shadow-slate-900/40 dark:shadow-white/40"></div>
                 <div class="flex flex-wrap justify-between items-baseline mb-4">
-                    <h3 class="text-2xl font-bold text-slate-100 tracking-tight">Technical Customer Success Specialist</h3>
-                    <span class="text-xs font-bold text-slate-400 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded">Jan 2022 – Sep 2025</span>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Technical Customer Success Specialist</h3>
+                    <span class="text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-1.5 rounded">Jan 2022 – Sep 2025</span>
                 </div>
-                <h4 class="text-base font-bold text-slate-300 tracking-wide mb-6 uppercase tracking-widest">Amazon Web Services (AWS)</h4>
-                <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">
+                <h4 class="text-base font-bold text-slate-700 dark:text-slate-300 tracking-wide mb-6 uppercase tracking-widest">Amazon Web Services (AWS)</h4>
+                <p class="text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed mb-6">
                     Responsible for acting as the primary point of contact (POC) and trusted advisor for premium tier cloud accounts. Handled usage monitoring, multi-tier enterprise cost optimization, and rapid security fraud/abuse mitigations. Partnered closely with regional Account Managers, Technical Account Managers (TAMs), and Solutions Architects (SAs) to safeguard complex global workload parameters, verify security alignment, and scale system capacity quotas.
                 </p>
-                <div class="space-y-3 text-sm text-slate-400 font-light">
-                    <p><strong class="text-slate-200 font-medium">✓ Workflow Automation:</strong> Designed and deployed 14 custom automated integration systems and 45 structural regional SOPs, generating an audited savings wall of 1,768 annual operational hours per associate while improving strict SLA compliance via data-driven root cause evaluations.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Spend Optimization:</strong> Monitored cloud economics for premium accounts by aggressively driving structural Reserved Instances (RIs) and Savings Plans adoption loops, optimizing predictability metrics across enterprise budgets.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Friction Reduction:</strong> Mitigated high-priority escalations across TAM, SA, and engineering pipelines, reducing recurring core platform blockers by 27.5% and fortifying stakeholder trust vectors.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Capabilities Ingestion:</strong> Mentored 45 cross-skill associates on production cloud systems best practices, accelerating client enablement parameters and long-term ecosystem value realization.</p>
+                <div class="space-y-3 text-sm text-slate-600 dark:text-slate-400 font-light">
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Workflow Automation:</strong> Designed and deployed 14 custom automated integration systems and 45 structural regional SOPs, generating an audited savings wall of 1,768 annual operational hours per associate while improving strict SLA compliance via data-driven root cause evaluations.</p>
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Spend Optimization:</strong> Monitored cloud economics for premium accounts by aggressively driving structural Reserved Instances (RIs) and Savings Plans adoption loops, optimizing predictability metrics across enterprise budgets.</p>
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Friction Reduction:</strong> Mitigated high-priority escalations across TAM, SA, and engineering pipelines, reducing recurring core platform blockers by 27.5% and fortifying stakeholder trust vectors.</p>
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Capabilities Ingestion:</strong> Mentored 45 cross-skill associates on production cloud systems best practices, accelerating client enablement parameters and long-term ecosystem value realization.</p>
                 </div>
             </div>
 
-            <div class="border-l-2 border-slate-800 pl-10 relative group">
-                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-800"></div>
+            <div class="border-l-2 border-slate-200 dark:border-slate-800 pl-10 relative group">
+                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-800"></div>
                 <div class="flex flex-wrap justify-between items-baseline mb-4">
-                    <h3 class="text-2xl font-bold text-slate-100 tracking-tight">Machine Learning Data Associate (Alexa AI)</h3>
-                    <span class="text-xs font-bold text-slate-400 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded">Jul 2017 – Dec 2021</span>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Machine Learning Data Associate (Alexa AI)</h3>
+                    <span class="text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-1.5 rounded">Jul 2017 – Dec 2021</span>
                 </div>
-                <h4 class="text-base font-bold text-slate-400 tracking-wide mb-6 uppercase tracking-widest">Amazon Development Centre</h4>
-                <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">
+                <h4 class="text-base font-bold text-slate-600 dark:text-slate-400 tracking-wide mb-6 uppercase tracking-widest">Amazon Development Centre</h4>
+                <p class="text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed mb-6">
                     Administered global algorithm training data pipelines and evaluated active AI machine learning performance signals. Collaborated with core developer and product teams to map raw information telemetry into concrete, measurable enhancements across Alexa's global Natural Language Understanding (NLU) components and query response metrics.
                 </p>
-                <div class="space-y-3 text-sm text-slate-400 font-light">
-                    <p><strong class="text-slate-200 font-medium">✓ Pipeline Quality:</strong> Maintained an individual annotation accuracy floor above 98% for Alexa's baseline NLU streaming pipelines, identifying systematic error trends that reshaped engineering prioritize queues.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Operational Leadership:</strong> Led data quality frameworks across 30+ international associates spanning multiple locales, successfully lifting overall operational accuracy metrics from 75.6% to 96.46% and boosting tracking test pass marks from 80% to 95%.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Model Validation:</strong> Conducted system evaluations for landmark conversational platform releases (GSR 1.0 & 2.0), logging regression blocks and tuning data processing capacities.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Experience Analytics:</strong> Applied granular analytics to escalation queues, successfully raising resolution accuracy metrics from 63.6% to 74.2% on Alexa devices and from 72.2% to 96% for Fire TV systems.</p>
+                <div class="space-y-3 text-sm text-slate-600 dark:text-slate-400 font-light">
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Pipeline Quality:</strong> Maintained an individual annotation accuracy floor above 98% for Alexa's baseline NLU streaming pipelines, identifying systematic error trends that reshaped engineering prioritize queues.</p>
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Operational Leadership:</strong> Led data quality frameworks across 30+ international associates spanning multiple locales, successfully lifting overall operational accuracy metrics from 75.6% to 96.46% and boosting tracking test pass marks from 80% to 95%.</p>
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Model Validation:</strong> Conducted system evaluations for landmark conversational platform releases (GSR 1.0 & 2.0), logging regression blocks and tuning data processing capacities.</p>
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Experience Analytics:</strong> Applied granular analytics to escalation queues, successfully raising resolution accuracy metrics from 63.6% to 74.2% on Alexa devices and from 72.2% to 96% for Fire TV systems.</p>
                 </div>
             </div>
 
-            <div class="border-l-2 border-slate-800 pl-10 relative group">
-                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-800"></div>
+            <div class="border-l-2 border-slate-200 dark:border-slate-800 pl-10 relative group">
+                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-880"></div>
                 <div class="flex flex-wrap justify-between items-baseline mb-4">
-                    <h3 class="text-2xl font-bold text-slate-100 tracking-tight">Technical Support Associate</h3>
-                    <span class="text-xs font-bold text-slate-400 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded">Dec 2014 – Sep 2015</span>
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Technical Support Associate</h3>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-1.5 rounded">Dec 2014 – Sep 2015</span>
                 </div>
-                <h4 class="text-base font-bold text-slate-400 tracking-wide mb-6 uppercase tracking-widest">Wipro (TalkTalk U.K.)</h4>
+                <h4 class="text-base font-bold text-slate-600 dark:text-slate-400 tracking-wide mb-6 uppercase tracking-widest">Wipro (TalkTalk U.K.)</h4>
                 <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">
                     Provided technical infrastructure support and resolved complex infrastructure routing cases under tight service level conditions. Analyzed macro support ticket data trends to design and deploy proactive problem avoidance structures and self-help resource indexes.
                 </p>
-                <div class="space-y-3 text-sm text-slate-400 font-light">
-                    <p><strong class="text-slate-200 font-medium">✓ Queue Control:</strong> Handled massive technical queues, successfully debugging 50–60 high-priority network cases daily with a 95%+ First Call Resolution (FCR) velocity, closing 95% of active tracks inside 24 hours at an audited 97% execution grade.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Revenue Realization:</strong> Generated a ~14% growth lift and scaled premium services adaptation parameters by 22% via context-aware solution suggestion, while sustaining overall customer satisfaction scores at 95%+.</p>
-                    <p><strong class="text-slate-200 font-medium">✓ Workflow Refinement:</strong> Streamlined incident workflow handoffs between teams and mentored peer networks, ensuring clear quantifiable advancements across group SLA compliance trends.</p>
+                <div class="space-y-3 text-sm text-slate-600 dark:text-slate-400 font-light">
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Queue Control:</strong> Handled massive technical queues, successfully debugging 50–60 high-priority network cases daily with a 95%+ First Call Resolution (FCR) velocity, closing 95% of active tracks inside 24 hours at an audited 97% execution grade.</p>
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Revenue Realization:</strong> Generated a ~14% growth lift and scaled premium services adaptation parameters by 22% via context-aware solution suggestion, while sustaining overall customer satisfaction scores at 95%+.</p>
+                    <p><strong class="text-slate-800 dark:text-slate-200 font-medium">✓ Workflow Refinement:</strong> Streamlined incident workflow handoffs between teams and mentored peer networks, ensuring clear quantifiable advancements across group SLA compliance trends.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="systems" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-900 relative z-10">
-        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-4">// REPOSITORIES & RUNTIMES</h2>
-        <h3 class="text-4xl font-black text-slate-100 mb-4 tracking-tight">System Deployments</h3>
-        <p class="text-slate-500 text-xs mb-12 uppercase tracking-widest font-medium">Hover your cursor over any tier block to open up operational STAR matrices.</p>
+    <section id="systems" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900 relative z-10">
+        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-4">// REPOSITORIES & RUNTIMES</h2>
+        <h3 class="text-4xl font-black text-slate-900 dark:text-slate-100 mb-4 tracking-tight">System Deployments</h3>
+        <p class="text-slate-400 dark:text-slate-500 text-xs mb-12 uppercase tracking-widest font-medium">Hover your cursor over any tier block to open up operational STAR matrices.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <div class="bg-slate-950/40 border border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-[10px] font-bold text-white uppercase bg-white/5 px-2.5 py-1 rounded border border-white/10">FinOps Platform / LLM</span>
-                    <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">FinOps Platform / LLM</span>
+                    <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">AWS Cloud Security Auditor</h4>
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
-                    <div class="grid grid-cols-3 gap-2 font-normal text-[10px] uppercase text-white mb-2">
-                        <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">Grand Finalist</div>
-                        <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">97.6% Score</div>
-                        <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">Unsloth LoRA</div>
+                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">AWS Cloud Security Auditor</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    <div class="grid grid-cols-3 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2">
+                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Grand Finalist</div>
+                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">97.6% Score</div>
+                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Unsloth LoRA</div>
                     </div>
                     <p><strong>Situation:</strong> Production cloud topologies frequently suffer unpatched public exposure across IAM and Security Groups.</p>
                     <p><strong>Task:</strong> Standardize an optimization framework to scan multi-tier infrastructures and output closed JSON fixes instantly.</p>
@@ -224,13 +233,13 @@
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-[10px] font-bold text-white uppercase bg-white/5 px-2.5 py-1 rounded border border-white/10">Serverless AI Ingestion</span>
-                    <a href="https://github.com/kkaustav" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Serverless AI Ingestion</span>
+                    <a href="https://github.com/kkaustav" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">NL Query Agent — Bedrock Nova</h4>
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">NL Query Agent — Bedrock Nova</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
                     <p><strong>Situation:</strong> Non-technical business groups experience heavy query turnaround backlogs when fetching from deep cloud storage repositories.</p>
                     <p><strong>Task:</strong> Build a low-overhead interface to process plain English query text directly against backend data files.</p>
                     <p><strong>Action:</strong> Implemented Strands SDK execution paths backed by Nova Lite; configured sizing check boundaries to route tasks to memory Pandas sets or serverless Amazon Athena SQL pipelines.</p>
@@ -238,13 +247,13 @@
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-[10px] font-bold text-white uppercase bg-white/5 px-2.5 py-1 rounded border border-white/10">GenAI Pipeline</span>
+                    <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">GenAI Pipeline</span>
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">GitHub Dev Card Generator</h4>
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">GitHub Dev Card Generator</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
                     <p><strong>Situation:</strong> Open-source developer profiles maintain scattered contribution vectors that lack clear skill telemetry visualization maps.</p>
                     <p><strong>Task:</strong> Construct a serverless pipeline that extracts profile data and compiles it into high-end asset cards.</p>
                     <p><strong>Action:</strong> Deployed a FastAPI service on GCP Cloud Run using Gemini 2.5 Flash; engineered Vertex AI Memory Bank upgrades to guarantee cross-session execution persistence.</p>
@@ -252,13 +261,13 @@
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-[10px] font-bold text-white uppercase bg-white/5 px-2.5 py-1 rounded border border-white/10">Spatial Data Analytics</span>
+                    <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Spatial Data Analytics</span>
                     <a href="https://github.com/kkaustav" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Bakery Location Intelligence Agent</h4>
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Bakery Location Intelligence Agent</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
                     <p><strong>Situation:</strong> Retail business owners encounter complex data barriers when cross-checking internal sales registries against external physically localized vectors.</p>
                     <p><strong>Task:</strong> Engineer an optimization assistant to interpret spatial performance patterns using decoupled multi-agent frameworks.</p>
                     <p><strong>Action:</strong> Constructed tool attachments via Google ADK and Gemini 3.1 Pro; established Model Context Protocol (MCP) links across BigQuery datasets and live Google Maps APIs.</p>
@@ -266,13 +275,13 @@
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-[10px] font-bold text-white uppercase bg-white/5 px-2.5 py-1 rounded border border-white/10">Voice UI / Lambda Integration</span>
                     <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Flight Booker Alexa Skill</h4>
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
                     <p><strong>Situation:</strong> Conversational audio applications hit drop-off errors when processing erratic flight array records from live endpoints.</p>
                     <p><strong>Task:</strong> Stand up a low-latency voice command backend that maps user destination strings under narrow SLA windows.</p>
                     <p><strong>Action:</strong> Configured intent slot handlers via the Alexa Skills Kit backed by AWS Lambda (Python 3.12); integrated SerpAPI Google Flights parameters to route schedule listings.</p>
@@ -280,16 +289,16 @@
                 </div>
             </div>
 
-            <div class="bg-slate-950/40 border border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-white/20 shadow-2xl">
+            <div class="bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl transition-all duration-700 ease-in-out group h-auto max-h-[125px] hover:max-h-[650px] overflow-hidden hover:border-slate-400/30 dark:hover:border-white/20 shadow-2xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-[10px] font-bold text-white uppercase bg-white/5 px-2.5 py-1 rounded border border-white/10">SQL / Analytics Framework</span>
-                    <a href="https://github.com/kkaustav/target-brazil-ecommerce-analytics" target="_blank" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">SQL / Analytics Framework</span>
+                    <a href="https://github.com/kkaustav/target-brazil-ecommerce-analytics" target="_blank" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <h4 class="text-lg font-bold text-slate-100 tracking-tight mb-4 group-hover:text-white transition-colors">Target Brazil E-Commerce Analytics</h4>
-                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-900 text-sm text-slate-400 font-light leading-relaxed">
-                    <div class="grid grid-cols-2 gap-2 font-normal text-[10px] uppercase text-white mb-2">
-                        <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">Google BigQuery</div>
-                        <div class="bg-slate-950 p-2 rounded text-center border border-slate-900">Relational SQL Mapping</div>
+                <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Target Brazil E-Commerce Analytics</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                    <div class="grid grid-cols-2 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2">
+                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Google BigQuery</div>
+                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Relational SQL Mapping</div>
                     </div>
                     <p><strong>Situation:</strong> Target required macro operational insights from ~100k records (2016–2018) to optimize logistics, processing times, and regional parameters across Brazil.</p>
                     <p><strong>Task:</strong> Analyze delivery times, demand seasonality loops, and payment behaviors across 8 interconnected relational datasets.</p>
@@ -300,97 +309,97 @@
         </div>
     </section>
 
-    <section id="recognition" class="py-24 bg-[#090d16]/20 border-b border-slate-900 max-w-full relative z-10">
+    <section id="recognition" class="py-24 bg-slate-100/50 dark:bg-[#090d16]/20 border-b border-slate-200 dark:border-slate-900 max-w-full relative z-10">
         <div class="max-w-6xl mx-auto px-8 md:px-16">
-            <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-4">// HONORS & AWARDS</h2>
-            <h3 class="text-3xl font-black text-slate-100 mb-12 tracking-tight">Rewards & Recognition</h3>
+            <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-4">// HONORS & AWARDS</h2>
+            <h3 class="text-3xl font-black text-slate-900 dark:text-slate-100 mb-12 tracking-tight">Rewards & Recognition</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
-                <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start">
-                    <div class="text-white text-2xl mb-4"><i class="fa-solid fa-trophy"></i></div>
-                    <h4 class="font-bold text-white text-base mb-1">IMPACT Guru Award</h4>
-                    <p class="text-xs text-slate-400 font-light leading-relaxed">Awarded globally at AWS for leading 55 structural process updates and complex risk mitigations.</p>
+                <div class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative hover:border-slate-400/30 dark:hover:border-white/20 transition-all flex flex-col justify-start shadow-xl">
+                    <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-trophy"></i></div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">IMPACT Guru Award</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed">Awarded globally at AWS for leading 55 structural process updates and complex risk mitigations.</p>
                 </div>
-                <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start">
-                    <div class="text-white text-2xl mb-4"><i class="fa-solid fa-medal"></i></div>
-                    <h4 class="font-bold text-white text-base mb-1">Global IMPACT Legend</h4>
-                    <p class="text-xs text-slate-400 font-light leading-relaxed">Highest tier tracking designation given for scaling cloud workflow efficiency matrices.</p>
+                <div class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative hover:border-slate-400/30 dark:hover:border-white/20 transition-all flex flex-col justify-start shadow-xl">
+                    <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-medal"></i></div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Global IMPACT Legend</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed">Highest tier tracking designation given for scaling cloud workflow efficiency matrices.</p>
                 </div>
-                <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start">
-                    <div class="text-white text-2xl mb-4"><i class="fa-solid fa-star"></i></div>
-                    <h4 class="font-bold text-white text-base mb-1">AWSome Builder (3x)</h4>
-                    <p class="text-xs text-slate-400 font-light leading-relaxed">Earned multiple honors for building automated serverless support workflows across cloud pipelines.</p>
+                <div class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative hover:border-slate-400/30 dark:hover:border-white/20 transition-all flex flex-col justify-start shadow-xl">
+                    <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-star"></i></div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">AWSome Builder (3x)</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed">Earned multiple honors for building automated serverless support workflows across cloud pipelines.</p>
                 </div>
-                <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start">
-                    <div class="text-white text-2xl mb-4"><i class="fa-solid fa-crown"></i></div>
-                    <h4 class="font-bold text-white text-base mb-1">Pinnacle Superstars</h4>
-                    <p class="text-xs text-slate-400 font-light leading-relaxed">Sustained premium elite performance parameters consistently through fiscal cycles 2022–2024.</p>
+                <div class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start shadow-xl">
+                    <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-crown"></i></div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Pinnacle Superstars</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed">Sustained premium elite performance parameters consistently through fiscal cycles 2022–2024.</p>
                 </div>
-                <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start">
-                    <div class="text-white text-2xl mb-4"><i class="fa-solid fa-award"></i></div>
-                    <h4 class="font-bold text-white text-base mb-1">Most Valuable Player (MVP)</h4>
-                    <p class="text-xs text-slate-400 font-light leading-relaxed">Recognized across AWS organizational groups for stellar engineering escalations control.</p>
+                <div class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative hover:border-slate-400/30 dark:hover:border-white/20 transition-all flex flex-col justify-start shadow-xl">
+                    <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-award"></i></div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Most Valuable Player (MVP)</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed">Recognized across AWS organizational groups for stellar engineering escalations control.</p>
                 </div>
-                <div class="p-6 bg-slate-950 border border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start">
-                    <div class="text-white text-2xl mb-4"><i class="fa-solid fa-circle-check"></i></div>
-                    <h4 class="font-bold text-white text-base mb-1">Extra Mile & Quality Awards</h4>
-                    <p class="text-xs text-slate-400 font-light leading-relaxed">Conferred inside the Alexa AI speech division for maintaining a 98% data annotation precision floor.</p>
+                <div class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative hover:border-white/20 transition-all flex flex-col justify-start shadow-xl">
+                    <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-circle-check"></i></div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">Extra Mile & Quality Awards</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed">Conferred inside the Alexa AI speech division for maintaining a 98% data annotation precision floor.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="credentials" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-900 relative z-10">
-        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-10">// TECHNICAL ACCREDITATIONS</h2>
+    <section id="credentials" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900 relative z-10">
+        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-10">// TECHNICAL ACCREDITATIONS</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs font-semibold">
-            <div onclick="openCertModal('AWS AI Practitioner', 'Registration: AWS-AIP-2026', 'VALID THRU: 2029')" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
-                <i class="fa-solid fa-square-poll-vertical text-white text-sm"></i>
-                <span>AWS Certified AI Practitioner (2026)</span>
+            <div onclick="openCertModal('AWS AI Practitioner', 'Registration: AWS-AIP-2026', 'VALID THRU: 2029')" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow">
+                <i class="fa-solid fa-square-poll-vertical text-slate-800 dark:text-white text-sm"></i>
+                <span class="text-slate-800 dark:text-slate-200">AWS Certified AI Practitioner (2026)</span>
             </div>
-            <a href="https://www.credly.com/badges/286b49e5-94b5-4f08-b6e8-bc21f44b03a5/public_url" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
-                <i class="fa-solid fa-cloud text-white text-sm"></i>
-                <span>AWS Certified Cloud Practitioner</span>
+            <a href="https://www.credly.com/badges/286b49e5-94b5-4f08-b6e8-bc21f44b03a5/public_url" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow">
+                <i class="fa-solid fa-cloud text-slate-800 dark:text-white text-sm"></i>
+                <span class="text-slate-800 dark:text-slate-200">AWS Certified Cloud Practitioner</span>
             </a>
-            <a href="https://www.credly.com/badges/f60cf029-1065-4f0a-8fa1-ff105421a93e" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
-                <i class="fa-solid fa-microchip text-white text-sm"></i>
-                <span>AWS Generative AI Essentials</span>
+            <a href="https://www.credly.com/badges/f60cf029-1065-4f0a-8fa1-ff105421a93e" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer shadow">
+                <i class="fa-solid fa-microchip text-slate-800 dark:text-white text-sm"></i>
+                <span class="text-slate-800 dark:text-slate-200">AWS Generative AI Essentials</span>
             </a>
-            <a href="https://www.credly.com/badges/e203c9ba-043e-49cd-99c0-209aab51a34b/linked_in_profile" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
-                <i class="fa-solid fa-database text-white text-sm"></i>
-                <span>AWS Account Management SME</span>
+            <a href="https://www.credly.com/badges/e203c9ba-043e-49cd-99c0-209aab51a34b/linked_in_profile" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer shadow">
+                <i class="fa-solid fa-database text-slate-800 dark:text-white text-sm"></i>
+                <span class="text-slate-800 dark:text-slate-200">AWS Account Management SME</span>
             </a>
-            <a href="https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lZtxiErQeKHe/view" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
-                <i class="fa-solid fa-chalkboard-user text-white text-sm"></i>
-                <span>AWS Certified Trainer</span>
+            <a href="https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lZtxiErQeKHe/view" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow">
+                <i class="fa-solid fa-chalkboard-user text-slate-800 dark:text-white text-sm"></i>
+                <span class="text-slate-800 dark:text-slate-200">AWS Certified Trainer</span>
             </a>
-            <a href="https://drive.google.com/file/d/19dH9NUPy6mxiUI00i7cJynrqQpFQUC2m/view?pli=1" target="_blank" class="p-4 bg-slate-950/60 border border-slate-900 rounded-lg flex items-center space-x-3 hover:border-white/40 transition-colors cursor-pointer">
-                <i class="fa-solid fa-certificate text-white text-sm"></i>
-                <span>UpGrad-Microsoft GenAI Foundations</span>
+            <a href="https://drive.google.com/file/d/19dH9NUPy6mxiUI00i7cJynrqQpFQUC2m/view?pli=1" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow">
+                <i class="fa-solid fa-certificate text-slate-800 dark:text-white text-sm"></i>
+                <span class="text-slate-800 dark:text-slate-200">UpGrad-Microsoft GenAI Foundations</span>
             </a>
         </div>
     </section>
 
-    <section id="education" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-900 relative z-10">
-        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-10">// EDUCATIONAL QUALIFICATIONS</h2>
+    <section id="education" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900 relative z-10">
+        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-10">// EDUCATIONAL QUALIFICATIONS</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 font-medium text-sm">
-            <div onclick="window.open('https://drive.google.com/file/d/1M6mWb9J5Z6z4i9V0Aik-Id-EiylbHLkr/view?usp=sharing', '_blank')" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
+            <div onclick="window.open('https://drive.google.com/file/d/1M6mWb9J5Z6z4i9V0Aik-Id-EiylbHLkr/view?usp=sharing', '_blank')" class="p-8 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 shadow-xl">
                 <div>
-                    <div class="text-white text-2xl mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <h4 class="font-bold text-white text-lg mb-2">Master of Science (MS)</h4>
+                    <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Master of Science (MS)</h4>
                     <p class="text-xs text-slate-400 uppercase tracking-widest mb-4">Computer Science: Artificial Intelligence and Machine Learning</p>
-                    <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">Woolf University — ECTS Accredited EQF7 Framework via Scaler Neovarsity.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-6">Woolf University — ECTS Accredited EQF7 Framework via Scaler Neovarsity.</p>
                 </div>
-                <div class="text-xs text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-300 transition-colors">
+                <div class="text-xs text-slate-400 dark:text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors">
                     → Launch Academic Record validation file
                 </div>
             </div>
-            <div onclick="window.open('https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view', '_blank')" class="p-8 bg-slate-950 border border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-white/20 hover:bg-[#060b16] transition-all duration-300">
+            <div onclick="window.open('https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view', '_blank')" class="p-8 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 shadow-xl">
                 <div>
-                    <div class="text-white text-2xl mb-4"><i class="fa-solid fa-terminal"></i></div>
-                    <h4 class="font-bold text-white text-lg mb-2">Bachelor of Technology (B.Tech)</h4>
+                    <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-terminal"></i></div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Bachelor of Technology (B.Tech)</h4>
                     <p class="text-xs text-slate-400 uppercase tracking-widest mb-4">Electronics & Communication Engineering</p>
-                    <p class="text-sm text-slate-400 font-light leading-relaxed mb-6">West Bengal University of Technology (MAKAUT) | 8.24 Cumulative Graduation GPA.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-6">West Bengal University of Technology (MAKAUT) | 8.24 Cumulative Graduation GPA.</p>
                 </div>
-                <div class="text-xs text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-300 transition-colors">
+                <div class="text-xs text-slate-400 dark:text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors">
                     → Access B.Tech document registry endpoint
                 </div>
             </div>
@@ -399,54 +408,53 @@
 
     <section id="contact" class="py-24 max-w-xl mx-auto px-8 md:px-6 relative z-10">
         <div class="text-center mb-10">
-            <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-400 mb-3">// SECURE INGEST CHANNEL</h2>
-            <h3 class="text-2xl font-bold tracking-tight text-slate-100">Establish Communication</h3>
+            <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-3">// SECURE INGEST CHANNEL</h2>
+            <h3 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Establish Communication</h3>
         </div>
         <form id="awsContactForm" class="space-y-5 text-sm">
             <div>
-                <label class="block text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="name">Identifier</label>
-                <input required type="text" id="name" class="w-full bg-slate-950 border border-slate-900 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-white/30 font-light" placeholder="e.g., Jane Doe">
+                <label class="block text-slate-500 dark:text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="name">Identifier</label>
+                <input required type="text" id="name" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded px-4 py-3 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-slate-400 dark:focus:border-white/30 font-light shadow-sm" placeholder="e.g., Jane Doe">
             </div>
             <div>
-                <label class="block text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="email">Return Route</label>
-                <input required type="email" id="email" class="w-full bg-slate-950 border border-slate-900 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-white/30 font-light" placeholder="name@enterprise.com">
+                <label class="block text-slate-500 dark:text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="email">Return Route</label>
+                <input required type="email" id="email" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded px-4 py-3 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-slate-400 dark:focus:border-white/30 font-light shadow-sm" placeholder="name@enterprise.com">
             </div>
             <div>
-                <label class="block text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="message">Payload</label>
-                <textarea required id="message" rows="4" class="w-full bg-slate-950 border border-slate-900 rounded px-4 py-3 text-slate-200 focus:outline-none focus:border-white/30 font-light resize-none" placeholder="Enter structural transmission details..."></textarea>
+                <label class="block text-slate-500 dark:text-slate-400 font-medium tracking-wide mb-1.5 uppercase text-[11px]" for="message">Payload</label>
+                <textarea required id="message" rows="4" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded px-4 py-3 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-slate-400 dark:focus:border-white/30 font-light resize-none shadow-sm" placeholder="Enter structural transmission details..."></textarea>
             </div>
-            <button type="submit" id="submitBtn" class="w-full bg-white text-slate-950 font-bold uppercase tracking-widest py-3 rounded shadow-lg hover:bg-slate-200 transition-colors cursor-pointer">
+            <button type="submit" id="submitBtn" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-bold uppercase tracking-widest py-3 rounded shadow-lg hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer">
                 Transmit Parameter
             </button>
             <div id="formFeedback" class="hidden text-center p-3 rounded text-xs font-semibold block"></div>
         </form>
     </section>
 
-    <footer class="py-16 border-t border-slate-950 bg-slate-950/30 text-center text-xs text-slate-600 relative z-10">
+    <footer class="py-16 border-t border-slate-200 dark:border-slate-950 bg-slate-100/50 dark:bg-slate-950/30 text-center text-xs text-slate-400 dark:text-slate-600 relative z-10">
         <p>&copy; 2026 Kaustubh Kar. Pipeline architecture automated via AWS Amplify CI/CD.</p>
     </footer>
 
-    <div id="certModal" class="hidden fixed inset-0 bg-[#030712]/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
-        <div class="bg-slate-950 border border-slate-900 p-8 rounded-xl max-w-sm w-full text-center relative shadow-2xl">
-            <div class="text-white text-4xl mb-4"><i class="fa-solid fa-shield-halved"></i></div>
-            <h4 id="modalTitle" class="text-lg font-bold text-white tracking-tight mb-2 uppercase">Credential Title</h4>
-            <p id="modalId" class="text-xs text-slate-400 font-mono mb-1">Registration ID</p>
-            <p id="modalExpiry" class="text-[10px] text-slate-400 tracking-widest mb-6">Status Details</p>
-            <div class="border-t border-slate-900 pt-4">
-                <button onclick="closeCertModal()" class="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors cursor-pointer">Close Verification</button>
+    <div id="certModal" class="hidden fixed inset-0 bg-[#030712]/60 dark:bg-[#030712]/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 p-8 rounded-xl max-w-sm w-full text-center relative shadow-2xl">
+            <div class="text-slate-800 dark:text-white text-4xl mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4 id="modalTitle" class="text-lg font-bold text-slate-900 dark:text-white tracking-tight mb-2 uppercase">Credential Title</h4>
+            <p id="modalId" class="text-xs text-slate-500 dark:text-slate-400 font-mono mb-1">Registration ID</p>
+            <p id="modalExpiry" class="text-[10px] text-slate-400 dark:text-slate-400 tracking-widest mb-6">Status Details</p>
+            <div class="border-t border-slate-200 dark:border-slate-900 pt-4">
+                <button onclick="closeCertModal()" class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">Close Verification</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Modals Engine
         function openCertModal(title, regId, expiry) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalId').innerText = regId;
             document.getElementById('modalExpiry').innerText = expiry;
             document.getElementById('certModal').classList.remove('hidden');
         }
-        // FIXED: Complete removal of local browser file inputs and storage caching handlers
+        
         function closeCertModal() { document.getElementById('certModal').classList.add('hidden'); }
 
         document.getElementById('awsContactForm').addEventListener('submit', async (e) => {
@@ -473,14 +481,14 @@
                 const data = await response.json();
 
                 if (response.ok && data.status === 'success') {
-                    feedback.className = 'text-emerald-400 bg-emerald-500/5 border border-emerald-500/20 p-3 rounded text-xs font-semibold block mt-4';
+                    feedback.className = 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 border border-emerald-500/20 p-3 rounded text-xs font-semibold block mt-4';
                     feedback.innerText = '✓ TRANSMISSION SUCCESSFUL: Message delivered to inbox.';
                     document.getElementById('awsContactForm').reset();
                 } else {
                     throw new Error(data.message || 'Unknown error');
                 }
             } catch (err) {
-                feedback.className = 'text-red-400 bg-red-500/5 border border-red-500/20 p-3 rounded text-xs font-semibold block mt-4';
+                feedback.className = 'text-red-600 dark:text-red-400 bg-red-500/5 border border-red-500/20 p-3 rounded text-xs font-semibold block mt-4';
                 feedback.innerText = '⚠ ERROR: ' + (err.message || 'Could not reach server. Try again.');
             } finally {
                 btn.disabled = false;
