@@ -18,6 +18,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif !important; 
         }
         
+        /* Auto-switching background radial illumination accents */
         .glow-effect::before {
             content: '';
             position: absolute;
@@ -33,13 +34,12 @@
             }
         }
 
-        /* RESTORED: Smooth transition limits for desktop hover mechanics */
+        /* Fluid layout accordion transition curves */
         .system-card {
             transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
-
         .matrix-content {
-            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, pt 0.4s ease;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
         }
     </style>
 </head>
@@ -179,7 +179,7 @@
             </div>
 
             <div class="border-l-2 border-slate-200 dark:border-slate-800 pl-10 relative group">
-                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-880"></div>
+                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-800"></div>
                 <div class="flex flex-wrap justify-between items-baseline mb-4">
                     <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Machine Learning Data Associate (Alexa AI)</h3>
                     <span class="text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-1.5 rounded">Jul 2017 – Dec 2021</span>
@@ -197,7 +197,7 @@
             </div>
 
             <div class="border-l-2 border-slate-200 dark:border-slate-800 pl-10 relative group">
-                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-880"></div>
+                <div class="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-800"></div>
                 <div class="flex flex-wrap justify-between items-baseline mb-4">
                     <h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">Technical Support Associate</h3>
                     <span class="text-xs font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-1.5 rounded">Dec 2014 – Sep 2015</span>
@@ -218,120 +218,133 @@
     <section id="systems" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900 relative z-10">
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-4">// REPOSITORIES & RUNTIMES</h2>
         <h3 class="text-4xl font-black text-slate-900 dark:text-slate-100 mb-4 tracking-tight">System Deployments</h3>
-        <p class="text-slate-400 dark:text-slate-500 text-xs mb-12 uppercase tracking-widest font-medium">Tap inside the deployment tiles to expand system details grids.</p>
+        <p class="text-slate-400 dark:text-slate-500 text-xs mb-12 uppercase tracking-widest font-medium">Tap templates inside mobile or hover on desktop frames to check live STAR parameters.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto max-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">FinOps Platform / LLM</span>
                     <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <div class="flex justify-between items-center mb-4 shrink-0">
+                <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">AWS Cloud Security Auditor</h4>
                     <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
                 </div>
-                <div class="matrix-content opacity-0 md:opacity-100 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <div class="grid grid-cols-3 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2">
-                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Grand Finalist</div>
-                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">97.6% Score</div>
-                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Unsloth LoRA</div>
+                <div class="matrix-content max-h-0 opacity-0 md:max-h-none md:opacity-100 overflow-hidden md:overflow-visible">
+                    <div class="border-t border-slate-200 dark:border-slate-900 pt-5 mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                        <div class="grid grid-cols-3 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2">
+                            <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Grand Finalist</div>
+                            <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">97.6% Score</div>
+                            <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Unsloth LoRA</div>
+                        </div>
+                        <p><strong>Situation:</strong> Production cloud topologies frequently suffer unpatched public exposure across IAM and Security Groups.</p>
+                        <p><strong>Task:</strong> Standardize an optimization framework to scan multi-tier infrastructures and output closed JSON fixes instantly.</p>
+                        <p><strong>Action:</strong> Fine-tuned a 3B parameter model (Qwen2.5) using Supervised Fine-Tuning (SFT) over curated security audit traces.</p>
+                        <p><strong>Result:</strong> Realized a validated precision performance floor of 0.9760, reducing operational MTTR from hours to seconds.</p>
                     </div>
-                    <p><strong>Situation:</strong> Production cloud topologies frequently suffer unpatched public exposure across IAM and Security Groups.</p>
-                    <p><strong>Task:</strong> Standardize an optimization framework to scan multi-tier infrastructures and output closed JSON fixes instantly.</p>
-                    <p><strong>Action:</strong> Fine-tuned a 3B parameter model (Qwen2.5) using Supervised Fine-Tuning (SFT) over curated security audit traces.</p>
-                    <p><strong>Result:</strong> Realized a validated precision performance floor of 0.9760, reducing operational MTTR from hours to seconds.</p>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto max-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Serverless AI Ingestion</span>
                     <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <div class="flex justify-between items-center mb-4 shrink-0">
+                <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">NL Query Agent — Bedrock Nova</h4>
                     <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
                 </div>
-                <div class="matrix-content opacity-0 md:opacity-100 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Non-technical business groups experience heavy query turnaround backlogs when fetching from deep cloud storage repositories.</p>
-                    <p><strong>Task:</strong> Build a low-overhead interface to process plain English query text directly against backend data files.</p>
-                    <p><strong>Action:</strong> Implemented Strands SDK execution paths backed by Nova Lite; configured sizing check boundaries to route tasks to memory Pandas sets or serverless Amazon Athena SQL pipelines.</p>
-                    <p><strong>Result:</strong> Attained isolated, multi-format queries secured via Bedrock Guardrails, maintaining audit logs for under $1/month.</p>
+                <div class="matrix-content max-h-0 opacity-0 md:max-h-none md:opacity-100 overflow-hidden md:overflow-visible">
+                    <div class="border-t border-slate-200 dark:border-slate-900 pt-5 mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                        <p><strong>Situation:</strong> Non-technical business groups experience heavy query turnaround backlogs when fetching from deep cloud storage repositories.</p>
+                        <p><strong>Task:</strong> Build a low-overhead interface to process plain English query text directly against backend data files.</p>
+                        <p><strong>Action:</strong> Implemented Strands SDK execution paths backed by Nova Lite; configured sizing check boundaries to route tasks to memory Pandas sets or serverless Amazon Athena SQL pipelines.</p>
+                        <p><strong>Result:</strong> Attained isolated, multi-format queries secured via Bedrock Guardrails, maintaining audit logs for under $1/month.</p>
+                    </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto max-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">GenAI Pipeline</span>
                     <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <div class="flex justify-between items-center mb-4 shrink-0">
+                <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">GitHub Dev Card Generator</h4>
                     <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
                 </div>
-                <div class="matrix-content opacity-0 md:opacity-100 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Open-source developer profiles maintain scattered contribution vectors that lack clear skill telemetry visualization maps.</p>
-                    <p><strong>Task:</strong> Construct a serverless pipeline that extracts profile data and compiles it into high-end asset cards.</p>
-                    <p><strong>Action:</strong> Deployed a FastAPI service on GCP Cloud Run using Gemini 2.5 Flash; engineered Vertex AI Memory Bank upgrades to guarantee cross-session execution persistence.</p>
-                    <p><strong>Result:</strong> Standardized an automated profile generator capable of scaling down to zero overhead instances when idle.</p>
+                <div class="matrix-content max-h-0 opacity-0 md:max-h-none md:opacity-100 overflow-hidden md:overflow-visible">
+                    <div class="border-t border-slate-200 dark:border-slate-900 pt-5 mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                        <p><strong>Situation:</strong> Open-source developer profiles maintain scattered contribution vectors that lack clear skill telemetry visualization maps.</p>
+                        <p><strong>Task:</strong> Construct a serverless pipeline that extracts profile data and compiles it into high-end asset cards.</p>
+                        <p><strong>Action:</strong> Deployed a FastAPI service on GCP Cloud Run using Gemini 2.5 Flash; engineered Vertex AI Memory Bank upgrades to guarantee cross-session execution persistence.</p>
+                        <p><strong>Result:</strong> Standardized an automated profile generator capable of scaling down to zero overhead instances when idle.</p>
+                    </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto max-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Spatial Data Analytics</span>
                     <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <div class="flex justify-between items-center mb-4 shrink-0">
+                <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">Bakery Location Intelligence Agent</h4>
                     <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
                 </div>
-                <div class="matrix-content opacity-0 md:opacity-100 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Retail business owners encounter complex data barriers when cross-checking internal sales registries against external physically localized vectors.</p>
-                    <p><strong>Task:</strong> Engineer an optimization assistant to interpret spatial performance patterns using decoupled multi-agent frameworks.</p>
-                    <p><strong>Action:</strong> Constructed tool attachments via Google ADK and Gemini 3.1 Pro; established Model Context Protocol (MCP) links across BigQuery datasets and live Google Maps APIs.</p>
-                    <p><strong>Result:</strong> Delivered real-time data reports synthesizing neighborhood demographics, pricing arrays, and local routing vectors.</p>
+                <div class="matrix-content max-h-0 opacity-0 md:max-h-none md:opacity-100 overflow-hidden md:overflow-visible">
+                    <div class="border-t border-slate-200 dark:border-slate-900 pt-5 mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                        <p><strong>Situation:</strong> Retail business owners encounter complex data barriers when cross-checking internal sales registries against external physically localized vectors.</p>
+                        <p><strong>Task:</strong> Engineer an optimization assistant to interpret spatial performance patterns using decoupled multi-agent frameworks.</p>
+                        <p><strong>Action:</strong> Constructed tool attachments via Google ADK and Gemini 3.1 Pro; established Model Context Protocol (MCP) links across BigQuery datasets and live Google Maps APIs.</p>
+                        <p><strong>Result:</strong> Delivered real-time data reports synthesizing neighborhood demographics, pricing arrays, and local routing vectors.</p>
+                    </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto max-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
-                    <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Voice UI / Lambda Integration</span>
-                    <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
+                    <span class="text-[10px] font-bold text-white uppercase bg-white/5 px-2.5 py-1 rounded border border-white/10">Voice UI / Lambda Integration</span>
+                    <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" onclick="event.stopPropagation();" class="text-slate-400 hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <div class="flex justify-between items-center mb-4 shrink-0">
+                <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">Flight Booker Alexa Skill</h4>
                     <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
                 </div>
-                <div class="matrix-content opacity-0 md:opacity-100 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <p><strong>Situation:</strong> Conversational audio applications hit drop-off errors when processing erratic flight array records from live endpoints.</p>
-                    <p><strong>Task:</strong> Stand up a low-latency voice command backend that maps user destination strings under narrow SLA windows.</p>
-                    <p><strong>Action:</strong> Configured intent slot handlers via the Alexa Skills Kit backed by AWS Lambda (Python 3.12); integrated SerpAPI Google Flights parameters to route schedule listings.</p>
-                    <p><strong>Result:</strong> Sustained an evaluation profile maintaining a 95%+ First Call Resolution velocity across 80+ global target hubs.</p>
+                <div class="matrix-content max-h-0 opacity-0 md:max-h-none md:opacity-100 overflow-hidden md:overflow-visible">
+                    <div class="border-t border-slate-200 dark:border-slate-900 pt-5 mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                        <p><strong>Situation:</strong> Conversational audio applications hit drop-off errors when processing erratic flight array records from live endpoints.</p>
+                        <p><strong>Task:</strong> Stand up a low-latency voice command backend that maps user destination strings under narrow SLA windows.</p>
+                        <p><strong>Action:</strong> Configured intent slot handlers via the Alexa Skills Kit backed by AWS Lambda (Python 3.12); integrated SerpAPI Google Flights parameters to route schedule listings.</p>
+                        <p><strong>Result:</strong> Sustained an evaluation profile maintaining a 95%+ First Call Resolution velocity across 80+ global target hubs.</p>
+                    </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto max-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-500 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">SQL / Analytics Framework</span>
                     <a href="https://github.com/kkaustav/target-brazil-ecommerce-analytics" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <div class="flex justify-between items-center mb-4 shrink-0">
+                <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">Target Brazil E-Commerce Analytics</h4>
                     <i class="fa-solid fa-chevron-down text-xs text-slate-400 md:hidden transition-transform duration-300"></i>
                 </div>
-                <div class="matrix-content opacity-0 md:opacity-100 space-y-4 pt-5 border-t border-slate-200 dark:border-slate-900 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
-                    <div class="grid grid-cols-2 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2">
-                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Google BigQuery</div>
-                        <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Relational SQL Mapping</div>
+                <div class="matrix-content max-h-0 opacity-0 md:max-h-none md:opacity-100 overflow-hidden md:overflow-visible">
+                    <div class="border-t border-slate-200 dark:border-slate-900 pt-5 mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                        <div class="grid grid-cols-2 gap-2 font-normal text-[10px] uppercase text-slate-800 dark:text-white mb-2">
+                            <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Google BigQuery</div>
+                            <div class="bg-slate-100 dark:bg-slate-950 p-2 rounded text-center border border-slate-200 dark:border-slate-900">Relational SQL Mapping</div>
+                        </div>
+                        <p><strong>Situation:</strong> Target required macro operational insights from ~100k records (2016–2018) to optimize logistics, processing times, and regional parameters across Brazil.</p>
+                        <p><strong>Task:</strong> Analyze delivery times, demand seasonality loops, and payment behaviors across 8 interconnected relational datasets.</p>
+                        <p><strong>Action:</strong> Developed optimized multi-join SQL queries to compile state-level performance matrices, track ordering frequency distributions, and evaluate EMI installment choices.</p>
+                        <p><strong>Result:</strong> Captured a 143% YoY revenue surge (R$3.47M to R$8.45M). Pinpointed that while São Paulo contributes 40.5% of demand, remote states experience 2.6–2.8× higher freight boundaries. Discovered 66%+ of orders concentrate between 1 PM and midnight, with 48.9% traveling as single-installments to focus strategic subsidies.</p>
                     </div>
-                    <p><strong>Situation:</strong> Target required macro operational insights from ~100k records (2016–2018) to optimize logistics, processing times, and regional parameters across Brazil.</p>
-                    <p><strong>Task:</strong> Analyze delivery times, demand seasonality loops, and payment behaviors across 8 interconnected relational datasets.</p>
-                    <p><strong>Action:</strong> Developed optimized multi-join SQL queries to compile state-level performance matrices, track ordering frequency distributions, and evaluate EMI installment choices.</p>
-                    <p><strong>Result:</strong> Captured a 143% YoY revenue surge (R$3.47M to R$8.45M). Pinpointed that while São Paulo contributes 40.5% of demand, remote states experience 2.6–2.8× higher freight boundaries. Discovered 66%+ of orders concentrate between 1 PM and midnight, with 48.9% traveling as single-installments to focus strategic subsidies.</p>
                 </div>
             </div>
+            
         </div>
     </section>
 
@@ -474,24 +487,25 @@
     </div>
 
     <script>
-        // FIXED: Re-coupled unified width parameters ensuring seamless click/hover integration 
+        // Smooth click-to-expand engine built exclusively for mobile viewports
         function toggleSystemCard(cardElement) {
+            // Bypass logic completely if on desktop display bounds to prevent hover collision
             if (window.innerWidth >= 768) return;
 
             const matrix = cardElement.querySelector('.matrix-content');
             const chevron = cardElement.querySelector('.fa-chevron-down');
             
-            // Toggle active styles explicitly via JS for reliable touch display engine scaling
-            if (matrix.style.maxHeight === '500px') {
+            const isCollapsed = matrix.style.maxHeight === '0px' || matrix.style.maxHeight === '';
+            
+            if (isCollapsed) {
+                // Dynamically read content padding and metrics boundaries to expand perfectly
+                matrix.style.maxHeight = matrix.scrollHeight + "px";
+                matrix.style.opacity = '1';
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            } else {
                 matrix.style.maxHeight = '0px';
                 matrix.style.opacity = '0';
-                matrix.style.paddingTop = '0px';
                 if (chevron) chevron.style.transform = 'rotate(0deg)';
-            } else {
-                matrix.style.maxHeight = '500px';
-                matrix.style.opacity = '1';
-                matrix.style.paddingTop = '1.25rem';
-                if (chevron) chevron.style.transform = 'rotate(180deg)';
             }
         }
 
@@ -504,6 +518,7 @@
         
         function closeCertModal() { document.getElementById('certModal').classList.add('hidden'); }
 
+        // Secure AWS backend communication client logic
         document.getElementById('awsContactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
