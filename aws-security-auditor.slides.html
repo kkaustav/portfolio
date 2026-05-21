@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="slides-format" content="viewport">
+    <title>AWS Cloud Security Auditor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-bg: #0a0e1a;
+            --color-bg-deep: #050810;
+            --color-surface: #111827;
+            --color-text: #f1f5f9;
+            --color-text-secondary: #94a3b8;
+            --color-text-muted: #64748b;
+            --color-accent-1: #FF9900;
+            --color-accent-2: #00B4D8;
+            --color-accent-3: #7CFC00;
+            --color-glass-bg: rgba(255,255,255,0.05);
+            --color-glass-border: rgba(255,255,255,0.08);
+            --color-vignette: rgba(0,0,0,0.45);
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'Inter', sans-serif;
+        }
+    </style>
+    <style>
+        :root { --color-bg: #0a0e1a; --color-text: #f1f5f9; --glow-color-rgb: 255,153,0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { background: var(--color-bg); }
+        body { font-family: 'Inter', sans-serif; color: var(--color-text); overflow: hidden; height: 100vh; width: 100vw; }
+        .deck { width: 100vw; height: 100vh; position: relative; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transform: scale(0.95); transition: opacity 0.7s ease, transform 0.7s ease; pointer-events: none; overflow: hidden; }
+        .slide.active { opacity: 1; transform: scale(1); pointer-events: all; }
+        .slide > .content { position: relative; z-index: 2; width: 100%; max-width: 1100px; padding: clamp(1.5rem, 4vw, 4rem); }
+        .nav-controls { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 16px; z-index: 100; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 10px 24px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.08); }
+        .nav-btn { width: 40px; height: 40px; border: none; background: rgba(255,255,255,0.05); color: #FF9900; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+        .nav-btn:hover { background: rgba(255,255,255,0.1); }
+        .slide-dots { display: flex; gap: 8px; }
+        .slide-dots .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.12); cursor: pointer; transition: background 0.3s, transform 0.3s; }
+        .slide-dots .dot.active { background: #FF9900; transform: scale(1.3); }
+        .slide-counter { font-size: 0.8rem; color: #64748b; min-width: 40px; text-align: center; }
+        .reveal { opacity: 0; transform: translateY(20px); }
+        .text-glow { text-shadow: 0 0 20px rgba(255,153,0,0.5), 0 0 40px rgba(255,153,0,0.2); }
+        @keyframes glow-pulse { 0%,100%{text-shadow:0 0 20px rgba(255,153,0,0.5),0 0 40px rgba(255,153,0,0.2);}50%{text-shadow:0 0 30px rgba(255,153,0,0.8),0 0 60px rgba(255,153,0,0.3);} }
+        @keyframes float-slow { 0%{transform:translate(0,0) scale(1);}25%{transform:translate(60px,-50px) scale(1.12);}50%{transform:translate(-40px,40px) scale(0.9);}75%{transform:translate(50px,20px) scale(1.08);}100%{transform:translate(0,0) scale(1);} }
+        @keyframes float-drift { 0%{transform:translate(0,0) scale(1) rotate(0deg);}33%{transform:translate(-50px,-60px) scale(1.15) rotate(3deg);}66%{transform:translate(40px,30px) scale(0.88) rotate(-2deg);}100%{transform:translate(0,0) scale(1) rotate(0deg);} }
+        @keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);} }
+        .gradient-mesh { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); animation: float-slow 10s ease-in-out infinite; }
+        .blob:nth-child(2) { animation: float-drift 14s ease-in-out infinite; }
+        .blob:nth-child(3) { animation: float-slow 18s ease-in-out infinite reverse; }
+        .slide::before { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-repeat:repeat; background-size:256px 256px; opacity:0.03; mix-blend-mode:overlay; }
+        .slide::after { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.45) 100%); }
+        .score-track { background:rgba(255,255,255,0.08); border-radius:9999px; height:12px; overflow:hidden; }
+        .score-fill { height:100%; border-radius:9999px; background:linear-gradient(to right,#FF9900,#00B4D8); width:0%; transition:width 0.8s ease; }
+        .code-block { background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:1rem 1.5rem; font-family:'JetBrains Mono',monospace; font-size:0.78rem; line-height:1.8; color:#a3e635; }
+        .step-item { display:flex; align-items:flex-start; gap:1rem; }
+        .step-num { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#FF9900,#00B4D8); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.9rem; flex-shrink:0; color:#000; }
+        @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.2s !important; } }
+    </style>
+</head>
+<body>
+<div class="mouse-spotlight" style="position:fixed;inset:0;z-index:99;pointer-events:none;"></div>
+<div class="deck">
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide slide-1 active" data-slide="1">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:500px;height:500px;top:-100px;right:-100px;background:#FF9900;opacity:0.12;"></div>
+        <div class="blob" style="width:350px;height:350px;bottom:-80px;left:-80px;background:#00B4D8;opacity:0.10;"></div>
+        <div class="blob" style="width:250px;height:250px;top:40%;left:20%;background:#FF6B35;opacity:0.08;"></div>
+    </div>
+    <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content" style="text-align:center;">
+        <div style="font-size:90px;margin-bottom:1.5rem;animation:float 3s ease-in-out infinite;" class="reveal">&#x1F6E1;&#xFE0F;</div>
+        <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;background:linear-gradient(135deg,#FF9900,#FFD166,#FF9900);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.02em;margin-bottom:1rem;" class="reveal">AWS Cloud Security Auditor</h1>
+        <p style="font-size:clamp(0.9rem,1.5vw,1.1rem);color:#94a3b8;letter-spacing:6px;text-transform:uppercase;" class="reveal">Meta PyTorch &middot; OpenEnv Hackathon &middot; Grand Finale</p>
+        <p style="margin-top:1.5rem;font-size:1rem;color:#64748b;" class="reveal">Kaustubh Kar</p>
+    </div>
+</div>
+
+<!-- SLIDE 2: THE PROBLEM -->
+<div class="slide slide-2" data-slide="2">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:400px;height:400px;top:-80px;right:-60px;background:#ef4444;opacity:0.08;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-60px;left:-40px;background:#FF9900;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#FF9900;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">The Challenge</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:1.75rem;" class="reveal">AWS is powerful. <span style="color:#ef4444;">One wrong setting = disaster.</span></h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+            <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:2rem;margin-bottom:0.5rem;">&#x1F4B8;</div>
+                <div style="font-weight:700;margin-bottom:0.25rem;">$4.45M</div>
+                <div style="font-size:0.82rem;color:#94a3b8;">Average cost of a cloud data breach &mdash; IBM Security Report 2023</div>
+            </div>
+            <div style="background:rgba(255,153,0,0.08);border:1px solid rgba(255,153,0,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:2rem;margin-bottom:0.5rem;">&#x23F1;&#xFE0F;</div>
+                <div style="font-weight:700;margin-bottom:0.25rem;">277 Days</div>
+                <div style="font-size:0.82rem;color:#94a3b8;">Average time to identify and contain a breach without automation</div>
+            </div>
+            <div style="background:rgba(0,180,216,0.08);border:1px solid rgba(0,180,216,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:2rem;margin-bottom:0.5rem;">&#x1F50D;</div>
+                <div style="font-weight:700;margin-bottom:0.25rem;">200+ Settings</div>
+                <div style="font-size:0.82rem;color:#94a3b8;">AWS security configurations to check manually per account</div>
+            </div>
+            <div style="background:rgba(124,252,0,0.08);border:1px solid rgba(124,252,0,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:2rem;margin-bottom:0.5rem;">&#x1F916;</div>
+                <div style="font-weight:700;margin-bottom:0.25rem;">Zero AI Tools</div>
+                <div style="font-size:0.82rem;color:#94a3b8;">Most teams still audit manually &mdash; slow, error-prone, expensive</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 3: OUR SOLUTION -->
+<div class="slide slide-3" data-slide="3">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:450px;height:450px;top:-100px;left:-80px;background:#FF9900;opacity:0.10;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-60px;right:-40px;background:#00B4D8;opacity:0.08;"></div>
+    </div>
+    <canvas class="particle-canvas-ambient" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content">
+        <p style="color:#FF9900;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">Our Solution</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:0.5rem;" class="reveal">An AI agent that audits AWS</h2>
+        <p style="color:#94a3b8;margin-bottom:2rem;font-size:1rem;" class="reveal">in seconds, not days &mdash; with zero human intervention</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.5rem;text-align:center;" class="reveal">
+                <div style="font-size:2.5rem;margin-bottom:0.75rem;">&#x26A1;</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.4rem;">Instant</div>
+                <div style="font-size:0.8rem;color:#94a3b8;">Full audit completes in under 10 seconds</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.5rem;text-align:center;" class="reveal">
+                <div style="font-size:2.5rem;margin-bottom:0.75rem;">&#x1F9E0;</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.4rem;">AI-Powered</div>
+                <div style="font-size:0.8rem;color:#94a3b8;">Qwen 72B understands complex AWS configs</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.5rem;text-align:center;" class="reveal">
+                <div style="font-size:2.5rem;margin-bottom:0.75rem;">&#x1F3AF;</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-bottom:0.4rem;">Precise</div>
+                <div style="font-size:0.8rem;color:#94a3b8;">Finds exact issues with fix recommendations</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 4: AWS 101 -->
+<div class="slide slide-4" data-slide="4">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:380px;height:380px;top:-60px;right:-60px;background:#FF9900;opacity:0.08;"></div>
+        <div class="blob" style="width:280px;height:280px;bottom:-40px;left:-40px;background:#00B4D8;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#FF9900;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">AWS in Plain English</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.5rem;" class="reveal">The 4 services our agent audits</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,153,0,0.25);border-radius:12px;padding:1.2rem;" class="reveal">
+                <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;"><span style="font-size:1.5rem;">&#x1F525;</span><span style="font-weight:700;color:#FF9900;">Security Groups</span></div>
+                <p style="font-size:0.8rem;color:#94a3b8;line-height:1.6;">Like a firewall for your cloud servers. Port 22 = SSH access. Port 3389 = Windows access. <strong style="color:#ef4444;">0.0.0.0/0 = anyone on Earth can enter.</strong></p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(0,180,216,0.25);border-radius:12px;padding:1.2rem;" class="reveal">
+                <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;"><span style="font-size:1.5rem;">&#x1F511;</span><span style="font-weight:700;color:#00B4D8;">IAM Policies</span></div>
+                <p style="font-size:0.8rem;color:#94a3b8;line-height:1.6;">Controls WHO can do WHAT in your AWS account. <strong style="color:#ef4444;">action:* = this user can do absolutely everything</strong> &mdash; delete databases, steal data.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(124,252,0,0.2);border-radius:12px;padding:1.2rem;" class="reveal">
+                <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;"><span style="font-size:1.5rem;">&#x1FAA3;</span><span style="font-weight:700;color:#7CFC00;">S3 Buckets</span></div>
+                <p style="font-size:0.8rem;color:#94a3b8;line-height:1.6;">Cloud storage like Google Drive. If set to public, <strong style="color:#ef4444;">anyone can download your files.</strong> Needs encryption (KMS/SSE) and versioning enabled.</p>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,209,102,0.2);border-radius:12px;padding:1.2rem;" class="reveal">
+                <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;"><span style="font-size:1.5rem;">&#x1F310;</span><span style="font-weight:700;color:#FFD166;">VPC &amp; Logging</span></div>
+                <p style="font-size:0.8rem;color:#94a3b8;line-height:1.6;">Your private network in AWS. <strong style="color:#FFD166;">VPC Flow Logs = recording traffic.</strong> CloudTrail = recording all actions. GuardDuty = threat detector. All must be ON.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 5: HOW IT WORKS -->
+<div class="slide slide-5" data-slide="5">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:400px;height:400px;top:-80px;right:-80px;background:#FF9900;opacity:0.09;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-60px;left:-40px;background:#7CFC00;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#FF9900;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">Architecture</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.5rem;" class="reveal">How the agent works &mdash; 5 steps</h2>
+        <div style="display:flex;flex-direction:column;gap:0.9rem;">
+            <div class="step-item reveal"><div class="step-num">1</div><div><div style="font-weight:600;margin-bottom:0.2rem;font-size:0.92rem;">Environment sends a misconfigured AWS config</div><div style="font-size:0.8rem;color:#94a3b8;">The benchmark server (FastAPI/Uvicorn) sends a JSON snapshot of a real AWS resource</div></div></div>
+            <div class="step-item reveal"><div class="step-num">2</div><div><div style="font-weight:600;margin-bottom:0.2rem;font-size:0.92rem;">Agent calls Qwen 72B via Hugging Face</div><div style="font-size:0.8rem;color:#94a3b8;">inference.py sends the config + a detailed system prompt to the LLM using an OpenAI-compatible API</div></div></div>
+            <div class="step-item reveal"><div class="step-num">3</div><div><div style="font-weight:600;margin-bottom:0.2rem;font-size:0.92rem;">LLM returns structured JSON findings</div><div style="font-size:0.8rem;color:#94a3b8;">findings, severity (HIGH/MEDIUM/LOW), recommendations, and a config_patch to fix each issue</div></div></div>
+            <div class="step-item reveal"><div class="step-num">4</div><div><div style="font-weight:600;margin-bottom:0.2rem;font-size:0.92rem;">Environment scores the response (0.0 &rarr; 1.0)</div><div style="font-size:0.8rem;color:#94a3b8;">Benchmark checks if the agent found the right issues with the right AWS terminology</div></div></div>
+            <div class="step-item reveal"><div class="step-num">5</div><div><div style="font-weight:600;margin-bottom:0.2rem;font-size:0.92rem;">Agent retries with feedback (up to 5 steps)</div><div style="font-size:0.8rem;color:#94a3b8;">If score is low, the agent re-analyses the full config using the feedback to improve recall</div></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 6: AI ARCHITECTURE -->
+<div class="slide slide-6" data-slide="6">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:450px;height:450px;top:-100px;left:-80px;background:#00B4D8;opacity:0.09;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-60px;right:-40px;background:#FF9900;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#00B4D8;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">The Brain</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.5rem;" class="reveal">Qwen 2.5-72B &mdash; Why this model?</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem;">
+            <div style="background:rgba(0,180,216,0.06);border:1px solid rgba(0,180,216,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:1.8rem;font-weight:800;color:#00B4D8;margin-bottom:0.3rem;">72 Billion</div>
+                <div style="font-size:0.82rem;color:#94a3b8;">Parameters &mdash; large enough to reason about complex cloud security configurations</div>
+            </div>
+            <div style="background:rgba(255,153,0,0.06);border:1px solid rgba(255,153,0,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:1.8rem;font-weight:800;color:#FF9900;margin-bottom:0.3rem;">Free API</div>
+                <div style="font-size:0.82rem;color:#94a3b8;">Available via Hugging Face Router &mdash; no API cost, OpenAI-compatible endpoint</div>
+            </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.25rem;" class="reveal">
+            <p style="font-size:0.85rem;font-weight:600;margin-bottom:0.75rem;color:#f1f5f9;">Key design decisions:</p>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+                <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.82rem;color:#94a3b8;"><span style="color:#FF9900;margin-top:1px;">&rarr;</span><span><strong style="color:#f1f5f9;">JSON mode</strong> (response_format: json_object) forces valid structured output &mdash; no broken responses</span></li>
+                <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.82rem;color:#94a3b8;"><span style="color:#FF9900;margin-top:1px;">&rarr;</span><span><strong style="color:#f1f5f9;">Temperature 0.2</strong> &mdash; low randomness for consistent, reliable security findings every run</span></li>
+                <li style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.82rem;color:#94a3b8;"><span style="color:#FF9900;margin-top:1px;">&rarr;</span><span><strong style="color:#f1f5f9;">2500 max tokens</strong> &mdash; enough room for 6&ndash;10 detailed findings with recommendations</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 7: PROMPT ENGINEERING -->
+<div class="slide slide-7" data-slide="7">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:400px;height:400px;top:-80px;right:-60px;background:#7CFC00;opacity:0.07;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-50px;left:-40px;background:#FF9900;opacity:0.08;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#7CFC00;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">The Secret Sauce</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.25rem;" class="reveal">Prompt Engineering</h2>
+        <div class="code-block reveal" style="margin-bottom:1.25rem;">
+            <div style="color:#64748b;">// System prompt forces exact AWS benchmark terminology</div>
+            <div><span style="color:#FF9900;">"findings"</span>: [<span style="color:#00B4D8;">"Security group allows port 22 SSH from 0.0.0.0/0"</span>]</div>
+            <div><span style="color:#FF9900;">"severity"</span>: [<span style="color:#00B4D8;">"HIGH"</span>]</div>
+            <div><span style="color:#FF9900;">"recommendations"</span>: [<span style="color:#00B4D8;">"Restrict SSH to /32 CIDR, VPN or bastion"</span>]</div>
+            <div><span style="color:#FF9900;">"config_patch"</span>: {<span style="color:#00B4D8;">"FlowLogsEnabled"</span>: true, <span style="color:#00B4D8;">"CloudTrailEnabled"</span>: true}</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:1rem;" class="reveal">
+                <div style="color:#FF9900;font-weight:700;font-size:0.85rem;margin-bottom:0.4rem;">Exact Terms</div>
+                <div style="font-size:0.78rem;color:#94a3b8;">Forces model to use SSH, RDP, 0.0.0.0/0, action:*, CloudTrail &mdash; exact words the benchmark scores on</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:1rem;" class="reveal">
+                <div style="color:#00B4D8;font-weight:700;font-size:0.85rem;margin-bottom:0.4rem;">Min 6 Findings</div>
+                <div style="font-size:0.78rem;color:#94a3b8;">System prompt requires at least 6 separate findings &mdash; never combining multiple issues into one</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:1rem;" class="reveal">
+                <div style="color:#7CFC00;font-weight:700;font-size:0.85rem;margin-bottom:0.4rem;">Smart Fallback</div>
+                <div style="font-size:0.78rem;color:#94a3b8;">If LLM fails to parse, a context-aware fallback submits relevant findings based on config keywords</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 8: BENCHMARK TASKS -->
+<div class="slide slide-8" data-slide="8">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:420px;height:420px;top:-80px;right:-60px;background:#FF9900;opacity:0.09;"></div>
+        <div class="blob" style="width:280px;height:280px;bottom:-50px;left:-40px;background:#00B4D8;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#FF9900;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">Benchmark</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.5rem;" class="reveal">3 tasks, increasing difficulty</h2>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.2);border-radius:12px;padding:1.25rem;display:flex;align-items:center;gap:1.5rem;" class="reveal">
+                <div style="font-size:2rem;flex-shrink:0;">&#x1F7E2;</div>
+                <div style="flex:1;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;"><span style="font-weight:700;">Easy &mdash; Security Groups</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#22c55e;">easy_security_group</span></div><p style="font-size:0.8rem;color:#94a3b8;">Detect open SSH/RDP ports exposed to 0.0.0.0/0 on EC2 security groups</p></div>
+            </div>
+            <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2);border-radius:12px;padding:1.25rem;display:flex;align-items:center;gap:1.5rem;" class="reveal">
+                <div style="font-size:2rem;flex-shrink:0;">&#x1F7E1;</div>
+                <div style="flex:1;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;"><span style="font-weight:700;">Medium &mdash; S3 Policy</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#f59e0b;">medium_s3_policy</span></div><p style="font-size:0.8rem;color:#94a3b8;">Identify public access, missing encryption (KMS/SSE), lack of versioning, s3:PutObject/DeleteObject exposure</p></div>
+            </div>
+            <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:1.25rem;display:flex;align-items:center;gap:1.5rem;" class="reveal">
+                <div style="font-size:2rem;flex-shrink:0;">&#x1F534;</div>
+                <div style="flex:1;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;"><span style="font-weight:700;">Hard &mdash; IAM + VPC</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#ef4444;">hard_iam_vpc</span></div><p style="font-size:0.8rem;color:#94a3b8;">Complex IAM wildcards, trust policy misconfigurations, missing VPC flow logs, CloudTrail, GuardDuty, NACL issues</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 9: RESULTS -->
+<div class="slide slide-9" data-slide="9">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:480px;height:480px;top:-100px;left:-80px;background:#7CFC00;opacity:0.08;"></div>
+        <div class="blob" style="width:320px;height:320px;bottom:-60px;right:-40px;background:#FF9900;opacity:0.09;"></div>
+    </div>
+    <canvas class="particle-canvas-ambient" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content">
+        <p style="color:#7CFC00;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">Results</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.75rem;" class="reveal">All 3 tasks &mdash; <span style="color:#7CFC00;">success = true</span></h2>
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            <div class="reveal"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><span style="font-weight:600;">easy_security_group</span><div style="display:flex;align-items:center;gap:1rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#22c55e;">success &#x2713;</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#f1f5f9;">0.800</span></div></div><div class="score-track"><div class="score-fill" data-width="80"></div></div></div>
+            <div class="reveal"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><span style="font-weight:600;">medium_s3_policy</span><div style="display:flex;align-items:center;gap:1rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#22c55e;">success &#x2713;</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#f1f5f9;">0.800</span></div></div><div class="score-track"><div class="score-fill" data-width="80"></div></div></div>
+            <div class="reveal"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><span style="font-weight:600;">hard_iam_vpc</span><div style="display:flex;align-items:center;gap:1rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#22c55e;">success &#x2713;</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#f1f5f9;">0.800</span></div></div><div class="score-track"><div class="score-fill" data-width="80"></div></div></div>
+        </div>
+        <div style="margin-top:1.75rem;background:rgba(124,252,0,0.06);border:1px solid rgba(124,252,0,0.2);border-radius:12px;padding:1rem;text-align:center;" class="reveal">
+            <span style="font-size:0.88rem;color:#94a3b8;">Consistent across </span><span style="font-weight:700;color:#7CFC00;">multiple independent runs</span><span style="font-size:0.88rem;color:#94a3b8;"> &mdash; stable, reproducible, benchmarked</span>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 10: TECH STACK -->
+<div class="slide slide-10" data-slide="10">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:400px;height:400px;top:-80px;right:-60px;background:#FF9900;opacity:0.08;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-50px;left:-40px;background:#00B4D8;opacity:0.07;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#FF9900;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">Built With</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.5rem;" class="reveal">Tech Stack</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="color:#FF9900;font-weight:700;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem;">Agent</div>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F40D;</span><span style="font-size:0.82rem;color:#94a3b8;">Python 3 &mdash; asyncio for concurrent execution</span></div>
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F4E6;</span><span style="font-size:0.82rem;color:#94a3b8;">OpenAI Python SDK &mdash; API calls to Qwen model</span></div>
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F527;</span><span style="font-size:0.82rem;color:#94a3b8;">JSON mode + regex parsing for reliability</span></div>
+                </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="color:#00B4D8;font-weight:700;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem;">Environment</div>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x26A1;</span><span style="font-size:0.82rem;color:#94a3b8;">FastAPI + Uvicorn &mdash; benchmark server at port 7860</span></div>
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F917;</span><span style="font-size:0.82rem;color:#94a3b8;">Hugging Face Router &mdash; Qwen 72B endpoint</span></div>
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F433;</span><span style="font-size:0.82rem;color:#94a3b8;">Docker &mdash; containerized deployment</span></div>
+                </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="color:#7CFC00;font-weight:700;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem;">Framework</div>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F30D;</span><span style="font-size:0.82rem;color:#94a3b8;">OpenEnv &mdash; hackathon evaluation framework</span></div>
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F504;</span><span style="font-size:0.82rem;color:#94a3b8;">Multi-step RLHF-style agent loop with scoring</span></div>
+                </div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="color:#FFD166;font-weight:700;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.75rem;">Model</div>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F9E0;</span><span style="font-size:0.82rem;color:#94a3b8;">Qwen/Qwen2.5-72B-Instruct</span></div>
+                    <div style="display:flex;gap:0.75rem;align-items:center;"><span style="font-size:1.2rem;">&#x1F4CA;</span><span style="font-size:0.82rem;color:#94a3b8;">72B params &mdash; best free model for structured output</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 11: CHALLENGES -->
+<div class="slide slide-11" data-slide="11">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:420px;height:420px;top:-80px;left:-60px;background:#ef4444;opacity:0.07;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-50px;right:-40px;background:#FF9900;opacity:0.08;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#ef4444;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">Learnings</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.5rem;" class="reveal">Challenges &amp; how we solved them</h2>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.1rem;display:flex;gap:1.25rem;align-items:flex-start;" class="reveal">
+                <div style="background:rgba(239,68,68,0.15);color:#ef4444;padding:0.4rem 0.75rem;border-radius:6px;font-size:0.72rem;font-weight:700;white-space:nowrap;flex-shrink:0;">Problem</div>
+                <div><div style="font-weight:600;margin-bottom:0.2rem;font-size:0.88rem;">LLM returned broken JSON &rarr; only 1 finding &rarr; reward 0.01 every step</div><div style="font-size:0.78rem;color:#7CFC00;">&#x2713; Fixed with <strong>response_format: json_object</strong> + multi-layer parsing fallback</div></div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.1rem;display:flex;gap:1.25rem;align-items:flex-start;" class="reveal">
+                <div style="background:rgba(239,68,68,0.15);color:#ef4444;padding:0.4rem 0.75rem;border-radius:6px;font-size:0.72rem;font-weight:700;white-space:nowrap;flex-shrink:0;">Problem</div>
+                <div><div style="font-weight:600;margin-bottom:0.2rem;font-size:0.88rem;">Model used vague language &rarr; benchmark couldn&apos;t match keywords &rarr; low score</div><div style="font-size:0.78rem;color:#7CFC00;">&#x2713; Fixed by forcing exact AWS terms: &ldquo;port 22 SSH&rdquo;, &ldquo;action:*&rdquo;, &ldquo;0.0.0.0/0&rdquo; in system prompt</div></div>
+            </div>
+            <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:1.1rem;display:flex;gap:1.25rem;align-items:flex-start;" class="reveal">
+                <div style="background:rgba(239,68,68,0.15);color:#ef4444;padding:0.4rem 0.75rem;border-radius:6px;font-size:0.72rem;font-weight:700;white-space:nowrap;flex-shrink:0;">Problem</div>
+                <div><div style="font-weight:600;margin-bottom:0.2rem;font-size:0.88rem;">Agent gave up after 1 weak response with no improvement loop</div><div style="font-size:0.78rem;color:#7CFC00;">&#x2713; Fixed by building a 5-step retry loop with score-based feedback on each iteration</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 12: FUTURE -->
+<div class="slide slide-12" data-slide="12">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:420px;height:420px;top:-80px;right:-60px;background:#00B4D8;opacity:0.09;"></div>
+        <div class="blob" style="width:300px;height:300px;bottom:-50px;left:-40px;background:#FF9900;opacity:0.08;"></div>
+    </div>
+    <div class="content">
+        <p style="color:#00B4D8;font-size:0.82rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;" class="reveal">What's Next</p>
+        <h2 style="font-family:'Instrument Serif',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:1.5rem;" class="reveal">Future Roadmap</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+            <div style="background:rgba(0,180,216,0.06);border:1px solid rgba(0,180,216,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:1.5rem;margin-bottom:0.5rem;">&#x1F30D;</div>
+                <div style="font-weight:700;margin-bottom:0.3rem;color:#00B4D8;">More AWS Services</div>
+                <div style="font-size:0.8rem;color:#94a3b8;">Expand to ECS, EKS, Lambda, RDS, CloudFormation &mdash; full coverage across AWS ecosystem</div>
+            </div>
+            <div style="background:rgba(255,153,0,0.06);border:1px solid rgba(255,153,0,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:1.5rem;margin-bottom:0.5rem;">&#x1F501;</div>
+                <div style="font-weight:700;margin-bottom:0.3rem;color:#FF9900;">Auto-Remediation</div>
+                <div style="font-size:0.8rem;color:#94a3b8;">Automatically apply config_patch fixes via AWS SDK (boto3) without human intervention</div>
+            </div>
+            <div style="background:rgba(124,252,0,0.06);border:1px solid rgba(124,252,0,0.2);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:1.5rem;margin-bottom:0.5rem;">&#x1F4CA;</div>
+                <div style="font-weight:700;margin-bottom:0.3rem;color:#7CFC00;">Dashboard UI</div>
+                <div style="font-size:0.8rem;color:#94a3b8;">Visual dashboard showing audit results, severity distribution, compliance score over time</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.25rem;" class="reveal">
+                <div style="font-size:1.5rem;margin-bottom:0.5rem;">&#x2601;&#xFE0F;</div>
+                <div style="font-weight:700;margin-bottom:0.3rem;">Multi-Cloud</div>
+                <div style="font-size:0.8rem;color:#94a3b8;">Extend to Azure and GCP security audits &mdash; same AI-powered approach across all clouds</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 13: THANK YOU -->
+<div class="slide slide-13" data-slide="13">
+    <div class="gradient-mesh">
+        <div class="blob" style="width:550px;height:550px;top:-120px;right:-100px;background:#FF9900;opacity:0.13;"></div>
+        <div class="blob" style="width:400px;height:400px;bottom:-100px;left:-80px;background:#00B4D8;opacity:0.10;"></div>
+        <div class="blob" style="width:300px;height:300px;top:30%;left:10%;background:#7CFC00;opacity:0.07;"></div>
+    </div>
+    <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+    <div class="content" style="text-align:center;">
+        <div style="font-size:80px;margin-bottom:1.5rem;animation:float 3s ease-in-out infinite;" class="reveal">&#x1F680;</div>
+        <h1 style="font-family:'Instrument Serif',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;background:linear-gradient(135deg,#FF9900,#FFD166,#00B4D8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;" class="reveal">Thank You</h1>
+        <p style="font-size:1rem;color:#94a3b8;margin-bottom:2rem;" class="reveal">Kaustubh Kar &middot; Meta PyTorch OpenEnv Hackathon &middot; Grand Finale, Bangalore</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;max-width:700px;margin:0 auto;" class="reveal">
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1rem;text-align:center;">
+                <div style="font-size:1.6rem;font-weight:800;color:#FF9900;">3 / 3</div>
+                <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.25rem;">Tasks Passed</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1rem;text-align:center;">
+                <div style="font-size:1.6rem;font-weight:800;color:#00B4D8;">52K+</div>
+                <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.25rem;">Developers Competed</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1rem;text-align:center;">
+                <div style="font-size:1.6rem;font-weight:800;color:#7CFC00;">0.800</div>
+                <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.25rem;">Score (Hard Task)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav-controls">
+    <button class="nav-btn" onclick="changeSlide(-1)">&#8249;</button>
+    <div class="slide-dots" id="dots"></div>
+    <button class="nav-btn" onclick="changeSlide(1)">&#8250;</button>
+    <span class="slide-counter" id="counter">1 / 13</span>
+</div>
+
+<script>
+    let current = 1;
+    const total = document.querySelectorAll('.slide').length;
+    const dotsContainer = document.getElementById('dots');
+    const counter = document.getElementById('counter');
+    for (let i = 1; i <= total; i++) { const dot = document.createElement('div'); dot.className = 'dot' + (i === 1 ? ' active' : ''); dot.onclick = () => goToSlide(i); dotsContainer.appendChild(dot); }
+    function goToSlide(n) { const prev = document.querySelector('.slide.active'); const next = document.querySelector(`.slide[data-slide="${n}"]`); if (prev) prev.classList.remove('active'); if (next) { next.classList.add('active'); animateSlide(next); } current = n; updateNav(); }
+    function changeSlide(dir) { let next = current + dir; if (next < 1) next = total; if (next > total) next = 1; goToSlide(next); }
+    function updateNav() { document.querySelectorAll('.dot').forEach((d, i) => { d.classList.toggle('active', i + 1 === current); }); counter.textContent = current + ' / ' + total; }
+    document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); } });
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => { const diff = touchStartX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1); });
+    function animateSlide(slide) {
+        slide.querySelectorAll('.reveal').forEach((el, i) => { el.style.transition = 'none'; el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.offsetHeight; const delay = i * 0.08; el.style.transition = `opacity 0.35s ease ${delay}s, transform 0.35s ease ${delay}s`; el.style.opacity = '1'; el.style.transform = 'translateY(0px)'; });
+        animateSlideEffects(slide);
+    }
+    function animateSlideEffects(slide) {
+        slide.querySelectorAll('.score-fill:not(.fill-init)').forEach((bar, i) => { bar.classList.add('fill-init'); const w = bar.dataset.width || '80'; bar.style.width = '0%'; bar.style.transition = `width 0.8s ease ${i * 0.2}s`; bar.offsetHeight; bar.style.width = w + '%'; });
+    }
+    document.addEventListener('mousemove', (e) => { const s = document.querySelector('.mouse-spotlight'); if (s) s.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(255,153,0,0.06), transparent 40%)`; });
+    window.initParticles = function(canvas, options) {
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d'); canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight;
+        const interactive = options.interactive !== false; const count = options.count || (interactive ? 55 : 18);
+        let mx = -1000, my = -1000;
+        const particles = Array.from({ length: count }, () => ({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, vx:(Math.random()-0.5)*0.3, vy:(Math.random()-0.5)*0.3, size:Math.random()*2.5+0.8, alpha:Math.random()*0.35+0.1 }));
+        if (interactive) { canvas.addEventListener('mousemove', (e) => { const r=canvas.getBoundingClientRect(); mx=e.clientX-r.left; my=e.clientY-r.top; }); canvas.addEventListener('mouseleave', () => { mx=-1000; my=-1000; }); }
+        (function animate() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p => { if (interactive){const dx=p.x-mx,dy=p.y-my,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){const f=(120-dist)/120*2;p.vx+=(dx/dist)*f*0.1;p.vy+=(dy/dist)*f*0.1;}} p.vx*=0.98;p.vy*=0.98;p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=`rgba(255,153,0,${p.alpha})`;ctx.fill(); });
+            requestAnimationFrame(animate);
+        })();
+    };
+    document.querySelectorAll('.particle-canvas').forEach(c => window.initParticles(c, { interactive: true, count: 55 }));
+    document.querySelectorAll('.particle-canvas-ambient').forEach(c => window.initParticles(c, { interactive: false, count: 18 }));
+    try { animateSlide(document.querySelector('.slide.active')); } catch(e) { console.warn(e); }
+</script>
+</body>
+</html>

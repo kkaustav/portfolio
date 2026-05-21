@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NL Query Agent — Presentation v4</title>
+<style>
+  :root{--bg:#0d0f1a;--panel:#13162a;--panel2:#1a1f38;--text:#e8eaf6;--muted:#8892b0;--accent:#7c6af7;--accent2:#a78bfa;--green:#4ade80;--red:#f87171;--yellow:#fbbf24;--border:#252a45;--code:#1e2540}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh}
+  .deck{width:100%;height:100vh;position:relative}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:60px 72px;background:var(--bg);overflow:hidden}
+  .slide.active{display:flex}
+  .slide-num{position:absolute;bottom:22px;right:32px;font-size:13px;color:var(--muted);letter-spacing:1px}
+  .tag{display:inline-block;background:rgba(124,106,247,.18);color:var(--accent2);border:1px solid rgba(124,106,247,.35);border-radius:20px;padding:4px 14px;font-size:13px;font-weight:600;margin-bottom:18px;letter-spacing:.5px}
+  h1{font-size:52px;font-weight:900;line-height:1.1;letter-spacing:-1px;margin-bottom:14px;background:linear-gradient(135deg,#fff 0%,var(--accent2) 60%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  h2{font-size:34px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px;background:linear-gradient(135deg,#fff 0%,var(--accent2) 60%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  h3{font-size:18px;font-weight:700;color:var(--accent2);margin-bottom:10px}
+  p{color:var(--muted);font-size:16px;line-height:1.6;margin-bottom:10px}
+  .sub{font-size:20px;color:var(--muted);line-height:1.5;margin-bottom:28px;max-width:800px}
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+  .badge{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--accent2)}
+  .badge.green{background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.3);color:var(--green)}
+  .badge.red{background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.3);color:var(--red)}
+  .badge.yellow{background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.3);color:var(--yellow)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;flex:1}
+  .grid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;flex:1}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:22px 20px}
+  .card h3{font-size:15px;margin-bottom:8px}
+  .card p{font-size:14px}
+  .card.accent{border-color:rgba(124,106,247,.4);background:rgba(124,106,247,.07)}
+  .card.green{border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.05)}
+  .card.red{border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.05)}
+  .card.yellow{border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.05)}
+  ul{list-style:none;padding:0}
+  ul li{color:var(--muted);font-size:15px;padding:5px 0;padding-left:18px;position:relative;line-height:1.5}
+  ul li::before{content:"→";position:absolute;left:0;color:var(--accent2)}
+  code{background:var(--code);color:#a5f3fc;padding:2px 8px;border-radius:5px;font-size:13px;font-family:'Fira Code',monospace}
+  .flow-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0}
+  .flow-box{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap}
+  .flow-box.highlight{border-color:rgba(124,106,247,.6);background:rgba(124,106,247,.14);color:var(--accent2)}
+  .flow-box.green{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.08);color:var(--green)}
+  .flow-box.red{border-color:rgba(248,113,113,.4);background:rgba(248,113,113,.08);color:var(--red)}
+  .arrow{color:var(--accent2);font-size:20px;font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{background:var(--panel2);color:var(--accent2);padding:9px 12px;text-align:left;font-weight:700;border-bottom:1px solid var(--border)}
+  td{padding:8px 12px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.04)}
+  tr:last-child td{border-bottom:none}
+  .step-row{display:flex;gap:16px;flex:1}
+  .step-card{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 16px}
+  .step-num{width:30px;height:30px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:10px}
+  .nav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:100}
+  .nav button{background:var(--panel2);border:1px solid var(--border);color:var(--text);padding:10px 24px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer}
+  .nav button:hover{background:var(--accent);border-color:var(--accent)}
+  .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s ease;z-index:200}
+  .big-stat{font-size:44px;font-weight:900;background:linear-gradient(135deg,var(--green),#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .new-badge{background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;font-size:10px;font-weight:800;padding:2px 7px;border-radius:5px;margin-left:8px;vertical-align:middle}
+  .ui-demo{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;gap:18px;flex:1}
+  .ui-sidebar{width:200px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;flex-shrink:0}
+  .ui-chat{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;display:flex;flex-direction:column;justify-content:space-between}
+  .ui-label{background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.4);color:var(--yellow);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;white-space:nowrap}
+  .label-line{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .arch-box{background:var(--panel2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;text-align:center;color:var(--text);font-weight:600}
+  .arch-box.purple{border-color:rgba(124,106,247,.5);background:rgba(124,106,247,.1);color:var(--accent2)}
+  .arch-box.green{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.07);color:var(--green)}
+  .arch-box.blue{border-color:rgba(96,165,250,.4);background:rgba(96,165,250,.07);color:#93c5fd}
+  .arch-box.red{border-color:rgba(248,113,113,.4);background:rgba(248,113,113,.07);color:var(--red)}
+  .arch-box.yellow{border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.07);color:var(--yellow)}
+  .arch-col{display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center}
+  .arch-row{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+  .vdivider{width:1px;background:var(--border);align-self:stretch;margin:0 4px}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="deck" id="deck">
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide active">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;">
+    <div class="tag">🤖 NL Query Agent</div>
+    <h1>Talk to Your Data.<br/>No SQL Required.</h1>
+  </div>
+<div class="slide-num">1 / 14</div>
+</div>
+
+<!-- SLIDE 2: PROBLEM -->
+<div class="slide">
+  <div class="tag">🎯 Situation</div>
+  <h2>The Problem</h2>
+  <p class="sub">Data analysts and engineers spend significant time just to answer simple questions from S3 data.</p>
+  <div class="grid2" style="flex:1">
+    <div class="card red">
+      <h3>❌ Without This Agent</h3>
+      <ul>
+        <li>Know the exact table schema</li>
+        <li>Write SQL with correct column names</li>
+        <li>Run in Athena or a notebook</li>
+        <li>Format and interpret the result</li>
+        <li>Handle format differences (CSV vs Parquet)</li>
+        <li>Log in to S3 console to upload data</li>
+        <li>10–15 minutes minimum per question</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h3>✅ With This Agent</h3>
+      <ul>
+        <li>Type the question in plain English</li>
+        <li>Agent picks the right tool automatically</li>
+        <li>Schema, routing, SQL all handled internally</li>
+        <li>Upload datasets from the browser</li>
+        <li>Delete datasets from the browser</li>
+        <li>Re-run questions from query history</li>
+        <li>Answer in seconds, not minutes</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-num">2 / 14</div>
+</div>
+
+<!-- SLIDE 3: WHAT'S NEW -->
+<div class="slide">
+  <div class="tag">🆕 Latest Changes</div>
+  <h2>What are the additions</h2>
+  <p class="sub">All previous features are preserved. These are the additions that make the system fully self-contained from the browser.</p>
+  <div class="grid4" style="flex:1;align-items:start;margin-top:10px">
+    <div class="card yellow">
+      <h3>📂 Browser Upload</h3>
+      <p>Upload CSV, Parquet, or JSON from the app. No S3 console. No server restart. Registers to Athena instantly.</p>
+    </div>
+    <div class="card yellow">
+      <h3>🗑️ Browser Delete</h3>
+      <p>Delete datasets from the UI. Removes from S3 and agent registry in one click. No manual cleanup needed.</p>
+    </div>
+    <div class="card yellow">
+      <h3>🕘 Query History</h3>
+      <p>All questions logged with timestamps in the sidebar. Click any past question to re-populate and re-run instantly.</p>
+    </div>
+    <div class="card yellow">
+      <h3>🧠 Session Memory</h3>
+      <p>Each browser tab gets a unique session ID via localStorage. Agent remembers context within each session.</p>
+    </div>
+    <div class="card yellow">
+      <h3>🔐 IAM Hardening</h3>
+      <p>Tighter IAM policy permissions added. Only necessary S3, Athena, Bedrock, and CloudWatch actions are allowed.</p>
+    </div>
+    <div class="card yellow">
+      <h3>🔄 JSON Query Flow</h3>
+      <p>The /query endpoint now returns clean JSON instead of SSE stream chunks. Eliminates JSON parse errors in browser.</p>
+    </div>
+    <div class="card green">
+      <h3>🛡️ Guardrails Retained</h3>
+      <p>Input and output Bedrock Guardrails remain in place. PII anonymization, content filters, and grounding checks intact.</p>
+    </div>
+    <div class="card green">
+      <h3>📊 CloudWatch Retained</h3>
+      <p>Every query, response, and guardrail event continues to be logged. 90-day retention, archived to S3.</p>
+    </div>
+  </div>
+  <div class="slide-num">3 / 14</div>
+</div>
+
+<!-- SLIDE 4: ARCHITECTURE DIAGRAM -->
+<div class="slide">
+  <div class="tag">⚙️ Architecture</div>
+  <h2>System Architecture</h2>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:10px">
+    <div class="arch-row">
+      <div class="arch-box" style="padding:12px 22px;font-size:15px">👤 User</div>
+      <div class="arrow">→</div>
+      <div class="arch-box blue" style="padding:12px 22px;font-size:15px">🌐 Browser UI</div>
+      <div class="arrow">→</div>
+      <div class="arch-box blue" style="padding:12px 22px;font-size:15px">⚡ FastAPI Server<br/><span style="font-size:11px;font-weight:400;color:var(--muted)">/query /upload /delete /history /clear</span></div>
+    </div>
+    <div style="text-align:center;color:var(--accent2);font-size:20px">↓</div>
+    <div class="arch-row">
+      <div class="arch-box red">🛡️ Bedrock Guardrail<br/><span style="font-size:11px;font-weight:400">INPUT check</span></div>
+      <div class="arrow">→</div>
+      <div class="arch-box purple" style="padding:12px 22px">🤖 Strands Agent<br/>Amazon Nova Lite<br/><span style="font-size:11px;font-weight:400;color:var(--muted)">list_datasets · get_schema<br/>pandas_query · athena_sql_query<br/>get_athena_table_info</span></div>
+      <div class="arrow">→</div>
+      <div class="arch-box red">🛡️ Bedrock Guardrail<br/><span style="font-size:11px;font-weight:400">OUTPUT check</span></div>
+    </div>
+    <div style="text-align:center;color:var(--accent2);font-size:20px">↓ routing</div>
+    <div class="arch-row">
+      <div class="arch-box green">🐼 Pandas Engine<br/><span style="font-size:11px;font-weight:400">CSV / Parquet / JSON<br/>&lt; 10K rows</span></div>
+      <div class="arrow">or</div>
+      <div class="arch-box green">🔍 Amazon Athena<br/><span style="font-size:11px;font-weight:400">Serverless SQL<br/>≥ 10K rows</span></div>
+      <div class="arrow">→</div>
+      <div class="arch-box yellow">☁️ Amazon S3<br/><span style="font-size:11px;font-weight:400">datasets / uploads<br/>results / logs</span></div>
+      <div class="arrow">→</div>
+      <div class="arch-box blue">📊 CloudWatch Logs<br/><span style="font-size:11px;font-weight:400">queries · responses<br/>guardrail events</span></div>
+    </div>
+    <div style="text-align:center;color:var(--accent2);font-size:20px">↓</div>
+    <div class="arch-row">
+      <div class="arch-box" style="padding:12px 30px;font-size:15px">💬 Plain English Answer → User</div>
+    </div>
+  </div>
+  <div class="slide-num">4 / 14</div>
+</div>
+
+<!-- SLIDE 5: WEB UI OVERVIEW -->
+<div class="slide">
+  <div class="tag">🖥️ Web UI Demo</div>
+  <h2>Browser Interface — Labelled</h2>
+  <div class="ui-demo" style="flex:1;margin-top:10px">
+    <div class="ui-sidebar">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:14px">
+        <span style="font-size:18px">🤖</span>
+        <span style="font-weight:800;color:#d7dcff;font-size:14px">NL Query Agent</span>
+      </div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px">UPLOAD DATASET</div>
+      <div class="label-line"><div class="ui-label">① Upload Area</div></div>
+      <div style="border:1.5px dashed var(--border);border-radius:8px;padding:10px;text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px">📁 Click to upload<br/>CSV · Parquet · JSON</div>
+      <div class="label-line"><div class="ui-label">② Dataset Name</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:11px;color:var(--muted);margin-bottom:8px">dataset name</div>
+      <div class="label-line"><div class="ui-label">③ Upload Button</div></div>
+      <div style="background:linear-gradient(180deg,#9b7bf7,#7f5af0);border-radius:8px;padding:7px;text-align:center;font-size:11px;font-weight:700;margin-bottom:14px">Upload &amp; Register</div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:8px">DELETE DATASET</div>
+      <div class="label-line"><div class="ui-label">④ Delete Name</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:11px;color:var(--muted);margin-bottom:8px">dataset name to delete</div>
+      <div class="label-line"><div class="ui-label">⑤ Delete Button</div></div>
+      <div style="background:linear-gradient(180deg,#f97373,#dc2626);border-radius:8px;padding:7px;text-align:center;font-size:11px;font-weight:700;margin-bottom:14px">Delete Dataset</div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:11px;color:var(--green);margin-bottom:10px">Ready.</div>
+      <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:6px">QUERY HISTORY</div>
+      <div class="label-line"><div class="ui-label">⑥ History</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-size:11px;color:var(--muted)">What datasets...  <span style="color:var(--muted);font-size:10px">10:22</span></div>
+    </div>
+    <div class="ui-chat">
+      <div>
+        <div style="font-weight:800;color:#dfe4ff;font-size:15px;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:12px">
+          NL Query Agent
+          <div class="label-line" style="margin-top:4px"><div class="ui-label">⑦ Header</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex:1">
+          <div style="margin-left:auto;max-width:70%;background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:white;padding:10px 14px;border-radius:12px;font-size:13px">
+            Which state has the most farmers markets?
+          </div>
+          <div class="label-line"><div class="ui-label">⑧ User Message</div></div>
+          <div style="max-width:80%;background:var(--panel2);border:1px solid var(--border);padding:10px 14px;border-radius:12px;font-size:13px;color:#e9ecf4">
+            California has the most farmers markets with 1,528 markets.
+          </div>
+          <div class="label-line"><div class="ui-label">⑨ Agent Response</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="label-line"><div class="ui-label">⑩ Input + Send</div></div>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
+          <div style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--muted)">Ask a question...</div>
+          <div style="background:linear-gradient(180deg,#9b7bf7,#7f5af0);border-radius:10px;padding:10px 18px;font-weight:800;font-size:13px">Send ➤</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">5 / 14</div>
+</div>
+
+<!-- SLIDE 6: UI WALKTHROUGH STEP BY STEP -->
+<div class="slide">
+  <div class="tag">🖥️ UI Walkthrough</div>
+  <h2>How to Use the UI — Step by Step</h2>
+  <div class="step-row" style="flex:1;margin-top:14px">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Upload a Dataset</h3>
+      <ul>
+        <li>Click the upload area in the sidebar</li>
+        <li>Pick a CSV, Parquet, or JSON file</li>
+        <li>Enter a short name (e.g. <code>iris</code>)</li>
+        <li>Click <b>Upload &amp; Register</b></li>
+        <li>Uploads to S3 and registers instantly</li>
+      </ul>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Ask a Question</h3>
+      <ul>
+        <li>Type any question in the chat input</li>
+        <li>Press <b>Send</b> or hit Enter</li>
+        <li>Agent picks the right tool automatically</li>
+        <li>Answer appears in the chat panel</li>
+        <li>Question saved to history sidebar</li>
+      </ul>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Re-run from History</h3>
+      <ul>
+        <li>All questions appear in the left sidebar</li>
+        <li>Newest questions at the top</li>
+        <li>Click any item to re-populate input</li>
+        <li>Send again to re-run it</li>
+        <li>Timestamp shown next to each entry</li>
+      </ul>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h3>Delete a Dataset</h3>
+      <ul>
+        <li>Type the dataset name to delete</li>
+        <li>Click <b>Delete Dataset</b></li>
+        <li>Removed from S3 automatically</li>
+        <li>Removed from agent registry</li>
+        <li>No S3 console access needed</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-num">6 / 14</div>
+</div>
+
+<!-- SLIDE 7: TASK -->
+<div class="slide">
+  <div class="tag">🔧 Task</div>
+  <h2>What I Set Out to Build</h2>
+  <p class="sub">A production-style agentic system — not a prototype — that could handle real data questions safely, at scale, from any browser.</p>
+  <div class="grid2" style="flex:1">
+    <div class="card accent">
+      <h3>Core Goals</h3>
+      <ul>
+        <li>Answer natural-language questions over S3 data</li>
+        <li>Route automatically between Pandas and Athena</li>
+        <li>Support CSV, Parquet, and JSON without configuration</li>
+        <li>Expose everything through a browser UI</li>
+        <li>Keep the full safety layer enforced at all times</li>
+        <li>Log every action to CloudWatch for observability</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <h3>v4 Additional Goals</h3>
+      <ul>
+        <li>Let users upload datasets from the browser</li>
+        <li>Let users delete datasets without touching S3</li>
+        <li>Show a history sidebar for past questions</li>
+        <li>Keep memory scoped per browser tab</li>
+        <li>Harden IAM permissions for least-privilege access</li>
+        <li>Fix JSON parse errors in the query response flow</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-num">7 / 14</div>
+</div>
+
+<!-- SLIDE 8: ACTION - AGENT + TOOLS -->
+<div class="slide">
+  <div class="tag">⚙️ Action</div>
+  <h2>The Agent — Tools &amp; Routing</h2>
+  <table style="margin-bottom:16px">
+    <tr><th>Tool</th><th>When Called</th><th>What It Does</th></tr>
+    <tr><td><code>list_datasets</code></td><td>User asks what data is available</td><td>Lists all datasets including browser-uploaded files with row and column counts</td></tr>
+    <tr><td><code>get_schema</code></td><td>Always — before any data question</td><td>Returns column names, types, and 3 sample rows. Works for CSV, Parquet, and JSON</td></tr>
+    <tr><td><code>pandas_query</code></td><td>Datasets &lt; 10,000 rows</td><td>In-memory analysis. Auto-detects file format by extension. Fast and lightweight</td></tr>
+    <tr><td><code>get_athena_table_info</code></td><td>Before every SQL query</td><td>Confirms exact column names to prevent schema mismatch errors in Athena</td></tr>
+    <tr><td><code>athena_sql_query</code></td><td>Aggregations · large data · TOP N</td><td>COUNT · SUM · GROUP BY · ORDER BY. Max 2 retries, then falls back to pandas</td></tr>
+  </table>
+  <div class="flow-row">
+    <div class="flow-box">Dataset &lt; 10K rows?</div>
+    <div class="arrow">YES →</div>
+    <div class="flow-box green">pandas_query (fast, in-memory)</div>
+    <div class="arrow">NO →</div>
+    <div class="flow-box highlight">athena_sql_query (serverless SQL)</div>
+    <div class="arrow">FAIL →</div>
+    <div class="flow-box green">auto fallback to pandas</div>
+  </div>
+  <div class="slide-num">8 / 14</div>
+</div>
+
+<!-- SLIDE 9: ACTION - SECURITY + IAM -->
+<div class="slide">
+  <div class="tag">🔐 Security</div>
+  <h2>Guardrails &amp; IAM Hardening</h2>
+  <div class="grid2" style="flex:1">
+    <div>
+      <div class="card red" style="margin-bottom:14px">
+        <h3>🛡️ Bedrock Guardrails — Input</h3>
+        <ul>
+          <li>Blocks harmful, hateful, or violent prompts</li>
+          <li>Anonymizes PII (names, emails, phone numbers)</li>
+          <li>Blocks prompt injection attempts</li>
+          <li>Denies off-topic or irrelevant queries</li>
+          <li>Agent never sees unsafe input</li>
+        </ul>
+      </div>
+      <div class="card red">
+        <h3>🛡️ Bedrock Guardrails — Output</h3>
+        <ul>
+          <li>Validates final response before user sees it</li>
+          <li>Grounding threshold: 0.7</li>
+          <li>Relevance threshold: 0.7</li>
+          <li><code>strip_thinking()</code> removes internal reasoning tags</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card yellow">
+        <h3>🔐 IAM Policy Hardening <span class="new-badge">NEW</span></h3>
+        <p style="margin-bottom:10px">Least-privilege IAM policy added. Only the exact permissions needed are granted.</p>
+        <ul>
+          <li><b>S3:</b> GetObject, PutObject, DeleteObject on the specific bucket only</li>
+          <li><b>Athena:</b> StartQuery, GetResults, StopQuery on the specific workgroup</li>
+          <li><b>Bedrock:</b> InvokeModel on Nova Lite and the specific Guardrail ARN only</li>
+          <li><b>CloudWatch:</b> CreateLogGroup, PutLogEvents on specific log group</li>
+          <li>No wildcard actions or resources permitted</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">9 / 14</div>
+</div>
+
+<!-- SLIDE 10: ACTION - FASTAPI ENDPOINTS -->
+<div class="slide">
+  <div class="tag">⚙️ Action</div>
+  <h2>FastAPI Backend — Endpoints</h2>
+  <p class="sub">All functionality is exposed as clean HTTP endpoints accessible from the browser or programmatically via CLI.</p>
+  <table>
+    <tr><th>Endpoint</th><th>Method</th><th>What It Does</th><th>Changed in v4?</th></tr>
+    <tr><td><code>/</code></td><td>GET</td><td>Serves the browser UI (index.html)</td><td>—</td></tr>
+    <tr><td><code>/query</code></td><td>POST</td><td>Sends question to agent, returns answer as JSON</td><td><span class="badge yellow" style="font-size:11px">JSON not SSE</span></td></tr>
+    <tr><td><code>/upload</code></td><td>POST</td><td>Uploads dataset to S3 and registers it to agent</td><td>—</td></tr>
+    <tr><td><code>/delete</code></td><td>POST</td><td>Deletes dataset from S3 and removes from registry</td><td><span class="badge yellow" style="font-size:11px">New endpoint</span></td></tr>
+    <tr><td><code>/history</code></td><td>GET</td><td>Returns query history list for the session</td><td>—</td></tr>
+    <tr><td><code>/clear</code></td><td>POST</td><td>Clears session memory and history</td><td>—</td></tr>
+    <tr><td><code>/datasets</code></td><td>GET</td><td>Returns all registered dataset names</td><td>—</td></tr>
+  </table>
+  <div style="margin-top:16px;background:var(--panel2);border:1px solid rgba(251,191,36,.3);border-radius:10px;padding:12px 16px">
+    <p style="color:var(--yellow);font-size:14px;font-weight:700">⚡ Key v4 fix: <code>/query</code> now returns <code>JSONResponse</code> instead of streaming SSE chunks. This eliminates the <code>Unterminated string in JSON</code> browser error.</p>
+  </div>
+  <div class="slide-num">10 / 14</div>
+</div>
+
+<!-- SLIDE 11: SESSION MEMORY + HISTORY -->
+<div class="slide">
+  <div class="tag">🧠 Session &amp; History</div>
+  <h2>Session Memory &amp; Query History</h2>
+  <div class="grid2" style="flex:1">
+    <div class="card accent">
+      <h3>🧠 Session-Aware Memory <span class="new-badge">v4</span></h3>
+      <ul>
+        <li>Each browser tab generates a unique <code>session_id</code></li>
+        <li>Stored in <code>localStorage</code> — persists until cleared</li>
+        <li>Agent attaches memory context to every request</li>
+        <li>Follow-up questions work naturally</li>
+        <li>Completely isolated between tabs</li>
+        <li>Terminal mode uses <code>session_id = "terminal"</code></li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <h3>🕘 Query History Sidebar <span class="new-badge">v4</span></h3>
+      <ul>
+        <li>Every question saved automatically with timestamp</li>
+        <li>Newest questions shown at the top</li>
+        <li>Displayed in the left sidebar of the UI</li>
+        <li>Click any item to re-run it instantly</li>
+        <li>Scoped to the current session ID</li>
+        <li>Cleared when session is reset</li>
+      </ul>
+    </div>
+  </div>
+  <div class="flow-row" style="margin-top:8px">
+    <div class="flow-box">User asks question</div>
+    <div class="arrow">→</div>
+    <div class="flow-box highlight">session_id attached</div>
+    <div class="arrow">→</div>
+    <div class="flow-box highlight">Agent answers</div>
+    <div class="arrow">→</div>
+    <div class="flow-box green">History updated</div>
+    <div class="arrow">→</div>
+    <div class="flow-box green">Memory updated</div>
+  </div>
+  <div class="slide-num">11 / 14</div>
+</div>
+
+<!-- SLIDE 12: LIVE WALKTHROUGH -->
+<div class="slide">
+  <div class="tag">🚀 End-to-End Flow</div>
+  <h2>Query Lifecycle — How One Question Works</h2>
+  <div class="step-row" style="flex:1;margin-top:14px">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>User Types Question</h3>
+      <p>"Which state has the most farmers markets?"</p>
+      <p style="margin-top:8px">Browser sends <code>POST /query</code> with the question and <code>session_id</code>.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Input Guardrail</h3>
+      <p>Bedrock scans for harmful content and PII. Clean → passed to agent. Blocked → safe rejection returned immediately.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Agent + Tool Calls</h3>
+      <p>Nova Lite calls <code>get_schema</code>, then <code>get_athena_table_info</code>, then <code>athena_sql_query</code> with a COUNT + GROUP BY query.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h3>Output Guardrail + Answer</h3>
+      <p>Response verified against grounding and relevance thresholds. <code>strip_thinking()</code> removes internal tags. JSON returned to browser.</p>
+      <p style="margin-top:8px;color:var(--green)">→ "California with 1,528 farmers markets."</p>
+    </div>
+  </div>
+  <div class="slide-num">12 / 14</div>
+</div>
+
+<!-- SLIDE 13: AWS SERVICES + COST -->
+<div class="slide">
+  <div class="tag">☁️ Infrastructure</div>
+  <h2>AWS Services &amp; Cost</h2>
+  <div class="grid2" style="flex:1">
+    <table>
+      <tr><th>Service</th><th>Role</th></tr>
+      <tr><td>Amazon S3</td><td>Datasets, Athena results, archived logs</td></tr>
+      <tr><td>Amazon Athena</td><td>Serverless SQL on S3 external tables</td></tr>
+      <tr><td>AWS Glue</td><td>Table definitions behind Athena</td></tr>
+      <tr><td>Amazon Bedrock</td><td>Nova Lite reasoning + Guardrails</td></tr>
+      <tr><td>CloudWatch Logs</td><td>Structured logging, 90-day retention</td></tr>
+      <tr><td>AWS IAM</td><td>Least-privilege access control (v4)</td></tr>
+      <tr><td>AWS Strands SDK</td><td>Agent orchestration and tool loop</td></tr>
+      <tr><td>FastAPI + uvicorn</td><td>HTTP server for browser UI</td></tr>
+    </table>
+    <div>
+      <div class="card green" style="margin-bottom:14px">
+        <h3>💰 Cost Estimate</h3>
+        <ul>
+          <li>S3 ~10MB data + logs: &lt; $0.01/month</li>
+          <li>Athena small queries: ~$0.00005/query</li>
+          <li>Bedrock Nova Lite: &lt; $1/month dev usage</li>
+          <li>CloudWatch &lt; 1GB: &lt; $0.50/month</li>
+        </ul>
+        <div class="big-stat" style="margin-top:12px">&lt; $1/month</div>
+      </div>
+      <div class="card accent">
+        <h3>📦 Stack at a Glance</h3>
+        <ul>
+          <li>Python 3.11+ · FastAPI · uvicorn</li>
+          <li>boto3 · pandas · pyarrow</li>
+          <li>strands-agents · python-multipart</li>
+          <li>Region: ap-south-1 (configurable)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">13 / 14</div>
+</div>
+
+<!-- SLIDE 14: RESULTS -->
+<div class="slide">
+  <div class="tag">📈 Result</div>
+  <h2>What the System Delivers</h2>
+  <div class="grid2" style="flex:1">
+    <div>
+      <div class="card green" style="margin-bottom:14px">
+        <h3>✅ Core Outcomes</h3>
+        <ul>
+          <li>Query data in plain English — zero SQL</li>
+          <li>Upload and delete datasets from the browser</li>
+          <li>Re-run previous questions from history</li>
+          <li>Session-scoped memory for follow-ups</li>
+          <li>Full safety layer on every input and output</li>
+          <li>End-to-end observability via CloudWatch</li>
+          <li>Costs under $1/month for dev usage</li>
+          <li>Least-privilege IAM access enforced</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card accent" style="margin-bottom:14px">
+        <h3>🏗️ Built With</h3>
+        <div class="badge-row" style="flex-wrap:wrap;gap:8px;margin-top:8px">
+          <div class="badge">AWS Strands Agents SDK</div>
+          <div class="badge">Amazon Nova Lite</div>
+          <div class="badge">Amazon Bedrock</div>
+          <div class="badge">Amazon Athena</div>
+          <div class="badge">Amazon S3</div>
+          <div class="badge">CloudWatch</div>
+          <div class="badge">FastAPI</div>
+          <div class="badge green">AWS IAM</div>
+          <div class="badge green">Bedrock Guardrails</div>
+        </div>
+      </div>
+      <div class="card yellow">
+        <h3>🔗 Repository</h3>
+        <p>github.com/kkaustav/nl-query-agent</p>
+        <p style="margin-top:8px;font-size:13px">Python · FastAPI · AWS · Open Source</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">14 / 14</div>
+</div>
+
+</div>
+
+<div class="nav">
+  <button onclick="go(-1)">← Prev</button>
+  <button onclick="go(1)">Next →</button>
+</div>
+
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const prog = document.getElementById('prog');
+  function go(d){
+    slides[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(slides.length - 1, cur + d));
+    slides[cur].classList.add('active');
+    prog.style.width = ((cur + 1) / slides.length * 100) + '%';
+  }
+  document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+    if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') go(-1);
+  });
+  prog.style.width = (1 / slides.length * 100) + '%';
+</script>
+</body>
+</html>
