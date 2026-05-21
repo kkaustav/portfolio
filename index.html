@@ -83,16 +83,11 @@
             </div>
 
             <div class="w-full lg:w-1/3 flex justify-center">
-                <div class="relative group cursor-pointer" onclick="document.getElementById('imageUploader').click();" title="Click to upload your photo">
-                    <div class="absolute -inset-1.5 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+                <div class="relative">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full blur opacity-25 transition duration-500"></div>
                     <div class="relative w-52 h-52 md:w-60 md:h-60 rounded-full border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center">
-                        <img id="profileDisplay" src="profile.jpg" alt="Kaustubh Kar" onerror="this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%23111827\'><circle cx=\'50\' cy=\'42\' r=\'20\' fill=\'%23374151\'/><path d=\'M20,85 C20,65 35,55 50,55 C65,55 80,65 80,85 Z\' fill=\'%23374151\'/></svg>'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-xs font-bold tracking-widest uppercase">
-                            <i class="fa-solid fa-camera text-xl mb-2 text-white"></i>
-                            <span>Upload Image</span>
-                        </div>
+                        <img id="profileDisplay" src="profile.png" alt="Kaustubh Kar" class="w-full h-full object-cover" />
                     </div>
-                    <input type="file" id="imageUploader" accept="image/*" class="hidden" onchange="processProfilePicture(this)">
                 </div>
             </div>
 
@@ -444,29 +439,14 @@
     </div>
 
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const cachedImage = localStorage.getItem('user_profile_data_uri');
-            if (cachedImage) { document.getElementById('profileDisplay').src = cachedImage; }
-        });
-
-        function processProfilePicture(input) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const dataUri = e.target.result;
-                    document.getElementById('profileDisplay').src = dataUri;
-                    localStorage.setItem('user_profile_data_uri', dataUri);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
+        // Modals Engine
         function openCertModal(title, regId, expiry) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalId').innerText = regId;
             document.getElementById('modalExpiry').innerText = expiry;
             document.getElementById('certModal').classList.remove('hidden');
         }
+        // FIXED: Complete removal of local browser file inputs and storage caching handlers
         function closeCertModal() { document.getElementById('certModal').classList.add('hidden'); }
 
         document.getElementById('awsContactForm').addEventListener('submit', async (e) => {
