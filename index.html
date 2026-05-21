@@ -227,18 +227,14 @@
     </section>
 
     <section id="systems" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900 relative z-10">
-        <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-4">// REPOSITORIES & RUNTIMES</h2>
         <h3 class="text-4xl font-black text-slate-900 dark:text-slate-100 mb-12 tracking-tight">System Deployments</h3>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="handleProjectClick(event, this, 'aws-security-auditor.slides.html')" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto max-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">FinOps Platform / LLM</span>
-                    <div class="flex items-center space-x-3">
-                        <a href="aws-security-auditor.slides.html" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="View Presentation"><i class="fa-solid fa-desktop"></i></a>
-                        <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
-                    </div>
+                    <a href="https://github.com/kkaustav/cloud-config-auditor" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">AWS Cloud Security Auditor</h4>
@@ -255,17 +251,18 @@
                         <p><strong>Task:</strong> Standardize an optimization framework to scan multi-tier infrastructures and output closed JSON fixes instantly.</p>
                         <p><strong>Action:</strong> Fine-tuned a 3B parameter model (Qwen2.5) using Supervised Fine-Tuning (SFT) over curated security audit traces.</p>
                         <p><strong>Result:</strong> Realized a validated precision performance floor of 0.9760, reducing operational MTTR from hours to seconds.</p>
+                        
+                        <div class="text-xs text-slate-500 font-bold uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-4 border-t border-slate-200 dark:border-slate-900 mt-4" onclick="window.open('aws-security-auditor.slides.html', '_blank'); event.stopPropagation();">
+                            → Launch Interactive Presentation Engine
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="handleProjectClick(event, this, 'nl_query_presentation.html')" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Serverless AI Ingestion</span>
-                    <div class="flex items-center space-x-3">
-                        <a href="nl_query_presentation.html" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="View Presentation"><i class="fa-solid fa-desktop"></i></a>
-                        <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
-                    </div>
+                    <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">NL Query Agent — Bedrock Nova</h4>
@@ -277,17 +274,18 @@
                         <p><strong>Task:</strong> Build a low-overhead interface to process plain English query text directly against backend data files.</p>
                         <p><strong>Action:</strong> Implemented Strands SDK execution paths backed by Nova Lite; configured sizing check boundaries to route tasks to memory Pandas sets or serverless Amazon Athena SQL pipelines.</p>
                         <p><strong>Result:</strong> Attained isolated, multi-format queries secured via Bedrock Guardrails, maintaining audit logs for under $1/month.</p>
+                        
+                        <div class="text-xs text-slate-500 font-bold uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-4 border-t border-slate-200 dark:border-slate-900 mt-4" onclick="window.open('nl_query_presentation.html', '_blank'); event.stopPropagation();">
+                            → Launch Interactive Presentation Engine
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="handleProjectClick(event, this, 'github_dev_card_presentation.html')" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">GenAI Pipeline</span>
-                    <div class="flex items-center space-x-3">
-                        <a href="github_dev_card_presentation.html" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="View Presentation"><i class="fa-solid fa-desktop"></i></a>
-                        <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
-                    </div>
+                    <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">GitHub Dev Card Generator</h4>
@@ -299,17 +297,18 @@
                         <p><strong>Task:</strong> Construct a serverless pipeline that extracts profile data and compiles it into high-end asset cards.</p>
                         <p><strong>Action:</strong> Deployed a FastAPI service on GCP Cloud Run using Gemini 2.5 Flash; engineered Vertex AI Memory Bank upgrades to guarantee cross-session execution persistence.</p>
                         <p><strong>Result:</strong> Standardized an automated profile generator capable of scaling down to zero overhead instances when idle.</p>
+                        
+                        <div class="text-xs text-slate-500 font-bold uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-4 border-t border-slate-200 dark:border-slate-900 mt-4" onclick="window.open('github_dev_card_presentation.html', '_blank'); event.stopPropagation();">
+                            → Launch Interactive Presentation Engine
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="handleProjectClick(event, this, 'bakery_agent_presentation.html')" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Spatial Data Analytics</span>
-                    <div class="flex items-center space-x-3">
-                        <a href="bakery_agent_presentation.html" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="View Presentation"><i class="fa-solid fa-desktop"></i></a>
-                        <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
-                    </div>
+                    <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">Bakery Location Intelligence Agent</h4>
@@ -321,17 +320,18 @@
                         <p><strong>Task:</strong> Engineer an optimization assistant to interpret spatial performance patterns using decoupled multi-agent frameworks.</p>
                         <p><strong>Action:</strong> Constructed tool attachments via Google ADK and Gemini 3.1 Pro; established Model Context Protocol (MCP) links across BigQuery datasets and live Google Maps APIs.</p>
                         <p><strong>Result:</strong> Delivered real-time data reports synthesizing neighborhood demographics, pricing arrays, and local routing vectors.</p>
+                        
+                        <div class="text-xs text-slate-500 font-bold uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-4 border-t border-slate-200 dark:border-slate-900 mt-4" onclick="window.open('bakery_agent_presentation.html', '_blank'); event.stopPropagation();">
+                            → Launch Interactive Presentation Engine
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="handleProjectClick(event, this, 'flight-booker.html')" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Voice UI / Lambda Integration</span>
-                    <div class="flex items-center space-x-3">
-                        <a href="flight-booker.html" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="View Presentation"><i class="fa-solid fa-desktop"></i></a>
-                        <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
-                    </div>
+                    <a href="https://github.com/kkaustav/flight-booker-alexa-skill" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">Flight Booker Alexa Skill</h4>
@@ -343,17 +343,18 @@
                         <p><strong>Task:</strong> Stand up a low-latency voice command backend that maps user destination strings under narrow SLA windows.</p>
                         <p><strong>Action:</strong> Configured intent slot handlers via the Alexa Skills Kit backed by AWS Lambda (Python 3.12); integrated SerpAPI Google Flights parameters to route schedule listings.</p>
                         <p><strong>Result:</strong> Sustained an evaluation profile maintaining a 95%+ First Call Resolution velocity across 80+ global target hubs.</p>
+                        
+                        <div class="text-xs text-slate-500 font-bold uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-4 border-t border-slate-200 dark:border-slate-900 mt-4" onclick="window.open('flight-booker.html', '_blank'); event.stopPropagation();">
+                            → Launch Interactive Presentation Engine
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div onclick="toggleSystemCard(this)" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="handleProjectClick(event, this, 'Scaler%20Target%20Brazil%20CaseStudy.pdf')" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">SQL / Analytics Framework</span>
-                    <div class="flex items-center space-x-3">
-                        <a href="Scaler%20Target%20Brazil%20CaseStudy.pdf" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="View Case Study PDF"><i class="fa-solid fa-desktop"></i></a>
-                        <a href="https://github.com/kkaustav/target-brazil-ecommerce-analytics" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
-                    </div>
+                    <a href="https://github.com/kkaustav/target-brazil-ecommerce-analytics" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <div class="flex justify-between items-center mb-2 shrink-0">
                     <h4 class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight transition-colors">Target Brazil E-Commerce Analytics</h4>
@@ -369,6 +370,10 @@
                         <p><strong>Task:</strong> Analyze delivery times, demand seasonality loops, and payment behaviors across 8 interconnected relational datasets.</p>
                         <p><strong>Action:</strong> Developed optimized multi-join SQL queries to compile state-level performance matrices, track ordering frequency distributions, and evaluate EMI installment choices.</p>
                         <p><strong>Result:</strong> Captured a 143% YoY revenue surge (R$3.47M to R$8.45M). Pinpointed that while São Paulo contributes 40.5% of demand, remote states experience 2.6–2.8× higher freight boundaries. Discovered 66%+ of orders concentrate between 1 PM and midnight, with 48.9% traveling as single-installments to focus strategic subsidies.</p>
+                        
+                        <div class="text-xs text-slate-500 font-bold uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-4 border-t border-slate-200 dark:border-slate-900 mt-4" onclick="window.open('Scaler%20Target%20Brazil%20CaseStudy.pdf', '_blank'); event.stopPropagation();">
+                            → Launch Case Study Document Verification
+                        </div>
                     </div>
                 </div>
             </div>
@@ -448,7 +453,7 @@
     <section id="education" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900 relative z-10">
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-10">// EDUCATIONAL QUALIFICATIONS</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 font-medium text-sm">
-            <div onclick="window.open('https://drive.google.com/file/d/1M6mWb9J5Z6z4i9V0Aik-Id-EiylbHLkr/view?usp=sharing', '_blank')", '_blank')" class="p-8 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 shadow-xl">
+            <div onclick="window.open('https://drive.google.com/file/d/1M6mWb9J5Z6z4i9V0Aik-Id-EiylbHLkr/view?usp=sharing', '_blank')" class="p-8 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 shadow-xl">
                 <div>
                     <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
                     <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Master of Science (MS)</h4>
@@ -459,7 +464,7 @@
                     → Launch Academic Record validation file
                 </div>
             </div>
-            <div onclick="window.open('https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view', '_blank')", '_blank')" class="p-8 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 shadow-xl">
+            <div onclick="window.open('https://drive.google.com/file/d/1TZz5nBUKYdEwRNEggkbaZGTIT7m1w8La/view', '_blank')" class="p-8 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl flex flex-col justify-between cursor-pointer group hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 shadow-xl">
                 <div>
                     <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-terminal"></i></div>
                     <h4 class="font-bold text-slate-900 dark:text-white text-lg mb-2">Bachelor of Technology (B.Tech)</h4>
@@ -515,6 +520,17 @@
     </div>
 
     <script>
+        // FIXED: Unified gesture script layers separating desktop routing actions from mobile toggles
+        function handleProjectClick(event, cardElement, presentationUrl) {
+            // Desktop Viewport Action Layer
+            if (window.innerWidth >= 768) {
+                window.open(presentationUrl, '_blank');
+            } else {
+                // Mobile Viewport Action Layer: Hand over to expanding accordion context
+                toggleSystemCard(cardElement);
+            }
+        }
+
         // Smooth click-to-expand engine built exclusively for mobile viewports
         function toggleSystemCard(cardElement) {
             if (window.innerWidth >= 768) return;
