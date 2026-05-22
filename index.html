@@ -301,7 +301,7 @@
                 </div>
             </div>
 
-            <div onclick="handleProjectClick(event, this, 'bakery_agent_presentation.html')" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20">
+            <div onclick="handleProjectClick(event, this, 'bakery_agent_presentation.html')" class="system-card bg-white dark:bg-slate-950/40 border border-slate-200 dark:border-slate-900 p-8 rounded-xl group cursor-pointer shadow-2xl flex flex-col justify-start overflow-hidden h-auto min-h-[145px] md:max-h-[145px] md:hover:max-h-[650px] md:hover:border-slate-400/30 dark:md:hover:border-white/20 shadow-xl shadow-slate-900/5 dark:shadow-none">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-bold text-slate-700 dark:text-white uppercase bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded border border-slate-200 dark:border-white/10">Spatial Data Analytics</span>
                     <a href="https://github.com/kkaustav" target="_blank" onclick="event.stopPropagation();" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-lg" title="GitHub Codebase"><i class="fa-brands fa-github"></i></a>
@@ -445,15 +445,35 @@
 
     <section id="credentials" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900 relative z-10">
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-10">// TECHNICAL ACCREDITATIONS</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold max-w-3xl">
-            <div onclick="openCertModal('AWS AI Practitioner', 'Registration: AWS-AIP-2026', 'VALID THRU: 2029')" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none">
-                <i class="fa-solid fa-square-poll-vertical text-slate-800 dark:text-white text-sm"></i>
-                <span class="text-slate-800 dark:text-slate-200">AWS Certified AI Practitioner (2026)</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm max-w-6xl">
+            
+            <div onclick="openCertModal('AWS AI Practitioner', 'Registration: AWS-AIP-2026', 'VALID THRU: 2029')" class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative group cursor-pointer hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 flex flex-col justify-start shadow-xl">
+                <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-square-poll-vertical"></i></div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">AWS Certified AI Practitioner (2026)</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-4">Validates engineering expertise in orchestrating serverless foundation models, prompt optimization, and deterministic multi-agent workflows on AWS.</p>
+                <div class="text-[10px] text-slate-400 dark:text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-2 border-t border-slate-100 dark:border-slate-900 mt-auto">
+                    → Launch Verification Modal
+                </div>
             </div>
-            <a href="https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lZtxiErQeKHe/view" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none no-underline">
-                <i class="fa-solid fa-chalkboard-user text-slate-800 dark:text-white text-sm"></i>
-                <span class="text-slate-800 dark:text-slate-200">AWS Certified Trainer</span>
-            </a>
+
+            <div onclick="openCertModal('GitHub Copilot Certified', 'Registration: GH-COPILOT-2026', 'VALID THRU: 2029')" class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative group cursor-pointer hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 flex flex-col justify-start shadow-xl">
+                <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-brands fa-github"></i></div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">GitHub Copilot Certified (2026)</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-4">Validates advanced proficiency in leveraging AI-powered pair programming to optimize code generation, streamline debugging workflows, and accelerate software development lifecycles.</p>
+                <div class="text-[10px] text-slate-400 dark:text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-2 border-t border-slate-100 dark:border-slate-900 mt-auto">
+                    → Launch Verification Modal
+                </div>
+            </div>
+            
+            <div onclick="window.open('https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lZtxiErQeKHe/view', '_blank')" class="p-6 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-900 rounded-xl relative group cursor-pointer hover:border-slate-400/30 dark:hover:border-white/20 hover:bg-slate-100/50 dark:hover:bg-[#060b16] transition-all duration-300 flex flex-col justify-start shadow-xl">
+                <div class="text-slate-800 dark:text-white text-2xl mb-4"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-base mb-1">AWS Certified Trainer</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-light leading-relaxed mb-4">Official designation verifying comprehensive mastery of AWS cloud infrastructure topologies combined with elite corporate instruction and engineering team capability scaling.</p>
+                <div class="text-[10px] text-slate-400 dark:text-slate-500 font-medium uppercase tracking-wider group-hover:text-slate-800 dark:group-hover:text-slate-300 transition-colors pt-2 border-t border-slate-100 dark:border-slate-900 mt-auto">
+                    → View Credential Document
+                </div>
+            </div>
+            
         </div>
     </section>
 
