@@ -75,10 +75,6 @@
                         </svg>
                     </a>
                     
-                    <a href="Kaustubh_Kar_Resume.pdf" target="_blank" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xl transition-colors" title="Review Curriculum Vitae">
-                        <i class="fa-solid fa-file-invoice"></i>
-                    </a>
-                    
                     <a href="#contact" class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xl transition-colors" title="Secure Communication Channel">
                         <i class="fa-solid fa-envelope"></i>
                     </a>
@@ -449,30 +445,14 @@
 
     <section id="credentials" class="py-24 max-w-6xl mx-auto px-8 md:px-16 border-b border-slate-200 dark:border-slate-900 relative z-10">
         <h2 class="text-xs uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 mb-10">// TECHNICAL ACCREDITATIONS</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs font-semibold">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-semibold max-w-3xl">
             <div onclick="openCertModal('AWS AI Practitioner', 'Registration: AWS-AIP-2026', 'VALID THRU: 2029')" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none">
                 <i class="fa-solid fa-square-poll-vertical text-slate-800 dark:text-white text-sm"></i>
                 <span class="text-slate-800 dark:text-slate-200">AWS Certified AI Practitioner (2026)</span>
             </div>
-            <a href="https://www.credly.com/badges/286b49e5-94b5-4f08-b6e8-bc21f44b03a5/public_url" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none">
-                <i class="fa-solid fa-cloud text-slate-800 dark:text-white text-sm"></i>
-                <span class="text-slate-800 dark:text-slate-200">AWS Certified Cloud Practitioner</span>
-            </a>
-            <a href="https://www.credly.com/badges/f60cf029-1065-4f0a-8fa1-ff105421a93e" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none">
-                <i class="fa-solid fa-microchip text-slate-800 dark:text-white text-sm"></i>
-                <span class="text-slate-800 dark:text-slate-200">AWS Generative AI Essentials</span>
-            </a>
-            <a href="https://www.credly.com/badges/e203c9ba-043e-49cd-99c0-209aab51a34b/linked_in_profile" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none">
-                <i class="fa-solid fa-database text-slate-800 dark:text-white text-sm"></i>
-                <span class="text-slate-800 dark:text-slate-200">AWS Account Management SME</span>
-            </a>
-            <a href="https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lZtxiErQeKHe/view" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none">
+            <a href="https://drive.google.com/file/d/1e3oSlsXh02sEFNmZXP66lZtxiErQeKHe/view" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none no-underline">
                 <i class="fa-solid fa-chalkboard-user text-slate-800 dark:text-white text-sm"></i>
                 <span class="text-slate-800 dark:text-slate-200">AWS Certified Trainer</span>
-            </a>
-            <a href="https://drive.google.com/file/d/19dH9NUPy6mxiUI00i7cJynrqQpFQUC2m/view?pli=1" target="_blank" class="p-4 bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-900 rounded-lg flex items-center space-x-3 hover:border-slate-400 dark:hover:border-white/40 transition-colors cursor-pointer shadow shadow-slate-900/5 dark:shadow-none">
-                <i class="fa-solid fa-certificate text-slate-800 dark:text-white text-sm"></i>
-                <span class="text-slate-800 dark:text-slate-200">UpGrad-Microsoft GenAI Foundations</span>
             </a>
         </div>
     </section>
@@ -547,7 +527,6 @@
     </div>
 
     <script>
-        // Unified gesture script layers separating desktop routing actions from mobile toggles
         function handleProjectClick(event, cardElement, presentationUrl) {
             if (window.innerWidth >= 768) {
                 window.open(presentationUrl, '_blank');
@@ -556,7 +535,6 @@
             }
         }
 
-        // Smooth click-to-expand engine built exclusively for mobile viewports
         function toggleSystemCard(cardElement) {
             if (window.innerWidth >= 768) return;
 
@@ -585,7 +563,6 @@
         
         function closeCertModal() { document.getElementById('certModal').classList.add('hidden'); }
 
-        // Secure AWS backend communication client logic
         document.getElementById('awsContactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
@@ -626,5 +603,5 @@
         });
     </script>
 
-</body>
+</body
 </html>
